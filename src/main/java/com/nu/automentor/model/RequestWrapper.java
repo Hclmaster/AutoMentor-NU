@@ -3,22 +3,22 @@ package com.nu.automentor.model;
 import java.util.List;
 
 public class RequestWrapper {
-    private StudentEntity stu;
-    private List<DataEntity> dataLst;
+    private StudentEntity student;
+    private List<DataEntity> textBlocks;
 
-    public StudentEntity getStu() {
-        return stu;
+    public StudentEntity getStudent() {
+        return student;
     }
 
-    public void setStu(StudentEntity stu) {
-        this.stu = stu;
+    public void setStudent(StudentEntity student) {
+        this.student = student;
     }
 
-    public List<DataEntity> getDataLst() {
-        return dataLst;
+    public List<DataEntity> getTextBlocks() {
+        return textBlocks;
     }
 
-    public void setDataLst(List<DataEntity> dataLst) {
-        this.dataLst = dataLst;
+    public void setTextBlocks(List<DataEntity> textBlocks) {
+        this.textBlocks = textBlocks;
     }
 }

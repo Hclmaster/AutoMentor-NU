@@ -3,7 +3,6 @@ package com.nu.automentor.model;
 public class StudentEntity {
     private String name;
     private String id;
-    private String msg;
 
     public String getName() {
         return name;
@@ -21,11 +20,4 @@ public class StudentEntity {
         this.id = id;
     }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
 }

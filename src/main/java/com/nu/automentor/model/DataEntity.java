@@ -2,8 +2,9 @@ package com.nu.automentor.model;
 
 public class DataEntity {
     private String label;
-    private String codeMsg;
+    private String text;
     private String type;
+    private String message;
 
     public String getLabel() {
         return label;
@@ -13,12 +14,12 @@ public class DataEntity {
         this.label = label;
     }
 
-    public String getCodeMsg() {
-        return codeMsg;
+    public String getText() {
+        return text;
     }
 
-    public void setCodeMsg(String codeMsg) {
-        this.codeMsg = codeMsg;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getType() {
@@ -27,5 +28,13 @@ public class DataEntity {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

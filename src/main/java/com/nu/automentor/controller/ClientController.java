@@ -16,8 +16,8 @@ public class ClientController {
     @RequestMapping(value = "/api/form", method = RequestMethod.POST)
     public ResponseWrapper requestMultipleInputs(@RequestBody RequestWrapper requestWrapper){
         ResponseWrapper responseWrapper = new ResponseWrapper();
-        responseWrapper.setStu(requestWrapper.getStu());
-        responseWrapper.setDataLst(requestWrapper.getDataLst());
+        responseWrapper.setStudent(requestWrapper.getStudent());
+        responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
         List<String> list = new ArrayList<>();
         list.add("Take a look at the examples on the pages returned by the web search with \"Racket docs beside\"");
         list.add("Take a look at the examples at https://docs.racket-lang.org/" +
