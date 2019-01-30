@@ -1,9 +1,10 @@
-package com.nu.automentor;
+package com.nu.automentor.myTest;
 
 public class PostResponse {
-    int id;
-    String message;
-    String extra;
+    private int id;
+    private String message;
+    private String extra;
+
     public String getExtra() {
         return extra;
     }

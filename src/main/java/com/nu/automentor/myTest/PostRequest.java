@@ -1,4 +1,4 @@
-package com.nu.automentor;
+package com.nu.automentor.myTest;
 
 public class PostRequest {
     private int id;

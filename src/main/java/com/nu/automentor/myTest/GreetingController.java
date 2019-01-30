@@ -1,5 +1,7 @@
-package com.nu.automentor;
+package com.nu.automentor.myTest;
 
+import com.nu.automentor.myTest.Greeting;
+import com.nu.automentor.myTest.PostResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +17,15 @@ public class GreetingController {
     }
 
     @PostMapping("/greeting")
-    // use @requestBody doesn't work.
     public ModelAndView greetingSubmit(@ModelAttribute Greeting greeting) {
-        System.out.println("greeting id ==> "+greeting.getId());
-        System.out.println("greeting content ==> "+greeting.getContent());
+        // System.out.println("greeting id ==> "+greeting.getId());
+        // System.out.println("greeting content ==> "+greeting.getContent());
         PostResponse pr = new PostResponse();
-        pr.id=(int)greeting.getId();
-        pr.message=greeting.getContent();
+        pr.setId((int)greeting.getId());
+        pr.setMessage(greeting.getContent());
         ModelAndView mav = new ModelAndView();
         mav.addObject("message", pr);
         mav.setViewName("result");
         return mav;
     }
-
 }
