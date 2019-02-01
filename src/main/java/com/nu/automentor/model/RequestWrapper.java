@@ -5,6 +5,7 @@ import java.util.List;
 public class RequestWrapper {
     private StudentEntity student;
     private List<DataEntity> textBlocks;
+    private String message;
 
     public StudentEntity getStudent() {
         return student;
@@ -20,5 +21,13 @@ public class RequestWrapper {
 
     public void setTextBlocks(List<DataEntity> textBlocks) {
         this.textBlocks = textBlocks;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

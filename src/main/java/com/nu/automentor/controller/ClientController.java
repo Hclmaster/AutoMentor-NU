@@ -18,6 +18,7 @@ public class ClientController {
         ResponseWrapper responseWrapper = new ResponseWrapper();
         responseWrapper.setStudent(requestWrapper.getStudent());
         responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
+        responseWrapper.setMessage(requestWrapper.getMessage());
         List<String> list = new ArrayList<>();
         list.add("Take a look at the examples on the pages returned by the web search with \"Racket docs beside\"");
         list.add("Take a look at the examples at https://docs.racket-lang.org/" +

@@ -6,6 +6,7 @@ public class ResponseWrapper {
     private StudentEntity student;
     private List<DataEntity> textBlocks;
     private List<String> response;
+    private String message;
 
     public StudentEntity getStudent() {
         return student;
@@ -29,5 +30,13 @@ public class ResponseWrapper {
 
     public void setTextBlocks(List<DataEntity> textBlocks) {
         this.textBlocks = textBlocks;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

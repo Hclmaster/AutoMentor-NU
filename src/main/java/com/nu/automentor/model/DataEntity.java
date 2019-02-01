@@ -4,7 +4,6 @@ public class DataEntity {
     private String label;
     private String text;
     private String type;
-    private String message;
 
     public String getLabel() {
         return label;
@@ -28,13 +27,5 @@ public class DataEntity {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }
