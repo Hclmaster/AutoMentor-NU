@@ -9,17 +9,17 @@
                 {
                     "label":"square.rat",
                     "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
-                    "type":"input"
+                    "type":"sourceCode"
                 },
                 {
-                    "label":"student-output",
+                    "label":"local-console-output",
                     "text":"overlay/xy: expects only 4 arguments, but found 11.",
-                    "type":"output"
+                    "type":"studentOutput"
                 },
                 {
                     "label":"preprocessor-output",
                     "text":"(error* 'mcbean \"too many stars upon thars\" '(\"given\" value) 'star-bellied-sneetch'(\"stars\" value) 3)",
-                    "type":"output"
+                    "type":"computerOutput"
                 }
             ],
             "message":"I’m getting an error when I try to use overlay/xy",
@@ -31,10 +31,14 @@
     </script>
 </head>
 <body>
+<h1>Request JSON</h1>
 <p id="requestJSON" >
     <script type="text/javascript">
         document.write(JSON.stringify(jsonObj));
     </script>
 </p>
+
+<h1>Response JSON</h1>
+
 </body>
 </html>
