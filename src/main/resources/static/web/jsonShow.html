@@ -1,42 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta charset="UTF-8">
     <title>Display JSON</title>
-    <script>
-        var jsonObj = {
-            "textBlocks":[
-                {
-                    "label":"square.rat",
-                    "text": "(overlay/xy main-flag 90 90 beside my-star beside my-star beside my-star)",
-                    "type":"sourceCode"
-                },
-                {
-                    "label":"local-console",
-                    "text":"overlay/xy: expects only 4 arguments, but found 11.",
-                    "type":"studentOutput"
-                },
-                {
-                    "label":"preprocessor",
-                    "text":"(error* 'mcbean \"too many stars upon thars\" '(\"given\" value) 'star-bellied-sneetch'(\"stars\" value) 3)",
-                    "type":"computerOutput"
-                }
-            ],
-            "message":"I’m getting an error when I try to use overlay/xy",
-            "student":{
-                "name": "Cathy",
-                "id": "clj8621"
-            }
-        };
-    </script>
 </head>
 <body>
 <h1>Request JSON</h1>
-<p id="requestJSON" >
-    <script type="text/javascript">
-        document.write(JSON.stringify(jsonObj));
-    </script>
-</p>
+<div id="jsonObj">
+    {{message}}
+</div>
+<script src="jsonShow.js"></script>
 
 <h1>Response JSON</h1>
 
