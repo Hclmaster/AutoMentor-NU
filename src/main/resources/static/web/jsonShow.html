@@ -7,12 +7,20 @@
 </head>
 <body>
 <h1>Request JSON</h1>
-<div id="jsonObj">
-    <div v-for="(item, key) in message">
-        Key: {{key}} <br>
-        Value: {{item}} <br>
-    </div>
-</div>
+<table id="jsonObj">
+    <thead>
+        <tr>
+            <td><h3>Key</h3></td>
+            <td><h3>Value</h3></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="(value, key) in message">
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+    </tbody>
+</table>
 <script src="jsonShow.js"></script>
 
 <h1>Response JSON</h1>
