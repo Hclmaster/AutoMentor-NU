@@ -8,7 +8,10 @@
 <body>
 <h1>Request JSON</h1>
 <div id="jsonObj">
-    {{message}}
+    <div v-for="(item, key) in message">
+        Key: {{key}} <br>
+        Value: {{item}} <br>
+    </div>
 </div>
 <script src="jsonShow.js"></script>
 
