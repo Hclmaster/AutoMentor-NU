@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta charset="UTF-8">
@@ -7,23 +7,74 @@
 </head>
 <body>
 <h1>Request JSON</h1>
-<table id="jsonObj">
-    <thead>
+<div id="jsonObj">
+    <table v-if="message">
+        <thead>
         <tr>
             <td><h3>Key</h3></td>
             <td><h3>Value</h3></td>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <tr v-for="(value, key) in message">
             <td>{{key}}</td>
             <td>{{value}}</td>
         </tr>
-    </tbody>
-</table>
-<script src="jsonShow.js"></script>
+        </tbody>
+    </table>
+</div>
+
+<br/>
+
+<button id="getData">
+    Send to server!
+</button>
 
 <h1>Response JSON</h1>
 
+<div id="responsejsonObj">
+    <table v-if="responseMessage">
+        <thead>
+        <tr>
+            <td><h3>Key</h3></td>
+            <td><h3>Value</h3></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(value, key) in responseMessage">
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    document.getElementById('getData').addEventListener('click', getData);
+
+    var responseJsonObj = new Vue({
+        el: '#responsejsonObj',
+        data: {
+            responseMessage: {}
+        }
+    });
+
+    responseJsonObj.responseMessage = null;
+
+    function getData() {
+        fetch('testJson.json')
+            .then(function (response) {
+                //console.log("value => ", response);
+                return response.json();
+            })
+            .then(function (myJson) {
+                console.log(JSON.stringify(myJson));
+                responseJsonObj.responseMessage = myJson;   // type is object
+            });
+    }
+</script>
+
+<script src="jsonShow.js"></script>
 </body>
 </html>
