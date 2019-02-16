@@ -62,7 +62,8 @@
 
     responseJsonObj.responseMessage = null;
 
-    function getData() {
+    /*function getData() {
+        //console.log("original data => ", jsonObj.message);
         fetch('testJson.json')
             .then(function (response) {
                 //console.log("value => ", response);
@@ -72,6 +73,22 @@
                 console.log(JSON.stringify(myJson));
                 responseJsonObj.responseMessage = myJson;   // type is object
             });
+    }*/
+
+    function getData() {
+        userAction();
+    }
+    const userAction = async () => {
+        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+            method: 'POST',
+            body: jsonObj.message, // string or object
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        });
+        const myJson = await response.json(); //extract JSON from the http response
+        // do something with myJson
+        console.log("myJson ====> ", myJson);
     }
 </script>
 
