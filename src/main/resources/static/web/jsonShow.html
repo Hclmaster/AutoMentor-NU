@@ -75,13 +75,14 @@
             });
     }*/
 
+    // get response from backend server
     function getData() {
         userAction();
     }
     const userAction = async () => {
         const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
             method: 'POST',
-            body: jsonObj.message, // string or object
+            body: JSON.stringify(jsonObj.message), // string or object
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -89,6 +90,7 @@
         const myJson = await response.json(); //extract JSON from the http response
         // do something with myJson
         console.log("myJson ====> ", myJson);
+        responseJsonObj.responseMessage = myJson;
     }
 </script>
 
