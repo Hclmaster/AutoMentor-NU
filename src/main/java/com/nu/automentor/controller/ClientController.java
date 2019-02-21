@@ -96,6 +96,10 @@ public class ClientController {
 
     public String extractFunctionName(ScriptEngine engine, String name, JsonObject errorMatchResult){
         String extractFunctionPattern = "{\"reg\": \"function (\\w*){1}\"}";
+        JsonElement je = errorMatchResult.get("0");
+        JsonObject errorResult = je.getAsJsonObject();
+        String errorMessage = je.getAsJsonObject().get("0");
+        //JsonObject obj = getMatchResult(engine, "stringMatch", )
         return null;
     }
 }

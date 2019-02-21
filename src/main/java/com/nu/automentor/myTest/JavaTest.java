@@ -45,6 +45,9 @@ public class JavaTest {
         for(Map.Entry<String,JsonElement> entry : entrySet){
             attributes.put(entry.getKey(), result.get(entry.getKey()));
             System.out.println("key => "+entry.getKey()+" value => "+result.get(entry.getKey()));
+            je = result.get(entry.getKey());
+            result = je.getAsJsonObject();
+            System.out.println("??? result => " + result.get("0"));
         }
 
     }
