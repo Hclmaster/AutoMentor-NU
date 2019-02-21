@@ -38,7 +38,7 @@ public class ClientController {
         engine.eval(reader1);
 
         // first judge whether it has error or not
-        JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+requestWrapper.getMessage()+"\"");
+        //JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+requestWrapper.getMessage()+"\"");
 
         List<DataEntity> dataList = requestWrapper.getTextBlocks();
         for(int i=0; i<dataList.size(); i++){
