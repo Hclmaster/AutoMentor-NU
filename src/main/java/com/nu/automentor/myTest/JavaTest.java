@@ -38,7 +38,7 @@ public class JavaTest {
         String ss = "{\"0\":{\"0\":\"function overlay is not defined\",\"1\":\"function overlay\",\"index\":0,\"input\":\"function overlay is not defined even though I have imported all the required packages\"}}";
         je = parser.parse(ss);
         result = je.getAsJsonObject();
-        System.out.println("result2 => " + result.get("0"));
+        /*System.out.println("result2 => " + result.get("0"));
         System.out.println("result2 size => " + result.entrySet());
         Map<String, Object> attributes = new HashMap<String, Object>();
         Set<Map.Entry<String, JsonElement>> entrySet = result.entrySet();
@@ -48,7 +48,18 @@ public class JavaTest {
             je = result.get(entry.getKey());
             result = je.getAsJsonObject();
             System.out.println("??? result => " + result.get("0"));
-        }
+        }*/
+
+        System.out.println("++++++++++++++++++++");
+        je = result.get("0");
+        result = je.getAsJsonObject();
+        System.out.println("result => " + result);
+        je= result.get("0");
+        System.out.println("je => " + je.getAsString());
+
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+        String ans = "There is a non-existent ?x referenced somewhere.";
+        System.out.println(ans.replaceAll("\\?x", "overlay x / y"));
 
     }
 }

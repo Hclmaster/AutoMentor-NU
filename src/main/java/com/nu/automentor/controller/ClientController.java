@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.nu.automentor.patterns.PatternsString.errorPatterns;
+import static com.nu.automentor.patterns.PatternsString.responseSentences;
 
 @RestController
 public class ClientController {
@@ -64,14 +65,20 @@ public class ClientController {
 
                     if(errorMatchResult.size() != 0){
                         String functionName = extractFunctionName(engine, "stringMatch", errorMatchResult);
+
+                        ArrayList<List<String>> responseLst = responseSentences;
+                        for(int k=0; k<responseLst.get(j).size(); k++){
+                            String response = responseLst.get(j).get(k);
+                            list.add(response.replaceAll("\\?x", functionName));
+                        }
                     }
                 }
             }
 
             // original hardcoded part
-            list.add("Take a look at the examples on the pages returned by the web search with \"Racket docs beside\"");
-            list.add("Take a look at the examples at https://docs.racket-lang.org/" +
-                    "teachpack/2htdpimage.html#%28def._%28%28lib._2htdp%2Fimage..rkt%29._beside%29%29");
+            // list.add("Take a look at the examples on the pages returned by the web search with \"Racket docs beside\"");
+            // list.add("Take a look at the examples at https://docs.racket-lang.org/" +
+            //        "teachpack/2htdpimage.html#%28def._%28%28lib._2htdp%2Fimage..rkt%29._beside%29%29");
         }
         responseWrapper.setResponse(list);
         return responseWrapper;
@@ -94,12 +101,16 @@ public class ClientController {
         return null;
     }
 
-    public String extractFunctionName(ScriptEngine engine, String name, JsonObject errorMatchResult){
-        String extractFunctionPattern = "{\"reg\": \"function (\\w*){1}\"}";
+    public String extractFunctionName(ScriptEngine engine, String name, JsonObject errorMatchResult) throws Exception{
+        String extractFunctionPattern = "{\"reg\": \"function (\\\\w*){1}\"}";
         JsonElement je = errorMatchResult.get("0");
-        JsonObject errorResult = je.getAsJsonObject();
-        String errorMessage = je.getAsJsonObject().get("0");
-        //JsonObject obj = getMatchResult(engine, "stringMatch", )
-        return null;
+        String ans = je.getAsJsonObject().get("0").getAsString();
+        System.out.println("ans => " + ans);
+        JsonObject matchResult = getMatchResult(engine, "stringMatch", extractFunctionPattern, "\""+ans+"\"");
+        System.out.println("matchResult => " + matchResult);
+        je = matchResult.get("0");
+        String functionName = je.getAsJsonObject().get("0").getAsString().substring(9);
+        System.out.println("funcName => "+functionName);
+        return functionName;
     }
 }
