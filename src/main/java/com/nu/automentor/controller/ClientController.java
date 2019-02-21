@@ -31,16 +31,16 @@ public class ClientController {
     public ResponseWrapper requestMultipleInputs(@RequestBody RequestWrapper requestWrapper) throws Exception{
         ScriptEngine engine = new NashornScriptEngineFactory().getScriptEngine("--language=es6");
 
-        InputStream is = getClass().getResourceAsStream("../resources/static/utils/matcher.js");
-
-        // /Users/cathylin/Desktop/AutoMentor-NU/src/main/java/com/nu/automentor/controller/ClientController.java
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println(getClass().toString());
+        InputStream is = getClass().getResourceAsStream("/static/utils/matcher.js");
 
         //FileReader reader = new FileReader("/Users/cathylin/Desktop/AutoMentor-NU/src/main/resources/static/utils/matcher.js");
         Reader reader1 = new InputStreamReader(is);
         engine.eval(reader1);
 
         // first judge whether it has error or not
-        //JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+requestWrapper.getMessage()+"\"");
+        JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+requestWrapper.getMessage()+"\"");
 
         List<DataEntity> dataList = requestWrapper.getTextBlocks();
         for(int i=0; i<dataList.size(); i++){
@@ -58,7 +58,7 @@ public class ClientController {
         List<String> list = new ArrayList<>();
 
         // If there is no error, response "give me error msg"
-        /*if(result.size() == 0){
+        if(result.size() == 0){
             list.add("Please give me your error message!");
         }else{
             String[] errPatterns = errorPatterns;
@@ -86,7 +86,7 @@ public class ClientController {
             // list.add("Take a look at the examples on the pages returned by the web search with \"Racket docs beside\"");
             // list.add("Take a look at the examples at https://docs.racket-lang.org/" +
             //        "teachpack/2htdpimage.html#%28def._%28%28lib._2htdp%2Fimage..rkt%29._beside%29%29");
-        }*/
+        }
         responseWrapper.setResponse(list);
         return responseWrapper;
     }
