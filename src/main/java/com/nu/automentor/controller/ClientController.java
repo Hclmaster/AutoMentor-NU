@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +31,11 @@ public class ClientController {
     public ResponseWrapper requestMultipleInputs(@RequestBody RequestWrapper requestWrapper) throws Exception{
         ScriptEngine engine = new NashornScriptEngineFactory().getScriptEngine("--language=es6");
 
-        FileReader reader = new FileReader("/Users/cathylin/Desktop/AutoMentor-NU/src/main/resources/static/utils/matcher.js");
-        engine.eval(reader);
+        InputStream is = getClass().getResourceAsStream("/static/utils/matcher.js");
+
+        //FileReader reader = new FileReader("/Users/cathylin/Desktop/AutoMentor-NU/src/main/resources/static/utils/matcher.js");
+        Reader reader1 = new InputStreamReader(is);
+        engine.eval(reader1);
 
         // first judge whether it has error or not
         JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+requestWrapper.getMessage()+"\"");
