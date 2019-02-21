@@ -31,7 +31,9 @@ public class ClientController {
     public ResponseWrapper requestMultipleInputs(@RequestBody RequestWrapper requestWrapper) throws Exception{
         ScriptEngine engine = new NashornScriptEngineFactory().getScriptEngine("--language=es6");
 
-        InputStream is = getClass().getResourceAsStream("/static/utils/matcher.js");
+        InputStream is = getClass().getResourceAsStream("../resources/static/utils/matcher.js");
+
+        // /Users/cathylin/Desktop/AutoMentor-NU/src/main/java/com/nu/automentor/controller/ClientController.java
 
         //FileReader reader = new FileReader("/Users/cathylin/Desktop/AutoMentor-NU/src/main/resources/static/utils/matcher.js");
         Reader reader1 = new InputStreamReader(is);
