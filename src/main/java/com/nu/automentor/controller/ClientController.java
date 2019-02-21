@@ -7,11 +7,7 @@ import com.google.gson.JsonParser;
 import com.nu.automentor.model.DataEntity;
 import com.nu.automentor.model.RequestWrapper;
 import com.nu.automentor.model.ResponseWrapper;
-import com.nu.automentor.patterns.ErrorPatterns;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
-import net.sf.json.JSONObject;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,15 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
-import javax.script.ScriptEngineFactory;
-import javax.script.ScriptEngineManager;
-import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.nu.automentor.patterns.ErrorPatterns.errorPatterns;
+import static com.nu.automentor.patterns.PatternsString.errorPatterns;
 
 @RestController
 public class ClientController {
@@ -50,7 +42,6 @@ public class ClientController {
             System.out.println("type => "+data.getType());
         }
 
-
         ResponseWrapper responseWrapper = new ResponseWrapper();
         responseWrapper.setStudent(requestWrapper.getStudent());
         responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
@@ -62,14 +53,19 @@ public class ClientController {
         if(result.size() == 0){
             list.add("Please give me your error message!");
         }else{
-
             String[] errPatterns = errorPatterns;
 
-            for(int i=0; i<errPatterns.length; i++){
-                System.out.println("errPatterns => " + errPatterns[i]);
-                //JsonObject errorMatchResult = getMatchResult(engine, "match", errPatterns[i], requestWrapper.getMessage());
-                JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errPatterns[i], "\""+"function overlay is not defined even though I have imported all the required packages"+"\"");
-                System.out.println("regex matches result => " + errorMatchResult);
+            for(int i=0; i<dataList.size(); i++){
+                DataEntity data = dataList.get(i);
+                for(int j=0; j<errPatterns.length; j++){
+                    System.out.println("errPatterns => " + errPatterns[j]);
+                    JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errPatterns[j], "\""+data.getText()+"\"");
+                    System.out.println("regex matches result => " + errorMatchResult);
+
+                    if(errorMatchResult.size() != 0){
+                        String functionName = extractFunctionName(engine, "stringMatch", errorMatchResult);
+                    }
+                }
             }
 
             // original hardcoded part
@@ -95,6 +91,11 @@ public class ClientController {
 
             return result;
         }
+        return null;
+    }
+
+    public String extractFunctionName(ScriptEngine engine, String name, JsonObject errorMatchResult){
+        String extractFunctionPattern = "{\"reg\": \"function (\\w*){1}\"}";
         return null;
     }
 }
