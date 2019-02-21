@@ -8,7 +8,7 @@
 <body>
 <h1>Request JSON</h1>
 <div id="jsonObj">
-    <table v-if="message">
+    <table v-if="message2">
         <thead>
         <tr>
             <td><h3>Key</h3></td>
@@ -16,7 +16,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(value, key) in message">
+        <tr v-for="(value, key) in message2">
             <td>{{key}}</td>
             <td>{{value}}</td>
         </tr>
@@ -70,7 +70,7 @@
     const userAction = async () => {
         const response = await fetch('http://localhost:8080/api/form', {
             method: 'POST',
-            body: JSON.stringify(jsonObj.message), // string or object
+            body: JSON.stringify(jsonObj.message2), // string or object
             headers:{
                 'Content-Type': 'application/json'
             }
