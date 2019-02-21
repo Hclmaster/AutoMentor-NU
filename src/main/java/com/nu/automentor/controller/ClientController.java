@@ -34,9 +34,9 @@ public class ClientController {
         InputStream is = getClass().getResourceAsStream("/static/utils/matcher.js");
 
         //FileReader reader = new FileReader("/Users/cathylin/Desktop/AutoMentor-NU/src/main/resources/static/utils/matcher.js");
-        Reader reader1 = new InputStreamReader(is);
+        /*Reader reader1 = new InputStreamReader(is);
         engine.eval(reader1);
-
+        */
         // first judge whether it has error or not
         //JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+requestWrapper.getMessage()+"\"");
 
