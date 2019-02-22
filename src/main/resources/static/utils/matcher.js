@@ -2,7 +2,8 @@ function stringMatch(pat, obj) {
     return match(JSON.parse(pat), JSON.parse(obj));
 }
 
-function match(pat, obj, blists = [{}]) {
+function match(pat, obj, blists ) {
+    if(blists == undefined) blists = [{}];
     if (blists.length == 0) {
         return blists;
     } else if (isVar(pat)) {
