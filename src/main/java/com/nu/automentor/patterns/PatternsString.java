@@ -13,7 +13,7 @@ public class PatternsString {
     public static List<String> notDefinedResponse = Arrays.asList(
             "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",
             "Check that you don't misspell the ?x function",
-            "Take a look at https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error discussion",
+            "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
             "Take a look at ?x documentation."
     );
 
