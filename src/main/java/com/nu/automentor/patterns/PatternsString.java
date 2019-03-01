@@ -7,7 +7,7 @@ import java.util.List;
 public class PatternsString {
     public static String[] errorPatterns = {
             "{\"reg\": \"(.*) is not defined\"}",
-            "{\"reg\": \"expect.*but\"}"
+            "{\"reg\": \"expect.*(but|given)\"}"
     };
 
     public static List<String> notDefinedResponse = Arrays.asList(
@@ -18,6 +18,8 @@ public class PatternsString {
     );
 
     public static List<String> expectButResponse = Arrays.asList(
+            "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">This Guide</a>",
+            "Try to search with keywords \"racket syntax for ?x\"",
             "Take a look at Racket Syntax Documentation."
     );
 

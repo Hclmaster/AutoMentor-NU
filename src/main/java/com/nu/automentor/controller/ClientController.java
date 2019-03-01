@@ -42,13 +42,6 @@ public class ClientController {
 
         List<DataEntity> dataList = requestWrapper.getTextBlocks();
 
-        for(int i=0; i<dataList.size(); i++){
-            DataEntity data = dataList.get(i);
-            System.out.println("label => "+data.getLabel());
-            System.out.println("text => "+data.getText());
-            System.out.println("type => "+data.getType());
-        }
-
         ResponseWrapper responseWrapper = new ResponseWrapper();
         responseWrapper.setStudent(requestWrapper.getStudent());
         responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
@@ -62,15 +55,21 @@ public class ClientController {
         }else{
             String[] errPatterns = errorPatterns;
 
+            String extractFunctionPattern = "{\"reg\": \"function (\\\\w*){1}\"}";
+            JsonObject matchResult = getMatchResult(engine, "stringMatch", extractFunctionPattern, "\""+requestWrapper.getMessage()+"\"");
+            JsonElement je = matchResult.get("0");
+            String functionName = je.getAsJsonObject().get("0").getAsString().substring(9);
+
+
             for(int i=0; i<dataList.size(); i++){
                 DataEntity data = dataList.get(i);
                 for(int j=0; j<errPatterns.length; j++){
-                    System.out.println("errPatterns => " + errPatterns[j]);
+                    //System.out.println("errPatterns => " + errPatterns[j]);
                     JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errPatterns[j], "\""+data.getText()+"\"");
                     System.out.println("regex matches result => " + errorMatchResult);
 
                     if(errorMatchResult.size() != 0){
-                        String functionName = extractFunctionName(engine, "stringMatch", errorMatchResult);
+                        functionName = extractFunctionName(engine, "stringMatch", errorMatchResult);
 
                         ArrayList<List<String>> responseLst = responseSentences;
                         for(int k=0; k<responseLst.get(j).size(); k++){

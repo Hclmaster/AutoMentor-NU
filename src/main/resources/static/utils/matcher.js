@@ -10,24 +10,24 @@ function match(pat, obj, blists) {
         return matchItem(pat, obj, blists);
     } else if (typeof pat == "string" && typeof obj == "string") {
         return matchSubString(pat, obj, blists);
-    } else if (isPrimitive(pat) && isPrimitive(obj)) {
+    } else if (isPrimitive(pat)) {
         return primitiveMatch(pat, obj, blists);
-    } else if (Array.isArray(pat) && Array.isArray(obj)) {
+    } else if (Array.isArray(pat)) {
         return arrayMatch(pat, obj, blists);
-    } else if ((typeof pat == "object") && pat.and) {
+    } else if (pat.and) {
         return matchAnd(pat["and"], obj, blists);
-    } else if ((typeof pat == "object") && pat.or) {
+    } else if (pat.or) {
         return matchOr(pat["or"], obj, blists);
-    } else if ((typeof pat == "object") && pat.not) {
+    } else if (pat.not) {
         return matchNot(pat["not"], obj, blists);
-    } else if ((typeof pat == "object") && pat.some) {
+    } else if (pat.some) {
         return matchSome(pat["some"], obj, blists);
-    } else if ((typeof pat == "object") && pat.contains) {
+    } else if (pat.contains) {
         return matchContains(pat["contains"], obj, blists);
-    } else if ((typeof pat == "object") && pat.reg) {
+    } else if (pat.reg) {
         return regexMatch(pat["reg"], obj, blists);
-    } else if (typeof pat == "object" && typeof obj == "object"
-        && !(Array.isArray(pat) || Array.isArray(obj))) {
+    } else if (typeof pat == "object" &&
+        !(Array.isArray(pat) || Array.isArray(obj))) {
         return objectMatch(pat, obj, blists);
     } else return [];
 }
@@ -39,7 +39,8 @@ function matchSubString(pat, obj, blists) {
 function isPrimitive(x) {
     let type = (typeof x);
     return x == null || type == "undefined" ||
-        type == "number" || type == "string" || type == "boolean";
+        type == "number" || type == "string" ||
+        type == "boolean";
 }
 
 function primitiveMatch(pat, obj, blists) {
@@ -63,8 +64,8 @@ function arrayMatch(pat, obj, blists) {
 }
 
 function objectMatch(pat, obj, blists) {
-    if (isPrimitive(pat) || isPrimitive(obj)
-        || (Object.keys(pat).length > Object.keys(obj).length)) {
+    if (isPrimitive(obj) ||
+        (Object.keys(pat).length > Object.keys(obj).length)) {
         return [];
     } else {
         return matchingLoop(pat, obj, blists);
@@ -72,9 +73,11 @@ function objectMatch(pat, obj, blists) {
 }
 
 function matchAnd(pat, obj, blists) {
-    if (pat && (pat.hasOwnProperty("and") || pat.hasOwnProperty("or")
-        || pat.hasOwnProperty("not") || pat.hasOwnProperty("some")
-        || pat.hasOwnProperty("contains"))) {
+    if (pat.hasOwnProperty("and") ||
+        pat.hasOwnProperty("or") ||
+        pat.hasOwnProperty("not") ||
+        pat.hasOwnProperty("some") ||
+        pat.hasOwnProperty("contains")) {
         return match(pat, obj, blists);
     } else {
         return andMatchingLoop(pat, obj, blists);
@@ -82,9 +85,11 @@ function matchAnd(pat, obj, blists) {
 }
 
 function matchOr(pat, obj, blists) {
-    if (pat && (pat.hasOwnProperty("and") || pat.hasOwnProperty("or")
-        || pat.hasOwnProperty("not") || pat.hasOwnProperty("some")
-        || pat.hasOwnProperty("contains"))) {
+    if (pat.hasOwnProperty("and") ||
+        pat.hasOwnProperty("or") ||
+        pat.hasOwnProperty("not") ||
+        pat.hasOwnProperty("some") ||
+        pat.hasOwnProperty("contains")) {
         return match(pat, obj, blists);
     } else {
         return orMatchingLoop(pat, obj, blists);
@@ -92,9 +97,11 @@ function matchOr(pat, obj, blists) {
 }
 
 function matchNot(pat, obj, blists) {
-    if (pat && (pat.hasOwnProperty("and") || pat.hasOwnProperty("or")
-        || pat.hasOwnProperty("not") || pat.hasOwnProperty("some")
-        || pat.hasOwnProperty("contains"))) {
+    if (pat.hasOwnProperty("and") ||
+        pat.hasOwnProperty("or") ||
+        pat.hasOwnProperty("not") ||
+        pat.hasOwnProperty("some") ||
+        pat.hasOwnProperty("contains")) {
         return match(pat, obj, blists).length ? [] : blists;
     } else {
         return notMatchingLoop(pat, obj, blists);
@@ -112,7 +119,17 @@ function matchSome(pat, obj, blists) {
 }
 
 function matchContains(pat, obj, blists) {
-    return containsMatchingLoop(pat, obj, blists);
+    var ans = Object.keys(pat).reduce(function (accumulator, key) {
+        if (isPrimitive(obj)) {
+            return match(pat[key], obj, accumulator);
+        } else {
+            return iterateObjLoop(pat[key], obj, accumulator);
+        }
+    }, blists);
+    ans = removeDuplicates(ans, JSON.stringify);
+    if (ans.length > 1) {
+        return ans.filter(value => Object.keys(value).length !== 0);
+    } else return ans;
 }
 
 function andMatchingLoop(pat, obj, blists) {
@@ -143,20 +160,6 @@ function notMatchingLoop(pat, obj, blists) {
     return blists.filter(function (blist) {
         return (!match(pat, obj, [blist]).length) ? blist : false;
     })
-}
-
-function containsMatchingLoop(pat, obj, blists) {
-    var ans = Object.keys(pat).reduce(function (accumulator, key) {
-        if (isPrimitive(obj)) {
-            return match(pat[key], obj, accumulator);
-        } else {
-            return iterateObjLoop(pat[key], obj, accumulator);
-        }
-    }, blists);
-    ans = removeDuplicates(ans, JSON.stringify);
-    if (ans.length > 1) {
-        return ans.filter(value => Object.keys(value).length !== 0);
-    } else return ans;
 }
 
 function iterateObjLoop(pat, obj, blists) {
