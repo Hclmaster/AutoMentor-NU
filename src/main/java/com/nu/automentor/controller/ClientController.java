@@ -22,8 +22,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.nu.automentor.patterns.PatternsString.errorPatterns;
-import static com.nu.automentor.patterns.PatternsString.responseSentences;
+import static com.nu.automentor.patterns.PatternsString.*;
 
 @RestController
 public class ClientController {
@@ -49,32 +48,37 @@ public class ClientController {
 
         List<String> list = new ArrayList<>();
 
-        // If there is no error, response "give me error msg"
         if(result.size() == 0){
+            // If there is no error, response "give me error msg"
             list.add("Please give me your error message!");
         }else{
             String[] errPatterns = errorPatterns;
+            String[] extractFunctionPattern = funcPatterns;
 
-            String extractFunctionPattern = "{\"reg\": \"function (\\\\w*){1}\"}";
-            JsonObject matchResult = getMatchResult(engine, "stringMatch", extractFunctionPattern, "\""+requestWrapper.getMessage()+"\"");
-            JsonElement je = matchResult.get("0");
-            String functionName = je.getAsJsonObject().get("0").getAsString().substring(9);
+            String functionName = null;
 
+            //requestWrapper.setMessage("Run (interpolate-colors blue red 0.5) and get error message that says blue: this variable is not defined.");
+            //requestWrapper.setMessage("get error message \\\"overlay/xy: expects only 4 arguments, but found 11.\\\"");
+            System.out.println("Message => " + requestWrapper.getMessage());
+
+            functionName = extractFunctionName(engine, "stringMatch", requestWrapper.getMessage());
+
+            System.out.println("At first the functionName in Message is => " + functionName);
 
             for(int i=0; i<dataList.size(); i++){
                 DataEntity data = dataList.get(i);
                 for(int j=0; j<errPatterns.length; j++){
-                    //System.out.println("errPatterns => " + errPatterns[j]);
                     JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errPatterns[j], "\""+data.getText()+"\"");
                     System.out.println("regex matches result => " + errorMatchResult);
 
                     if(errorMatchResult.size() != 0){
-                        functionName = extractFunctionName(engine, "stringMatch", errorMatchResult);
+                        String tmpName = extractFunctionName(engine, "stringMatch", data.getText());
+                        if(tmpName == null) tmpName = functionName;
 
                         ArrayList<List<String>> responseLst = responseSentences;
                         for(int k=0; k<responseLst.get(j).size(); k++){
                             String response = responseLst.get(j).get(k);
-                            list.add(response.replaceAll("\\?x", functionName));
+                            list.add(response.replaceAll("\\?x", tmpName));
                         }
                     }
                 }
@@ -102,16 +106,24 @@ public class ClientController {
         return null;
     }
 
-    public String extractFunctionName(ScriptEngine engine, String name, JsonObject errorMatchResult) throws Exception{
-        String extractFunctionPattern = "{\"reg\": \"function (\\\\w*){1}\"}";
-        JsonElement je = errorMatchResult.get("0");
-        String ans = je.getAsJsonObject().get("0").getAsString();
-        System.out.println("ans => " + ans);
-        JsonObject matchResult = getMatchResult(engine, "stringMatch", extractFunctionPattern, "\""+ans+"\"");
-        System.out.println("matchResult => " + matchResult);
-        je = matchResult.get("0");
-        String functionName = je.getAsJsonObject().get("0").getAsString().substring(9);
-        System.out.println("funcName => "+functionName);
+    public String extractFunctionName(ScriptEngine engine, String name, String errorMessageText) throws Exception{
+        String[] extractFunctionPattern = funcPatterns;
+        String functionName = null;
+
+        for(int i=0; i<extractFunctionPattern.length; i++){
+            System.out.println("extractFuncPattern => "+extractFunctionPattern[i]);
+            JsonObject matchResult = getMatchResult(engine, name, extractFunctionPattern[i], "\""+errorMessageText+"\"");
+            JsonElement je = matchResult.get("0");
+            System.out.println("je ==> "+je);
+            if(je != null) {
+                String str = je.getAsJsonObject().get("0").getAsString();
+                if(i==0) functionName = str.substring(1);
+                if(i==1) functionName = str.substring(0, str.indexOf(':'));
+                if(i==2) functionName = str.substring(9);
+            }
+            System.out.println("functionName => "+functionName);
+            if(functionName != null) return functionName;
+        }
         return functionName;
     }
 }

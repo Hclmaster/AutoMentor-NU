@@ -5,6 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PatternsString {
+    public static String[] funcPatterns = {
+            "{\"reg\": \"\\\\(\\\\w+\"}",
+            "{\"reg\": \"[^\\\\s\\\\\\\"]+: expects\"}",
+            "{\"reg\": \"function (\\\\w*){1}\"}"
+    };
+
     public static String[] errorPatterns = {
             "{\"reg\": \"(.*) is not defined\"}",
             "{\"reg\": \"expect.*(but|given)\"}"
