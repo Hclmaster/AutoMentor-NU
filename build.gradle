@@ -30,5 +30,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     compile 'net.sf.json-lib:json-lib:2.4:jdk15'
     //compile group: 'org.graalvm', name: 'graal-sdk', version: '1.0.0-rc2'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
 }
 

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "patterns": {"reg":  "expected a function .* but"},
+    "response": [
+      "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">This Guide</a>",
+      "Try to search with keywords \"How function call works in Racket\"",
+      "Have a look at the <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/274374383779\">Course Video</a>"
+    ]
+  },
+  {
+    "id": 2,
+    "patterns": {"reg": "expects.*(but|given)"},
+    "response": [
+      "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">Common Error</a>",
+      "Try to search with keywords \"racket syntax for ?x\"",
+      "Take a look at Racket Syntax Documentation."
+    ]
+  },
+  {
+    "id": 3,
+    "patterns": {"reg": "function (\\w*){1}"},
+    "response": [
+      "Test Function Name"
+    ]
+  }
+]
