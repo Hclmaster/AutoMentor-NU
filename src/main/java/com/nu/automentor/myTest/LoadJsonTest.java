@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.nu.automentor.model.PatternEntity;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
+import net.sf.json.JSON;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,16 +24,15 @@ import java.util.Map;
 
 public class LoadJsonTest {
 
-    public static void main(String args[]){
-        try{
+    public static void main(String args[]) {
+        try {
             JSONParser parser = new JSONParser();
             InputStream input = LoadJsonTest.class.getResourceAsStream("/patterns/patterns.json");
             Reader reader1 = new InputStreamReader(input);
             Object obj = parser.parse(reader1);
 
 
-            JSONArray arrList = (JSONArray)obj;
-            System.out.println("arrList => "+arrList);
+            JSONArray arrList = (JSONArray) obj;
 
             ScriptEngine engine = new NashornScriptEngineFactory().getScriptEngine("--language=es6");
 
@@ -42,26 +42,40 @@ public class LoadJsonTest {
             engine.eval(reader2);
 
             String msg = "function call: expected a function after the open parenthesis, but received #<image>.";
+            msg = "get error message overlay/xy: expects only 4 arguments, but found 11.";
             //JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+msg+"\"");
 
-            for(int i=0; i<arrList.size(); i++){
+            /*for(int i=0; i<arrList.size(); i++){
                 JSONObject gobj = (JSONObject) arrList.get(i);
                 JSONObject patternsObj = (JSONObject) gobj.get("patterns");
                 String patStr = patternsObj.toString();
                 JsonObject result = getMatchResult(engine, "stringMatch", patStr, "\""+msg+"\"");
                 System.out.println("tostring pattern => "+patStr);
                 System.out.println("result = "+result);
+            }*/
+
+            for (int i = 0; i < arrList.size(); i++) {
+                JSONObject obj2 = (JSONObject) arrList.get(i);
+                String errPatterns = obj2.get("patterns").toString();
+                JSONArray arr = (JSONArray)obj2.get("response");
+                System.out.println("response array => "+arr);
+                JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errPatterns, "\"" + msg + "\"");
+
+                if (errorMatchResult.size() != 0) {
+                    int flag = Integer.parseInt(obj2.get("functionName").toString());
+                    System.out.println("======> " +flag);
+                }
             }
 
 
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static JsonObject getMatchResult(ScriptEngine engine, String name, String args1, String args2) throws Exception{
-        if(engine instanceof Invocable) {
-            Invocable invoke = (Invocable)engine;
+    public static JsonObject getMatchResult(ScriptEngine engine, String name, String args1, String args2) throws Exception {
+        if (engine instanceof Invocable) {
+            Invocable invoke = (Invocable) engine;
 
             Object c = invoke.invokeFunction(name, args1, args2);
 
@@ -69,7 +83,7 @@ public class LoadJsonTest {
             String jsonStr = gson.toJson(c);
             JsonParser parser = new JsonParser();
             JsonElement je = parser.parse(jsonStr);
-            JsonObject result =je.getAsJsonObject();
+            JsonObject result = je.getAsJsonObject();
 
             return result;
         }

@@ -2,6 +2,7 @@
   {
     "id": 1,
     "patterns": {"reg":  "expected a function .* but"},
+    "functionName": 0,
     "response": [
       "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">This Guide</a>",
       "Try to search with keywords \"How function call works in Racket\"",
@@ -11,6 +12,7 @@
   {
     "id": 2,
     "patterns": {"reg": "expects.*(but|given)"},
+    "functionName": 1,
     "response": [
       "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">Common Error</a>",
       "Try to search with keywords \"racket syntax for ?x\"",
@@ -19,9 +21,13 @@
   },
   {
     "id": 3,
-    "patterns": {"reg": "function (\\w*){1}"},
+    "patterns": {"reg": "(.*) is not defined"},
+    "functionName": 1,
     "response": [
-      "Test Function Name"
+      "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",
+      "Check that you don't misspell the ?x function",
+      "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
+      "Take a look at ?x documentation."
     ]
   }
 ]
