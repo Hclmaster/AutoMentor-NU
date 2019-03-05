@@ -21,7 +21,7 @@
   },
   {
     "id": 3,
-    "patterns": {"reg": "(.*) is not defined"},
+    "patterns": {"reg": "(.*) not defined"},
     "functionName": 1,
     "response": [
       "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",

@@ -8,7 +8,8 @@ public class PatternsString {
     public static String[] funcPatterns = {
             "{\"reg\": \"\\\\(\\\\w+\"}",
             "{\"reg\": \"[^\\\\s\\\\\\\"]+: expects\"}",
-            "{\"reg\": \"function (\\\\w*){1}\"}"
+            "{\"reg\": \"function (\\\\w*){1}\"}",
+            "{\"reg\": \"(.*){1} not defined\"}"
     };
 
     public static String[] errorPatterns = {

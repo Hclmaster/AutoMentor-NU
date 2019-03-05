@@ -60,6 +60,7 @@ public class ClientController {
                     String errorPattern = obj.get("patterns").toString();
                     JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
                     String tmpName = extractFunctionName(engine, "stringMatch", data.getText());
+
                     if(tmpName != null) functionName = tmpName;
 
                     if (errorMatchResult.size() != 0) {
@@ -164,17 +165,18 @@ public class ClientController {
         String functionName = null;
 
         for (int i = 0; i < extractFunctionPattern.length; i++) {
-            System.out.println("extractFuncPattern => " + extractFunctionPattern[i]);
+            //System.out.println("extractFuncPattern => " + extractFunctionPattern[i]);
             JsonObject matchResult = getMatchResult(engine, name, extractFunctionPattern[i], "\"" + errorMessageText + "\"");
             JsonElement je = matchResult.get("0");
-            System.out.println("je ==> " + je);
+            //System.out.println("je ==> " + je);
             if (je != null) {
                 String str = je.getAsJsonObject().get("0").getAsString();
                 if (i == 0) functionName = str.substring(1);
                 if (i == 1) functionName = str.substring(0, str.indexOf(':'));
                 if (i == 2) functionName = str.substring(9);
+                if (i == 3) functionName = str.substring(0, str.indexOf(" not"));
             }
-            System.out.println("functionName => " + functionName);
+            //System.out.println("functionName => " + functionName);
             if (functionName != null) return functionName;
         }
         return functionName;

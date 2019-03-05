@@ -15,9 +15,9 @@
 <h2>Request</h2> <br/>
 
 <div id="jsonObj">
-<table class="table table-bordered" v-if="message4">
-    <div v-for="(value, key) in message4" v-if="key == 'textBlocks'">
-        <tbody v-for="item in message4.textBlocks">
+<table class="table table-bordered" v-if="message12">
+    <div v-for="(value, key) in message12" v-if="key == 'textBlocks'">
+        <tbody v-for="item in message12.textBlocks">
             <tr>
                 <td>Label</td>
                 <td>{{item.label}}</td>
@@ -88,7 +88,7 @@
     const userAction = async () => {
         const response = await fetch('http://localhost:8080/api/form', {
             method: 'POST',
-            body: JSON.stringify(jsonObj.message4), // string or object
+            body: JSON.stringify(jsonObj.message12), // string or object
             headers:{
                 'Content-Type': 'application/json'
             }
