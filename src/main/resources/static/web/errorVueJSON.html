@@ -9,15 +9,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Programming Mentor</title>
+    <title>Error Page Using Bootstrap</title>
 </head>
 <body>
-<h2>Request</h2> <br/>
 
-<div id="jsonObj">
-<table class="table table-bordered" v-if="message12">
-    <div v-for="(value, key) in message12" v-if="key == 'textBlocks'">
-        <tbody v-for="item in message12.textBlocks">
+<div id="app">
+    <div v-for="(value, key) in table_info">
+        <table class="table table-bordered">
+        <div v-for="item in value.textBlocks">
             <tr>
                 <td>Label</td>
                 <td>{{item.label}}</td>
@@ -30,65 +29,46 @@
                 <td>Type</td>
                 <td>{{item.type}}</td>
             </tr>
-        </tbody>
-    </div>
-</table>
-</div>
-
-
-<br/>
-
-<button id="getData" type="button" class="btn btn-primary">
-    Send to server!
-</button>
-
-<br/><br/>
-
-<h2>Response</h2> <br/>
-
-<div id="responsejsonObj">
-    <table class="table table-bordered" v-if="responseMessage">
-        <thead>
-            <tr>
-                <td><h3>#</h3></td>
-                <td><h3>response</h3></td>
-            </tr>
-        </thead>
-        <div v-for="(value, key) in responseMessage" v-if="key == 'response'">
-            <tbody v-for="(item, index) in responseMessage.response">
-                <tr>
-                    <td>{{index+1}}</td>
-                    <!--<td>{{item}}</td>-->
-                    <td><span v-html="item"></span></td>
-                </tr>
-            </tbody>
         </div>
-    </table>
+        <button v-on:click="greet(key)">Greet</button>
+        <br/>
+        <div v-if="value.responses && value.responses.length > 0">
+            <div v-for="(response,index) in value.responses">
+                <p>{{index + 1}}: <span v-html="response"></span></p>
+            </div>
+        </div>
+        </table>
+    </div>
 </div>
-
-
 
 <script>
-    document.getElementById('getData').addEventListener('click', getData);
-
-    var responseJsonObj = new Vue({
-        el: '#responsejsonObj',
+    const app = new Vue({
+        el: '#app',
         data: {
-            responseMessage: {}
+            table_info: []
+        },
+        created(){
+            fetch('/web/testJson.json')
+                .then(response => response.json())
+                .then(json => {
+                    this.table_info = json
+                })
+
+            //console.log("is it created? => ", this.table_info.length);
+        },
+        methods: {
+            greet: function (key) {
+                // use this to refer to present vue instance
+                alert(key);
+                userAction(key);
+            }
         }
-    });
+    })
 
-    responseJsonObj.responseMessage = null;
-
-    // get response from backend server
-    function getData() {
-        userAction();
-    }
-
-    const userAction = async () => {
+    const userAction = async (key) => {
         const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
             method: 'POST',
-            body: JSON.stringify(jsonObj.message12), // string or object
+            body: JSON.stringify(app.table_info[key]), // string or object
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -96,11 +76,10 @@
         const myJson = await response.json(); //extract JSON from the http response
         // do something with myJson
         console.log("myJson ====> ", myJson);
-        responseJsonObj.responseMessage = myJson;
+        app.table_info[key]["responses"] = myJson['response'];
+        //console.log("info => ", app.table_info[key]["responses"]);
     }
 </script>
-
-<script src="jsonShow.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
