@@ -15,29 +15,41 @@
 
 <div id="app">
     <div v-for="(value, key) in table_info">
+        <h4>No. {{key+1}} Test Case</h4>
         <table class="table table-bordered">
-        <div v-for="item in value.textBlocks">
-            <tr>
-                <td>Label</td>
-                <td>{{item.label}}</td>
-            </tr>
-            <tr>
-                <td>Text</td>
-                <td>{{item.text}}</td>
-            </tr>
-            <tr>
-                <td>Type</td>
-                <td>{{item.type}}</td>
-            </tr>
-        </div>
-        <button v-on:click="greet(key)">Greet</button>
-        <br/>
-        <div v-if="value.responses && value.responses.length > 0">
-            <div v-for="(response,index) in value.responses">
-                <p>{{index + 1}}: <span v-html="response"></span></p>
-            </div>
-        </div>
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Text</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in value.textBlocks">
+                    <td>{{item.label}}</td>
+                    <td>{{item.text}}</td>
+                    <td>{{item.type}}</td>
+                </tr>
+            </tbody>
         </table>
+        <br/>
+        <button class="btn btn-primary" v-on:click="greet(key)">Send to Server</button>
+        <br/>
+        <table class="table table-bordered" v-if="value.responses && value.responses.length > 0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(response,index) in value.responses">
+                    <td>{{index+1}}</td>
+                    <td><span v-html="response"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
     </div>
 </div>
 
@@ -66,7 +78,7 @@
     })
 
     const userAction = async (key) => {
-        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+        const response = await fetch('http://localhost:8080/api/form', {
             method: 'POST',
             body: JSON.stringify(app.table_info[key]), // string or object
             headers:{
