@@ -59,26 +59,26 @@ public class ClientController {
                     JSONObject obj = (JSONObject) arrList.get(j);
                     String errorPattern = obj.get("patterns").toString();
                     JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
-                    String tmpName = extractFunctionName(engine, "stringMatch", data.getText());
 
-                    if(tmpName != null) functionName = tmpName;
+                    System.out.println("================================");
+                    System.out.println("error Pattern => " + errorPattern);
+                    System.out.println("error match result => " + errorMatchResult);
 
                     if (errorMatchResult.size() != 0) {
-                        int flag = Integer.parseInt(obj.get("functionName").toString());
+                        JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
                         JSONArray responses = (JSONArray) obj.get("response");
-                        if (flag == 0) {
-                            for (int k = 0; k < responses.size(); k++) {
+
+                        if(functionNameObj.size() == 0){
+                            for(int k=0; k < responses.size(); k++){
                                 list.add(responses.get(k).toString());
                             }
-                        } else {
-                            if (functionName != null) {
-                                for (int k = 0; k < responses.size(); k++) {
-                                    String response = responses.get(k).toString();
-                                    list.add(response.replaceAll("\\?x", functionName));
-                                }
+                        }else{
+                            functionName = functionNameObj.get("?x").toString();
+                            for (int k = 0; k < responses.size(); k++) {
+                                String response = responses.get(k).toString();
+                                list.add(response.replaceAll("\\?x", functionName));
                             }
                         }
-                        break;
                     }
                 }
             }

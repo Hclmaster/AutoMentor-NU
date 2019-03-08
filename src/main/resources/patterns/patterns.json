@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "patterns": {"reg": "expects.*(but|given)"},
+    "patterns": {"reg": "([^\\s\\\"]+): expects", "pats": ["?x"]},
     "functionName": 1,
     "response": [
       "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">Common Error</a>",
@@ -21,7 +21,7 @@
   },
   {
     "id": 3,
-    "patterns": {"reg": "(.*) not defined"},
+    "patterns": {"reg": "([^\\s]+)( is)? not defined", "pats": ["?x"]},
     "functionName": 1,
     "response": [
       "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",
