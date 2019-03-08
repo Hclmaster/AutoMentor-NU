@@ -15,7 +15,12 @@
 
 <div id="app">
     <div v-for="(value, key) in table_info">
-        <h4>No. {{key+1}} Test Case</h4>
+        <div>
+            <h4 style="margin-left: 5px">
+                No. {{key+1}} Test Case
+                <button class="btn btn-primary" v-on:click="greet(key)">Send to Server</button>
+            </h4>
+        </div>
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -32,8 +37,6 @@
             </tr>
             </tbody>
         </table>
-        <br/>
-        <button class="btn btn-primary" v-on:click="greet(key)">Send to Server</button>
         <br/>
         <table class="table table-bordered" v-if="value.responses && value.responses.length > 0">
             <thead>
@@ -78,7 +81,7 @@
     })
 
     const userAction = async (key) => {
-        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+        const response = await fetch('http://localhost:8080/api/form', {
             method: 'POST',
             body: JSON.stringify(app.table_info[key]), // string or object
             headers:{
