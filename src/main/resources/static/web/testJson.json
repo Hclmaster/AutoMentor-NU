@@ -7,7 +7,7 @@
         "type":"sourceCode"
       },
       {
-        "label":"preprocessor",
+        "label":"computerOutput",
         "text":"function call: expected a function after the open parenthesis, but received #<image>.",
         "type":"computerOutput"
       }
