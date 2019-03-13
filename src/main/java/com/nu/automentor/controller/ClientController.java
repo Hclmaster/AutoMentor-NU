@@ -60,10 +60,6 @@ public class ClientController {
                     String errorPattern = obj.get("patterns").toString();
                     JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
 
-                    System.out.println("================================");
-                    System.out.println("error Pattern => " + errorPattern);
-                    System.out.println("error match result => " + errorMatchResult);
-
                     if (errorMatchResult.size() != 0) {
                         JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
                         JSONArray responses = (JSONArray) obj.get("response");
