@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Required meta tags -->
@@ -35,6 +35,11 @@
                 <td>{{item.text}}</td>
                 <td>{{item.type}}</td>
             </tr>
+            <tr>
+                <td>Resource URL</td>
+                <td><span v-html="value.url"></span></td>
+                <td>sourceInformation</td>
+            </tr>
             </tbody>
         </table>
         <br/>
@@ -43,12 +48,15 @@
             <tr>
                 <th>#</th>
                 <th>Response</th>
+                <th>Details</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="(response,index) in value.responses">
                 <td>{{index+1}}</td>
                 <td><span v-html="response"></span></td>
+                <!--<td><a v-bind:href="'showDetails.html?id='+key">Show Patterns!</a></td>-->
+                <td>{{value.patterns}}</td>
             </tr>
             </tbody>
         </table>
@@ -56,32 +64,10 @@
     </div>
 </div>
 
+
 <script>
-    const app = new Vue({
-        el: '#app',
-        data: {
-            table_info: []
-        },
-        created(){
-            fetch('/web/testJson.json')
-                .then(response => response.json())
-                .then(json => {
-                    this.table_info = json
-                })
-
-            //console.log("is it created? => ", this.table_info.length);
-        },
-        methods: {
-            greet: function (key) {
-                // use this to refer to present vue instance
-                //alert(key);
-                userAction(key);
-            }
-        }
-    })
-
     const userAction = async (key) => {
-        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+        const response = await fetch('http://localhost:8080/api/form', {
             method: 'POST',
             body: JSON.stringify(app.table_info[key]), // string or object
             headers:{
@@ -93,10 +79,14 @@
         console.log("myJson ====> ", myJson);
         app.table_info[key]["responses"] = myJson['response'];
         //console.log("info => ", app.table_info[key]["responses"]);
+
+        console.log("patterns string ====> ", myJson['patternsObj']);
+        app.table_info[key]["patterns"] = myJson['patternsObj'];
     }
 </script>
 
-<script src="jsonShow.js"></script>
+<!--<script src="jsonShow.js"></script>-->
+<script src="index.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

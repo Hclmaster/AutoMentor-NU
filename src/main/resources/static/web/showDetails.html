@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Details of Response</title>
+</head>
+<body>
+<!--<div id="details"></div>-->
+
+<div id="responses">
+    {{pattern}}
+</div>
+
+<script>
+    function getParams(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+
+    const userAction2 = async (key) => {
+        alert('how about this key??', key);
+        const response = await fetch('http://localhost:8080/api/form', {
+            method: 'POST',
+            body: JSON.stringify(responses.table_info[key]), // string or object
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        });
+        const myJson = await response.json(); //extract JSON from the http response
+        // do something with myJson
+        console.log("myJson ====> ", myJson);
+        responses.table_info[key]["responses"] = myJson['response'];
+
+        console.log("patterns string ====> ", myJson['patternsObj']);
+        responses.patterns = myJson['patternsObj'];
+    }
+</script>
+
+<!--<script src="index.js"></script>-->
+<script src="patterns.js"></script>
+</body>
+</html>

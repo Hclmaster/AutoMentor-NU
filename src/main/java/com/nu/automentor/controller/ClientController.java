@@ -64,6 +64,8 @@ public class ClientController {
                         JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
                         JSONArray responses = (JSONArray) obj.get("response");
 
+                        responseWrapper.setPatternsObj(errorPattern);
+
                         if(functionNameObj.size() == 0){
                             for(int k=0; k < responses.size(); k++){
                                 list.add(responses.get(k).toString());

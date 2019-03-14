@@ -1,5 +1,7 @@
 package com.nu.automentor.model;
 
+import org.json.simple.JSONObject;
+
 import java.util.List;
 
 public class ResponseWrapper {
@@ -7,6 +9,7 @@ public class ResponseWrapper {
     private List<DataEntity> textBlocks;
     private List<String> response;
     private String message;
+    private String patternsObj;
 
     public StudentEntity getStudent() {
         return student;
@@ -38,5 +41,13 @@ public class ResponseWrapper {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getPatternsObj() {
+        return patternsObj;
+    }
+
+    public void setPatternsObj(String patternsObj) {
+        this.patternsObj = patternsObj;
     }
 }

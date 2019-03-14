@@ -13,11 +13,13 @@
       }
     ],
     "message":"I'm getting an error using function beside",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=54\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "patterns": null
   },
   {
     "textBlocks":[
@@ -28,6 +30,7 @@
       }
     ],
     "message":"I’m getting an error when I try to use function overlay",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=71\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -48,6 +51,7 @@
       }
     ],
     "message":"I’m getting an error when I try to use function interpolate-colors",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=76\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -68,6 +72,7 @@
       }
     ],
     "message":"I’m getting an error when I try to use function overlay/xy",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=61\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -88,6 +93,7 @@
       }
     ],
     "message": "I'm getting error when I worte (make-color 0 0 255 255), and I'm not sure where this is coming from, and the section racket highlights is \\\"color1\\\"",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=81\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -103,6 +109,7 @@
       }
     ],
     "message": "I'm getting error using Iterated-overlay function.",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=94\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -123,6 +130,7 @@
       }
     ],
     "message": "When run the code for the swatch with the check-expects, it gives me this error, highlighting the 'color1' portion after the interpolate-colors procedure.",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=102\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -138,6 +146,7 @@
       }
     ],
     "message": "Able to define swatch, but when I go to call swatch I get an error.",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=114\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -153,6 +162,7 @@
       }
     ],
     "message": "I'm getting an error when using function string=?. What could be causing the error?",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=147\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -168,6 +178,7 @@
       }
     ],
     "message": "overlay in my-iterated-overlay is throwing this error from the check-expect. Why can a lambda not start the overlay function.",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=188\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -188,6 +199,7 @@
       }
     ],
     "message": "Difficulty Looping through Branches. The issue is that I get an error of: branch-val: expects a branch, given (make-leaf 1).",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=230\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
@@ -203,6 +215,7 @@
       }
     ],
     "message": "When I try to run my sum-tree function, I get this error message.",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=239\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"
