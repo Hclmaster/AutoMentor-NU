@@ -7,7 +7,7 @@
         "type":"sourceCode"
       },
       {
-        "label":"computerOutput",
+        "label":"compilerOutput",
         "text":"function call: expected a function after the open parenthesis, but received #<image>.",
         "type":"computerOutput"
       }
@@ -24,7 +24,7 @@
   {
     "textBlocks":[
       {
-        "label":"preprocessor",
+        "label":"compilerOutput",
         "text": "function overlay is not defined.",
         "type":"computerOutput"
       }
@@ -45,7 +45,7 @@
         "type":"sourceCode"
       },
       {
-        "label":"preprocessor",
+        "label":"compilerOutput",
         "text": "blue: this variable is not defined.",
         "type":"computerOutput"
       }
@@ -66,7 +66,7 @@
         "type":"sourceCode"
       },
       {
-        "label":"preprocessor",
+        "label":"compilerOutput",
         "text": "overlay/xy: expects only 4 arguments, but found 11.",
         "type":"computerOutput"
       }
@@ -87,7 +87,7 @@
         "type":"sourceCode"
       },
       {
-        "label":"preprocessor",
+        "label":"compilerOutput",
         "text":"function call: expected a function after open parenthesis, but received (make-color 0 0 255 255) and highlighted \\\"color1\\\"",
         "type":"computerOutput"
       }
@@ -103,7 +103,7 @@
   {
     "textBlocks":[
       {
-        "label":"preprocessor",
+        "label":"compilerOutput",
         "text": "Iterated-overlay not defined.",
         "type": "computerOutput"
       }
@@ -124,7 +124,7 @@
         "type": "sourceCode"
       },
       {
-        "label": "preprocessor",
+        "label": "compilerOutput",
         "text": "function call: expected a function after the open parenthesis, but received (make-color 0 0 255 255).",
         "type": "computerOutput"
       }
@@ -140,7 +140,7 @@
   {
     "textBlocks":[
       {
-        "label": "preprocessor",
+        "label": "compilerOutput",
         "text": "iterated-beside: expects procedure, given #<image>",
         "type": "computerOutput"
       }
@@ -156,7 +156,7 @@
   {
     "textBlocks":[
       {
-        "label": "preprocessor",
+        "label": "compilerOutput",
         "text": "string=?: expects a string as 2nd argument, given (make-album \\\"Highspeeds\\\" \\\"Elliot Moss\\\" \\\"Alt Rock\\\")",
         "type": "computerOutput"
       }
@@ -172,7 +172,7 @@
   {
     "textBlocks":[
       {
-        "label": "preprocessor",
+        "label": "compilerOutput",
         "text": "overlay: expects an image as first argument, given (lambda (a1) ...)",
         "type": "computerOutput"
       }
@@ -193,7 +193,7 @@
         "type": "sourceCode"
       },
       {
-        "label": "preprocessor",
+        "label": "compilerOutput",
         "text": "branch-val: expects a branch, given (make-leaf 1).",
         "type": "computerOutput"
       }
@@ -209,7 +209,7 @@
   {
     "textBlocks":[
       {
-        "label": "preprocessor",
+        "label": "compilerOutput",
         "text": "+: expects a number as 1st argument, given leaf-val",
         "type": "computerOutput"
       }
