@@ -10,15 +10,13 @@ var responses = new Vue({
             .then(json => {
                 this.table_info = json
             });
-
-        alert('is it here222222?? ');
+        this.myMethods();
     },
     methods: {
-        myMethods: function (key) {
+        myMethods () {
             var key = getParams('id');
             console.log("key => ", key);
             //console.log("details => ", response.table_info);
-            alert('how about this key=> ', key);
             userAction2(key);
         }
     }

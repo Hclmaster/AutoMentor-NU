@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Programming Mentor</title>
+    <title>Broken Page</title>
 </head>
 <body>
 
@@ -55,8 +55,7 @@
             <tr v-for="(response,index) in value.responses">
                 <td>{{index+1}}</td>
                 <td><span v-html="response"></span></td>
-                <!--<td><a v-bind:href="'showDetails.html?id='+key">Show Patterns!</a></td>-->
-                <td>{{value.patterns}}</td>
+                <td><a v-bind:href="'showDetails.html?id='+key">Show Patterns!</a></td>
             </tr>
             </tbody>
         </table>
@@ -81,7 +80,6 @@
         //console.log("info => ", app.table_info[key]["responses"]);
 
         console.log("patterns string ====> ", myJson['patternsObj']);
-        app.table_info[key]["patterns"] = myJson['patternsObj'];
     }
 </script>
 
