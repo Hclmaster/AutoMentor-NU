@@ -19,6 +19,30 @@
 </div>
 
 <script>
+    var responses = new Vue({
+        el: '#responses',
+        data: {
+            table_info: [],
+            pattern: null
+        },
+        created() {
+            fetch('/web/testJson.json')
+                .then(response => response.json())
+                .then(json => {
+                    this.table_info = json
+                });
+            this.myMethods();
+        },
+        methods: {
+            myMethods () {
+                var key = getParams('id');
+                console.log("key => ", key);
+                //console.log("details => ", response.table_info);
+                userAction2(key);
+            }
+        }
+    });
+
     function getParams(key) {
         var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
@@ -48,6 +72,6 @@
 </script>
 
 <!--<script src="index.js"></script>-->
-<script src="patterns.js"></script>
+<!--<script src="patterns.js"></script>-->
 </body>
 </html>

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div id="app" class="container-fluid" style="margin-top: 10px">
+<div id="brokenApp" class="container-fluid" style="margin-top: 10px">
     <div v-for="(value, key) in table_info">
         <div>
             <h4 style="margin-left: 5px">
@@ -65,10 +65,10 @@
 
 
 <script>
-    const userAction = async (key) => {
+    const brokenAction = async (key) => {
         const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
             method: 'POST',
-            body: JSON.stringify(app.table_info[key]), // string or object
+            body: JSON.stringify(brokenApp.table_info[key]), // string or object
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -76,7 +76,7 @@
         const myJson = await response.json(); //extract JSON from the http response
         // do something with myJson
         console.log("myJson ====> ", myJson);
-        app.table_info[key]["responses"] = myJson['response'];
+        brokenApp.table_info[key]["responses"] = myJson['response'];
         //console.log("info => ", app.table_info[key]["responses"]);
 
         console.log("patterns string ====> ", myJson['patternsObj']);
@@ -84,7 +84,7 @@
 </script>
 
 <!--<script src="jsonShow.js"></script>-->
-<script src="index.js"></script>
+<script src="index2.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
