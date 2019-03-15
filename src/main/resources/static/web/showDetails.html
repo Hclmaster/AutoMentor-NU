@@ -37,6 +37,26 @@
             myMethods () {
                 var key = getParams('id');
                 console.log("key => ", key);
+
+                const userAction2 = async (key) => {
+                    console.log('how about this key??', key);
+                    console.log('how about the table_info??? => ', this.table_info[key]);
+                    const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+                        method: 'POST',
+                        body: JSON.stringify(this.table_info[key]), // string or object
+                        headers:{
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    const myJson = await response.json(); //extract JSON from the http response
+                    // do something with myJson
+                    console.log("myJson ====> ", myJson);
+                    this.table_info[key]["responses"] = myJson['response'];
+
+                    console.log("patterns string ====> ", myJson['patternsObj']);
+                    this.patterns = myJson['patternsObj'];
+                }
+
                 //console.log("details => ", response.table_info);
                 userAction2(key);
             }
@@ -52,23 +72,7 @@
         return null;
     }
 
-    const userAction2 = async (key) => {
-        alert('how about this key??', key);
-        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
-            method: 'POST',
-            body: JSON.stringify(responses.table_info[key]), // string or object
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        });
-        const myJson = await response.json(); //extract JSON from the http response
-        // do something with myJson
-        console.log("myJson ====> ", myJson);
-        responses.table_info[key]["responses"] = myJson['response'];
 
-        console.log("patterns string ====> ", myJson['patternsObj']);
-        responses.patterns = myJson['patternsObj'];
-    }
 </script>
 
 <!--<script src="index.js"></script>-->
