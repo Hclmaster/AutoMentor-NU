@@ -33,55 +33,62 @@ public class ClientController {
 
     @RequestMapping(value = "/api/form", method = RequestMethod.POST)
     public ResponseWrapper requestMultipleInputs(@RequestBody RequestWrapper requestWrapper) throws Exception {
-        ScriptEngine engine = loadNashornEngine();
-
-        // first judge whether it has error or not
-        JsonObject result = getMatchResult(engine, "stringMatch", "\"" + "error" + "\"", "\"" + requestWrapper.getMessage() + "\"");
-        System.out.println("JsonObject => " + result);
-        List<DataEntity> textList = requestWrapper.getTextBlocks();
-        List<String> list = new ArrayList<>();
-
         ResponseWrapper responseWrapper = new ResponseWrapper();
         responseWrapper.setStudent(requestWrapper.getStudent());
         responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
         responseWrapper.setMessage(requestWrapper.getMessage());
 
-        if (result.size() == 0) {
-            // If there is no error, response "give me error msg"
-            list.add("Please give me your error message!");
-        } else {
-            // load patterns from JSON file
-            JSONArray arrList = loadJSONFile();
-            String functionName = null;
+        ScriptEngine engine = loadNashornEngine();
 
-            for (int i = 0; i < textList.size(); i++) {
-                DataEntity data = textList.get(i);
-                for (int j = 0; j < arrList.size(); j++) {
-                    JSONObject obj = (JSONObject) arrList.get(j);
-                    String errorPattern = obj.get("patterns").toString();
-                    JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
+        String[] categoryReg = {"{\"reg\":  \"error\"}", "{\"reg\":  \"(confused|how .*? use|[W|w]hat is)\"}"};
+        String[] category = {"error", "confused"};
 
-                    System.out.println("errorMatchResult => " + errorMatchResult);
-                    if (errorMatchResult.size() != 0) {
-                        JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
-                        JSONArray responses = (JSONArray) obj.get("response");
+        List<DataEntity> textList = requestWrapper.getTextBlocks();
+        List<String> list = new ArrayList<>();
 
-                        responseWrapper.setPatternsObj(errorPattern);
+        // load patterns from JSON file
+        JSONObject patObj = loadJSONFile();
 
-                        if(functionNameObj.size() == 0){
-                            for(int k=0; k < responses.size(); k++){
-                                list.add(responses.get(k).toString());
-                            }
-                        }else{
-                            functionName = functionNameObj.get("?x").toString();
-                            for (int k = 0; k < responses.size(); k++) {
-                                String response = responses.get(k).toString();
-                                list.add(response.replaceAll("\\?x", functionName));
+        for (int i = 0; i < categoryReg.length; i++) {
+            System.out.println("categoryReg[i] => " + categoryReg[i]);
+            JsonObject result = getMatchResult(engine, "stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"");
+            //JsonObject result = getMatchResult(engine, "stringMatch", "\"" + categoryReg[i] + "\"", "\"" + requestWrapper.getMessage() + "\"");
+            System.out.println("result => " + result);
+            if (result.size() != 0) {
+                String functionName = null;
+                JSONArray arrList = (JSONArray) patObj.get(category[i]);
+                for (int j = 0; j < textList.size(); j++) {
+                    DataEntity data = textList.get(j);
+                    for (int k = 0; k < arrList.size(); k++) {
+                        JSONObject obj = (JSONObject) arrList.get(k);
+                        String errorPattern = obj.get("patterns").toString();
+                        JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
+                        System.out.println("errorPattern => " + errorPattern);
+                        System.out.println("errorMatchResult => " + errorMatchResult);
+                        if (errorMatchResult.size() != 0) {
+                            JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
+                            JSONArray responses = (JSONArray) obj.get("response");
+                            responseWrapper.setPatternsObj(errorPattern);
+                            if (functionNameObj.size() == 0) {
+                                for (int l = 0; l < responses.size(); l++) {
+                                    list.add(responses.get(l).toString());
+                                }
+                            } else {
+                                functionName = functionNameObj.get("?x").toString();
+                                for (int l = 0; l < responses.size(); l++) {
+                                    String response = responses.get(l).toString();
+                                    list.add(response.replaceAll("\\?x", functionName));
+                                }
                             }
                         }
                     }
                 }
+                break;
             }
+        }
+
+        if (list.size() == 0) {
+            list.add("Please give me your request message!");
         }
 
         responseWrapper.setResponse(list);
@@ -111,14 +118,13 @@ public class ClientController {
      *
      * @return
      */
-    public JSONArray loadJSONFile() {
+    public JSONObject loadJSONFile() {
         try {
             JSONParser parser = new JSONParser();
             InputStream input = LoadJsonTest.class.getResourceAsStream("/patterns/patterns.json");
             Reader reader = new InputStreamReader(input);
-            Object obj = parser.parse(reader);
-            JSONArray arrList = (JSONArray) obj;
-            return arrList;
+            JSONObject obj = (JSONObject) parser.parse(reader);
+            return obj;
         } catch (Exception e) {
             e.printStackTrace();
         }
