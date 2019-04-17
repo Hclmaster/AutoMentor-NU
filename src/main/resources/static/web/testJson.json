@@ -221,5 +221,74 @@
       "id": "clj8621"
     },
     "responses": []
+  },
+  {
+    "textBlocks":[
+      {
+        "label": "Parameters",
+        "text": "(interpolate-colors c1 c2 weight) -> color?",
+        "type": "FunctionConfusion"
+      }
+    ],
+    "message": "What is function interpolate-colors and how can I use it? What does weight refers to? c1: color? c2: color? weight: number?",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=70\" target=\"_blank\">Piazza Link</a>",
+    "student":{
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": []
+  },
+  {
+    "textBlocks":[
+      {
+        "label": "Concept",
+        "text": "index of the iteration",
+        "type": "ConceptConfusion"
+      },
+      {
+        "label": "Concept",
+        "text": "total number of iterations",
+        "type": "ConceptConfusion"
+      }
+    ],
+    "message": "How to distinguish the proportion for the interpolated colors should be the index of the iteration that we are on, or the total number of iterations in code?",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=80\" target=\"_blank\">Piazza Link</a>",
+    "student":{
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": []
+  },
+  {
+    "textBlocks":[
+      {
+        "label": "Function",
+        "text": "iterated-overlay",
+        "type": "FunctionConfusion"
+      }
+    ],
+    "message": "Does lambda always come after iterated-overlay?",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=86\" target=\"_blank\">Piazza Link</a>",
+    "student":{
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": []
+  },
+  {
+    "textBlocks":[
+      {
+        "label": "Parameters",
+        "text": "(color-swatch (irgb 255 0 0))",
+        "type": "FunctionConfusion"
+      }
+    ],
+    "message": "Why will swatch only take RGB colors as input?",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=109\" target=\"_blank\">Piazza Link</a>",
+    "student":{
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": []
   }
 ]

@@ -37,6 +37,7 @@ public class ClientController {
 
         // first judge whether it has error or not
         JsonObject result = getMatchResult(engine, "stringMatch", "\"" + "error" + "\"", "\"" + requestWrapper.getMessage() + "\"");
+        System.out.println("JsonObject => " + result);
         List<DataEntity> textList = requestWrapper.getTextBlocks();
         List<String> list = new ArrayList<>();
 
@@ -60,6 +61,7 @@ public class ClientController {
                     String errorPattern = obj.get("patterns").toString();
                     JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
 
+                    System.out.println("errorMatchResult => " + errorMatchResult);
                     if (errorMatchResult.size() != 0) {
                         JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
                         JSONArray responses = (JSONArray) obj.get("response");

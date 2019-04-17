@@ -29,7 +29,13 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'com.google.code.gson:gson:2.8.5'
     compile 'net.sf.json-lib:json-lib:2.4:jdk15'
-    //compile group: 'org.graalvm', name: 'graal-sdk', version: '1.0.0-rc2'
+    // compile group: 'org.graalvm', name: 'graal-sdk', version: '1.0.0-rc2'
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+    // java compiles python
+    // https://mvnrepository.com/artifact/org.python/jython-standalone
+    compile group: 'org.python', name: 'jython-standalone', version: '2.5.2'
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20180813'
+
 }
 

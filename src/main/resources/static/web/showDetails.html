@@ -41,7 +41,7 @@
                 const userAction2 = async (key) => {
                     console.log('how about this key??', key);
                     console.log('how about the table_info??? => ', this.table_info[key]);
-                    const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+                    const response = await fetch('http://localhost:8080/api/form', {
                         method: 'POST',
                         body: JSON.stringify(this.table_info[key]), // string or object
                         headers:{
