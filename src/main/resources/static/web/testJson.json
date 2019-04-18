@@ -225,23 +225,55 @@
   {
     "textBlocks":[
       {
-        "label": "Property",
+        "label": "Function",
         "text": "What is function interpolate-colors?",
-        "type": "Function"
+        "type": "Confusion-Input"
       },
       {
-        "label": "Usage",
+        "label": "FunctionUsage",
         "text": "How can I use it?",
-        "type": "Function"
+        "type": "Confusion-Input"
       },
       {
-        "label": "Property",
+        "label": "Parameters",
         "text": "What does weight refers to?",
-        "type": "Parameters"
+        "type": "Confusion-Input"
       }
     ],
     "message": "What is function interpolate-colors and how can I use it? What does weight refers to? c1: color? c2: color? weight: number?",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=70\" target=\"_blank\">Piazza Link</a>",
+    "student":{
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": []
+  },
+  {
+    "textBlocks":[
+      {
+        "label": "Function",
+        "text": "What function to use to get a boolean answer at the end?",
+        "type": "Confusion-Input"
+      }
+    ],
+    "message": "Any tips on what function to use to get a boolean answer at the end?",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=139\" target=\"_blank\">Piazza Link</a>",
+    "student":{
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": []
+  },
+  {
+    "textBlocks":[
+      {
+        "label": "Concept",
+        "text": "What the difference between ordinary, tail and iterative recursion?",
+        "type": "Confusion-Input"
+      }
+    ],
+    "message": "Still kind of confused on the difference between ordinary, tail and iterative recursion?",
+    "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=139\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",
       "id": "clj8621"

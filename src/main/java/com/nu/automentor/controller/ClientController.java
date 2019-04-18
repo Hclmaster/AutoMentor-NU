@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static com.nu.automentor.patterns.PatternsString.*;
@@ -40,7 +41,7 @@ public class ClientController {
 
         ScriptEngine engine = loadNashornEngine();
 
-        String[] categoryReg = {"{\"reg\":  \"error\"}", "{\"reg\":  \"(confused|how .*? use|[W|w]hat is)\"}"};
+        String[] categoryReg = {"{\"reg\":  \"error\"}", "{\"reg\":  \"(confused|how .*? use|[W|w]hat(.*)?[is|to])\"}"};
         String[] category = {"error", "confused"};
 
         List<DataEntity> textList = requestWrapper.getTextBlocks();
@@ -74,10 +75,14 @@ public class ClientController {
                                     list.add(responses.get(l).toString());
                                 }
                             } else {
-                                functionName = functionNameObj.get("?x").toString();
                                 for (int l = 0; l < responses.size(); l++) {
                                     String response = responses.get(l).toString();
-                                    list.add(response.replaceAll("\\?x", functionName));
+                                    for (Iterator iterator = functionNameObj.keySet().iterator(); iterator.hasNext();){
+                                        String key = (String) iterator.next();
+                                        functionName = functionNameObj.get(key).toString();
+                                        response = response.replaceAll("\\"+key, functionName);
+                                    }
+                                    list.add(response);
                                 }
                             }
                         }

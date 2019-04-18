@@ -46,6 +46,21 @@
       "response": [
         "Take a look at racket documentation of ?x."
       ]
+    },
+    {
+      "id": 3,
+      "patterns": {"reg": "[W|w]hat.*to use.*to ([^?]+)", "pats": ["?x"]},
+      "response": [
+        "Show me what you tried.",
+        "Try to search with keywords racket ?x and try some examples."
+      ]
+    },
+    {
+      "id": 4,
+      "patterns": {"reg": "the difference between (.*) and ([^\\?]+)", "pats": ["?x", "?y"]},
+      "response": [
+        "Try to search with the difference between ?x and ?y"
+      ]
     }
   ]
 }
