@@ -62,5 +62,10 @@
         "Try to search with the difference between ?x and ?y"
       ]
     }
+  ],
+  "stuck": [
+    {
+      "id": 1
+    }
   ]
 }

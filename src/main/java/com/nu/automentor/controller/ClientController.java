@@ -41,8 +41,9 @@ public class ClientController {
 
         ScriptEngine engine = loadNashornEngine();
 
-        String[] categoryReg = {"{\"reg\":  \"error\"}", "{\"reg\":  \"(confused|how .*? use|[W|w]hat(.*)?[is|to])\"}"};
-        String[] category = {"error", "confused"};
+        String[] categoryReg = {"{\"reg\":  \"error\"}", "{\"reg\":  \"(confused|how .*? use|[W|w]hat(.*)?[is|to])\"}",
+                                "{\"reg\": \"[H|h]ow to.*|stuck\"}"};
+        String[] category = {"error", "confused", "stuck"};
 
         List<DataEntity> textList = requestWrapper.getTextBlocks();
         List<String> list = new ArrayList<>();
@@ -51,21 +52,21 @@ public class ClientController {
         JSONObject patObj = loadJSONFile();
 
         for (int i = 0; i < categoryReg.length; i++) {
-            System.out.println("categoryReg[i] => " + categoryReg[i]);
             JsonObject result = getMatchResult(engine, "stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"");
-            //JsonObject result = getMatchResult(engine, "stringMatch", "\"" + categoryReg[i] + "\"", "\"" + requestWrapper.getMessage() + "\"");
-            System.out.println("result => " + result);
             if (result.size() != 0) {
                 String functionName = null;
                 JSONArray arrList = (JSONArray) patObj.get(category[i]);
+                if(textList.size() == 0){
+                    list.add("Show me what you've tried, what's actually happening?");
+                    break;
+                }
                 for (int j = 0; j < textList.size(); j++) {
                     DataEntity data = textList.get(j);
                     for (int k = 0; k < arrList.size(); k++) {
                         JSONObject obj = (JSONObject) arrList.get(k);
                         String errorPattern = obj.get("patterns").toString();
                         JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
-                        System.out.println("errorPattern => " + errorPattern);
-                        System.out.println("errorMatchResult => " + errorMatchResult);
+
                         if (errorMatchResult.size() != 0) {
                             JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
                             JSONArray responses = (JSONArray) obj.get("response");
@@ -162,34 +163,4 @@ public class ClientController {
         return null;
     }
 
-    /**
-     * Extract the function name if needed (somewhat hardcoded... need to improve...)
-     *
-     * @param engine
-     * @param name
-     * @param errorMessageText
-     * @return
-     * @throws Exception
-     */
-    public String extractFunctionName(ScriptEngine engine, String name, String errorMessageText) throws Exception {
-        String[] extractFunctionPattern = funcPatterns;
-        String functionName = null;
-
-        for (int i = 0; i < extractFunctionPattern.length; i++) {
-            //System.out.println("extractFuncPattern => " + extractFunctionPattern[i]);
-            JsonObject matchResult = getMatchResult(engine, name, extractFunctionPattern[i], "\"" + errorMessageText + "\"");
-            JsonElement je = matchResult.get("0");
-            //System.out.println("je ==> " + je);
-            if (je != null) {
-                String str = je.getAsJsonObject().get("0").getAsString();
-                if (i == 0) functionName = str.substring(1);
-                if (i == 1) functionName = str.substring(0, str.indexOf(':'));
-                if (i == 2) functionName = str.substring(9);
-                if (i == 3) functionName = str.substring(0, str.indexOf(" not"));
-            }
-            //System.out.println("functionName => " + functionName);
-            if (functionName != null) return functionName;
-        }
-        return functionName;
-    }
 }
