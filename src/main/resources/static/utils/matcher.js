@@ -1,27 +1,19 @@
 function stringMatch(pat, obj, responses) {
-    return responses
     var result = match(JSON.parse(pat), JSON.parse(obj));
-    if (responses == undefined && result != []) return [{}];
-    else if(responses == undefined && result == []) return [];
+    //print('result => ', result.length);
+    if (responses == null && result.length != 0) return [{}];
+    else if(result.length == 0) return [];
     var newReponses = [];
 
     for(var i=0; i<responses.length; i++){
+        var response = responses[i];
         for(var j=0; j<result.length; j++){
-            var response = responses[i];
-            Object.keys(element).forEach(function (key) {
-                response = response.replace(key, element[key]);
+            Object.keys(result[j]).forEach(function (key) {
+                response = response.replace(new RegExp("\\"+key, "g"), result[j][key]);
             })
         }
-        newReponses.push(response);
+        newReponses[i] = response;
     }
-    /*responses.forEach(function (response) {
-        result.forEach(function (element) {
-            Object.keys(element).forEach(function (key) {
-                response = response.replace(key, element[key]);
-            })
-        });
-        newReponses.push(response);
-    });*/
     return newReponses;
 }
 

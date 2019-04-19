@@ -52,11 +52,12 @@ public class ClientController {
 
         // load patterns from JSON file
         JSONObject patObj = loadJSONFile();
+        Invocable invocable = (Invocable) engine;
 
         for (int i = 0; i < categoryReg.length; i++) {
-            JsonObject result = getMatchResult(engine, "stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
-            if (result.size() != 0) {
-                String functionName = null;
+            ScriptObjectMirror obj = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
+            Collection<Object> values = obj.values();
+            if (values.size() != 0) {
                 JSONArray arrList = (JSONArray) patObj.get(category[i]);
                 if(textList.size() == 0){
                     list.add("Show me what you've tried, what's actually happening?");
@@ -64,31 +65,22 @@ public class ClientController {
                 }
                 for (int j = 0; j < textList.size(); j++) {
                     DataEntity data = textList.get(j);
+                    System.out.println("dataText => " + data.getText());
                     for (int k = 0; k < arrList.size(); k++) {
-                        JSONObject obj = (JSONObject) arrList.get(k);
-                        String errorPattern = obj.get("patterns").toString();
-                        JSONArray responses = (JSONArray) obj.get("response");
-                        String resp = responses.toString();
-                        JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"", resp);
-                        System.out.println("errorMatchResult => " + errorMatchResult);
+                        JSONObject obj2 = (JSONObject) arrList.get(k);
+                        String errorPattern = obj2.get("patterns").toString();
+                        JSONArray responses = (JSONArray) obj2.get("response");
+                        String[] resp = new String[responses.size()];
+                        for(int l = 0; l < responses.size(); l++) resp[l] = (String)responses.get(l);
+                        ScriptObjectMirror matchResult = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", errorPattern, "\"" + data.getText() + "\"", resp);
+                        Collection<Object> matchValues = matchResult.values();
 
-                        if (errorMatchResult.size() != 0) {
-                            JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
-                            //JSONArray responses = (JSONArray) obj.get("response");
+                        if (matchValues.size() != 0) {
                             responseWrapper.setPatternsObj(errorPattern);
-                            if (functionNameObj.size() == 0) {
-                                for (int l = 0; l < responses.size(); l++) {
-                                    list.add(responses.get(l).toString());
-                                }
-                            } else {
-                                for (int l = 0; l < responses.size(); l++) {
-                                    String response = responses.get(l).toString();
-                                    for (Iterator iterator = functionNameObj.keySet().iterator(); iterator.hasNext();){
-                                        String key = (String) iterator.next();
-                                        functionName = functionNameObj.get(key).toString();
-                                        response = response.replaceAll("\\"+key, functionName);
-                                    }
-                                    list.add(response);
+                            for (Iterator<Object> iterator = matchValues.iterator(); iterator.hasNext();) {
+                                Object value = iterator.next();
+                                if (value instanceof String) {
+                                    list.add((String)value);
                                 }
                             }
                         }
@@ -138,40 +130,6 @@ public class ClientController {
             return obj;
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * Call matcher.js to get the match result
-     *
-     * @param engine
-     * @param name
-     * @param args1
-     * @param args2
-     * @return
-     * @throws Exception
-     */
-    public JsonObject getMatchResult(ScriptEngine engine, String name, String args1, String args2, String args3) throws Exception {
-        if (engine instanceof Invocable) {
-            System.out.println("args3 => " + args3);
-            Invocable invoke = (Invocable) engine;
-            Object c = invoke.invokeFunction(name, args1, args2, args3);
-            Gson gson = new Gson();
-            String jsonStr = gson.toJson(c);
-            System.out.println("jsonStr ===> " + jsonStr);
-            JsonParser parser = new JsonParser();
-            JsonElement je = parser.parse(jsonStr);
-            JsonObject result = je.getAsJsonObject();
-
-            ScriptObjectMirror obj = (ScriptObjectMirror) invoke.invokeFunction(name, args1, args2, args3);
-            Collection<Object> values = obj.values();
-            for (Iterator<Object> iterator = values.iterator(); iterator.hasNext();) {
-                Object value = iterator.next();
-                //System.out.println(value);
-            }
-
-            return result;
         }
         return null;
     }

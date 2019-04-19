@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.nu.automentor.model.PatternEntity;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
+import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import net.sf.json.JSON;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,73 +21,56 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 public class LoadJsonTest {
 
-    public static void main(String args[]) {
+    public static void main(String args[]){
         try {
-            JSONParser parser = new JSONParser();
-            InputStream input = LoadJsonTest.class.getResourceAsStream("/patterns/patterns.json");
-            Reader reader1 = new InputStreamReader(input);
-            Object obj = parser.parse(reader1);
-
-
-            JSONArray arrList = (JSONArray) obj;
-
+            String[] output = {};
             ScriptEngine engine = new NashornScriptEngineFactory().getScriptEngine("--language=es6");
 
             InputStream is = LoadJsonTest.class.getResourceAsStream("/static/utils/matcher.js");
+            Reader reader = new InputStreamReader(is);
+            engine.eval(reader);
 
-            Reader reader2 = new InputStreamReader(is);
-            engine.eval(reader2);
+            Invocable invocable = (Invocable) engine;
 
-            String msg = "function call: expected a function after the open parenthesis, but received #<image>.";
-            msg = "get error message overlay/xy: expects only 4 arguments, but found 11.";
-            //JsonObject result = getMatchResult(engine, "stringMatch", "\""+"error"+"\"", "\""+msg+"\"");
+            String errorPattern = "{\"reg\": \"the difference between (.*) and ([^\\\\?]+)\", \"pats\": [\"?x\", \"?y\"]}";
+            String dataText = "What the difference between ordinary, tail and iterative recursion?";
+            //dataText = "abc";
+            /*ArrayList<String> resp = new ArrayList<String>();
+            resp.add("Try to search with the difference between ?x and ?y");*/
+            String[] resp = new String[1];
+            resp[0] = "Try to search with the difference between ?x and ?y";
 
-            /*for(int i=0; i<arrList.size(); i++){
-                JSONObject gobj = (JSONObject) arrList.get(i);
-                JSONObject patternsObj = (JSONObject) gobj.get("patterns");
-                String patStr = patternsObj.toString();
-                JsonObject result = getMatchResult(engine, "stringMatch", patStr, "\""+msg+"\"");
-                System.out.println("tostring pattern => "+patStr);
-                System.out.println("result = "+result);
-            }*/
+            //double[] srcC = new double[] { 1.141, 1.12, 1.331, 1.44, 1.751, 1.66, 1.971, 1.88, 1.191, 1.101 };
 
-            for (int i = 0; i < arrList.size(); i++) {
-                JSONObject obj2 = (JSONObject) arrList.get(i);
-                String errPatterns = obj2.get("patterns").toString();
-                JSONArray arr = (JSONArray)obj2.get("response");
-                System.out.println("response array => "+arr);
-                JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errPatterns, "\"" + msg + "\"");
-
-                if (errorMatchResult.size() != 0) {
-                    int flag = Integer.parseInt(obj2.get("functionName").toString());
-                    System.out.println("======> " +flag);
+            ScriptObjectMirror obj = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", errorPattern, "\"" + dataText + "\"", resp);
+            Collection<Object> values = obj.values();
+            System.out.println("values size => " + values.size());
+            if (values.size() == 0) {
+                System.out.println("output =>  null!");
+            }
+            output = new String[values.size()];
+            int i = 0;
+            for (Iterator<Object> iterator = values.iterator(); iterator.hasNext();) {
+                Object value = iterator.next();
+                if (value instanceof String) {
+                    String object = (String) value;
+                    output[i] = object;
+                    i++;
                 }
             }
-
+            for (int j=0; j<output.length; j++){
+                System.out.println(output[j]);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static JsonObject getMatchResult(ScriptEngine engine, String name, String args1, String args2) throws Exception {
-        if (engine instanceof Invocable) {
-            Invocable invoke = (Invocable) engine;
-
-            Object c = invoke.invokeFunction(name, args1, args2);
-
-            Gson gson = new Gson();
-            String jsonStr = gson.toJson(c);
-            JsonParser parser = new JsonParser();
-            JsonElement je = parser.parse(jsonStr);
-            JsonObject result = je.getAsJsonObject();
-
-            return result;
-        }
-        return null;
     }
 }
