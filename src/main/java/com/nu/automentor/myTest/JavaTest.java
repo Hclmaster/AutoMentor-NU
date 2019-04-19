@@ -4,19 +4,22 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import net.sf.json.JSONObject;
 
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import static com.nu.automentor.myTest.MatcherTest.loadNashornEngine;
+
 public class JavaTest {
-    public static void main(String[] args){
-        String response = " ?x and ?y";
-        String vx = response.substring(1,3);
-        System.out.println("vx => " + vx);
-        //vx.replaceAll("//?", "\\\\?");
-        System.out.println("vx => " + vx);
-        System.out.println("response => " + response.replaceAll("\\"+vx, "a"));
+    public static void main(String[] args) throws Exception{
+
     }
 }

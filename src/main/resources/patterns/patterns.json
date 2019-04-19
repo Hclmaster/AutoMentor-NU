@@ -65,7 +65,9 @@
   ],
   "stuck": [
     {
-      "id": 1
+      "id": 1,
+      "patterns": null,
+      "response": null
     }
   ]
 }

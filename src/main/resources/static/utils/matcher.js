@@ -1,5 +1,28 @@
-function stringMatch(pat, obj) {
-    return match(JSON.parse(pat), JSON.parse(obj));
+function stringMatch(pat, obj, responses) {
+    return responses
+    var result = match(JSON.parse(pat), JSON.parse(obj));
+    if (responses == undefined && result != []) return [{}];
+    else if(responses == undefined && result == []) return [];
+    var newReponses = [];
+
+    for(var i=0; i<responses.length; i++){
+        for(var j=0; j<result.length; j++){
+            var response = responses[i];
+            Object.keys(element).forEach(function (key) {
+                response = response.replace(key, element[key]);
+            })
+        }
+        newReponses.push(response);
+    }
+    /*responses.forEach(function (response) {
+        result.forEach(function (element) {
+            Object.keys(element).forEach(function (key) {
+                response = response.replace(key, element[key]);
+            })
+        });
+        newReponses.push(response);
+    });*/
+    return newReponses;
 }
 
 function match(pat, obj, blists) {

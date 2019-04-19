@@ -9,6 +9,7 @@ import com.nu.automentor.model.RequestWrapper;
 import com.nu.automentor.model.ResponseWrapper;
 import com.nu.automentor.myTest.LoadJsonTest;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
+import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,6 +25,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -52,7 +54,7 @@ public class ClientController {
         JSONObject patObj = loadJSONFile();
 
         for (int i = 0; i < categoryReg.length; i++) {
-            JsonObject result = getMatchResult(engine, "stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"");
+            JsonObject result = getMatchResult(engine, "stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
             if (result.size() != 0) {
                 String functionName = null;
                 JSONArray arrList = (JSONArray) patObj.get(category[i]);
@@ -65,11 +67,14 @@ public class ClientController {
                     for (int k = 0; k < arrList.size(); k++) {
                         JSONObject obj = (JSONObject) arrList.get(k);
                         String errorPattern = obj.get("patterns").toString();
-                        JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"");
+                        JSONArray responses = (JSONArray) obj.get("response");
+                        String resp = responses.toString();
+                        JsonObject errorMatchResult = getMatchResult(engine, "stringMatch", errorPattern, "\"" + data.getText() + "\"", resp);
+                        System.out.println("errorMatchResult => " + errorMatchResult);
 
                         if (errorMatchResult.size() != 0) {
                             JsonObject functionNameObj = errorMatchResult.get("0").getAsJsonObject();
-                            JSONArray responses = (JSONArray) obj.get("response");
+                            //JSONArray responses = (JSONArray) obj.get("response");
                             responseWrapper.setPatternsObj(errorPattern);
                             if (functionNameObj.size() == 0) {
                                 for (int l = 0; l < responses.size(); l++) {
@@ -147,16 +152,24 @@ public class ClientController {
      * @return
      * @throws Exception
      */
-    public JsonObject getMatchResult(ScriptEngine engine, String name, String args1, String args2) throws Exception {
+    public JsonObject getMatchResult(ScriptEngine engine, String name, String args1, String args2, String args3) throws Exception {
         if (engine instanceof Invocable) {
+            System.out.println("args3 => " + args3);
             Invocable invoke = (Invocable) engine;
-            Object c = invoke.invokeFunction(name, args1, args2);
-
+            Object c = invoke.invokeFunction(name, args1, args2, args3);
             Gson gson = new Gson();
             String jsonStr = gson.toJson(c);
+            System.out.println("jsonStr ===> " + jsonStr);
             JsonParser parser = new JsonParser();
             JsonElement je = parser.parse(jsonStr);
             JsonObject result = je.getAsJsonObject();
+
+            ScriptObjectMirror obj = (ScriptObjectMirror) invoke.invokeFunction(name, args1, args2, args3);
+            Collection<Object> values = obj.values();
+            for (Iterator<Object> iterator = values.iterator(); iterator.hasNext();) {
+                Object value = iterator.next();
+                //System.out.println(value);
+            }
 
             return result;
         }
