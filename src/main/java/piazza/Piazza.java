@@ -36,8 +36,8 @@ public class Piazza {
         userLogin();
 
         ContentGetResponse r = contentGet("432", "jbzfbbon3nt32i");
-        System.out.println("aid");
-        System.out.println(r.getAid());
+        System.out.println("post:");
+        System.out.println(r.getResult().getHistory().get(0).getContent());
     }
 
     public void userLogin(){
