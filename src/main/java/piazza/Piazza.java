@@ -40,38 +40,31 @@ public class Piazza {
         System.out.println(r.getResult().getHistory().get(0).getContent());
     }
 
-    public void userLogin(){
+    public UserLoginResponse userLogin() throws IOException {
         BufferedReader reader =
                 new BufferedReader( new InputStreamReader(System.in));
-        try {
-            System.out.print("email: ");
-            String email = reader.readLine();
 
-            System.out.print("password: ");
-            String password = reader.readLine();
+        System.out.print("email: ");
+        String email = reader.readLine();
 
-            userLogin(email, password);
+        System.out.print("password: ");
+        String password = reader.readLine();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return userLogin(email, password);
     }
 
-    public void userLogin(String email, String password){
-        try {
-            UserLoginRequest body = new UserLoginRequest("user.login", email, password);
+    public UserLoginResponse userLogin(String email, String password) throws IOException {
+        UserLoginRequest body = new UserLoginRequest("user.login", email, password);
 
-            HttpsURLConnection connection = requestBase();
+        HttpsURLConnection connection = requestBase();
 
-            writeBody(connection, body);
+        writeBody(connection, body);
 
-            storeCookies(connection);
+        storeCookies(connection);
 
-            printContent(connection);
+        String data = getResponse(connection);
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        return new ObjectMapper().readValue(data, UserLoginResponse.class);
     }
 
     private HttpsURLConnection requestBase() throws IOException {
@@ -107,7 +100,9 @@ public class Piazza {
         ContentGetRequest body = new ContentGetRequest("content.get", cid, nid);
 
         HttpsURLConnection connection = request(body);
-        return parseResponse(connection);
+        String data = getResponse(connection);
+
+        return new ObjectMapper().readValue(data, ContentGetResponse.class);
     }
 
     private String sessionId(){
@@ -142,33 +137,7 @@ public class Piazza {
         return connection;
     }
 
-
-    private void printContent(HttpsURLConnection con){
-        if(con!=null){
-
-            try {
-
-                System.out.println("****** Content of the URL ********");
-                BufferedReader br =
-                        new BufferedReader(
-                                new InputStreamReader(con.getInputStream()));
-
-                String input;
-
-                while ((input = br.readLine()) != null){
-                    System.out.println(input);
-                }
-                br.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-    }
-
-    private ContentGetResponse parseResponse(HttpsURLConnection connection) throws IOException {
+    private String getResponse(HttpsURLConnection connection) throws IOException {
         BufferedReader br =
                 new BufferedReader(
                         new InputStreamReader(connection.getInputStream()));
@@ -182,8 +151,7 @@ public class Piazza {
         br.close();
         System.out.println(sb);
 
-        ObjectMapper om = new ObjectMapper();
-        return om.readValue(sb.toString(), ContentGetResponse.class);
+        return sb.toString();
     }
 
 }
