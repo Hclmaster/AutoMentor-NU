@@ -27,15 +27,17 @@ public class Piazza {
         cookieManager = new CookieManager();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         new Piazza().testIt();
     }
 
-    private void testIt(){
+    private void testIt() throws IOException {
 
         userLogin();
 
-        contentGet("432", "jbzfbbon3nt32i");
+        ContentGetResponse r = contentGet("432", "jbzfbbon3nt32i");
+        System.out.println("aid");
+        System.out.println(r.getAid());
     }
 
     public void userLogin(){
@@ -57,10 +59,7 @@ public class Piazza {
 
     public void userLogin(String email, String password){
         try {
-            RequestBody body = new RequestBody.Builder("user.login")
-                    .email(email)
-                    .password(password)
-                    .build();
+            UserLoginRequest body = new UserLoginRequest("user.login", email, password);
 
             HttpsURLConnection connection = requestBase();
 
@@ -87,7 +86,7 @@ public class Piazza {
         return connection;
     }
 
-    private void writeBody(HttpsURLConnection connection, RequestBody body) throws IOException {
+    private void writeBody(HttpsURLConnection connection, Object body) throws IOException {
         byte[] outputInBytes = new ObjectMapper().writer().writeValueAsBytes(body);
 
         OutputStream os = connection.getOutputStream();
@@ -104,13 +103,11 @@ public class Piazza {
                 .forEach(x -> cookieManager.getCookieStore().add(null, x));
     }
 
-    public void contentGet(String cid, String nid){
-        RequestBody body = new RequestBody.Builder("content.get")
-                .cid(cid)
-                .nid(nid)
-                .build();
+    public ContentGetResponse contentGet(String cid, String nid) throws IOException {
+        ContentGetRequest body = new ContentGetRequest("content.get", cid, nid);
 
-        request(body);
+        HttpsURLConnection connection = request(body);
+        return parseResponse(connection);
     }
 
     private String sessionId(){
@@ -134,20 +131,15 @@ public class Piazza {
         return String.join("; ",  cookieStrings);
     }
 
-    private void request(RequestBody body){
-        try {
-            HttpsURLConnection connection = requestBase();
+    private HttpsURLConnection request(Object body) throws IOException {
+        HttpsURLConnection connection = requestBase();
 
-            connection.setRequestProperty("Cookie", cookieHeader());
-            connection.setRequestProperty("CSRF-Token", sessionId());
+        connection.setRequestProperty("Cookie", cookieHeader());
+        connection.setRequestProperty("CSRF-Token", sessionId());
 
-            writeBody(connection, body);
+        writeBody(connection, body);
 
-            printContent(connection);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return connection;
     }
 
 
@@ -174,6 +166,24 @@ public class Piazza {
 
         }
 
+    }
+
+    private ContentGetResponse parseResponse(HttpsURLConnection connection) throws IOException {
+        BufferedReader br =
+                new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+        String line;
+        StringBuilder sb = new StringBuilder();
+
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+        }
+        br.close();
+        System.out.println(sb);
+
+        ObjectMapper om = new ObjectMapper();
+        return om.readValue(sb.toString(), ContentGetResponse.class);
     }
 
 }
