@@ -19,7 +19,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "patterns": null
+    "patterns": null,
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -35,7 +36,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -56,7 +58,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -77,7 +80,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -98,7 +102,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -114,7 +119,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -135,7 +141,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -151,7 +158,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -167,7 +175,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -183,7 +192,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks": [
@@ -204,7 +214,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -220,7 +231,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Error"
   },
   {
     "textBlocks":[
@@ -246,7 +258,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Confused"
   },
   {
     "textBlocks":[
@@ -262,7 +275,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Confused"
   },
   {
     "textBlocks":[
@@ -278,7 +292,8 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Confused"
   },
   {
     "textBlocks":[],
@@ -288,6 +303,7 @@
       "name": "Cathy",
       "id": "clj8621"
     },
-    "responses": []
+    "responses": [],
+    "category": "Stuck"
   }
 ]

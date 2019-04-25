@@ -10,6 +10,7 @@ public class ResponseWrapper {
     private List<String> response;
     private String message;
     private String patternsObj;
+    private String category;
 
     public StudentEntity getStudent() {
         return student;
@@ -49,5 +50,13 @@ public class ResponseWrapper {
 
     public void setPatternsObj(String patternsObj) {
         this.patternsObj = patternsObj;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
