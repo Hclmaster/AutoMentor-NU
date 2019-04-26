@@ -1,0 +1,24 @@
+{
+  "interpolate-colors": [
+    "Take a look at local EECS 111 local racket documentation about interpolate-colors",
+    "Look at the example of how to use interpolate-colors in Exercise_1.pdf Question 4."
+  ],
+  "recursion": [
+    "Take a look at <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/275158374790\">EECS 111 Videos - Recursion I</a>",
+    "Take a look at <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/275161096627\">EECS 111 Videos - Recursion II</a>"
+  ],
+  "move image": [
+    "Try to use function overlay/xy and see what happens!",
+    "Take a look at <a href=\"https://docs.racket-lang.org/teachpack/2htdpimage.html?q=overlay.xy#%28def._%28%28lib._2htdp%2Fimage..rkt%29._overlay%2Fxy%29%29\">Racket Document - overlay x/y</a>"
+  ],
+  "alpha": [
+    "Take a careful look at Exercise <b>Interlude: Representing colors with RGB(A)</b>"
+  ],
+  "rounded": [
+    "Try to search why it is rounded (not rounded).",
+    "Instead of using quotient function, use '/'."
+  ],
+  "color-interpolate": [
+
+  ]
+}

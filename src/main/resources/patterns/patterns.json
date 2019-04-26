@@ -22,7 +22,7 @@
     },
     {
       "id": 3,
-      "patterns": {"reg": "([^\\s]+)( is)? not defined", "pats": ["?x"]},
+      "patterns": {"reg": "([^\\s]+)( is)? not defined|put ([^\\s]+) .*n't defined", "pats": ["?x"]},
       "functionName": 1,
       "response": [
         "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",

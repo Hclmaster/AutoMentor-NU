@@ -43,8 +43,8 @@ public class ClientController {
 
         ScriptEngine engine = loadNashornEngine();
 
-        String[] categoryReg = {"{\"reg\":  \"error\"}", "{\"reg\":  \"(confused|how .*? use|[W|w]hat(.*)?[is|to])\"}",
-                                "{\"reg\": \"[H|h]ow to.*|stuck\"}"};
+        String[] categoryReg = {"{\"reg\":  \"error|n't defined\"}", "{\"reg\":  \"(confused|how .*? use|[W|w]hat(.*)?[is|to])\"}",
+                "{\"reg\": \"[H|h]ow to.*|stuck|[S|s]tuck\"}"};
         String[] category = {"error", "confused", "stuck"};
 
         List<DataEntity> textList = requestWrapper.getTextBlocks();
@@ -54,12 +54,16 @@ public class ClientController {
         JSONObject patObj = loadJSONFile();
         Invocable invocable = (Invocable) engine;
 
+        // Add all possible response resources first
+        list = addResourceResponse(requestWrapper.getMessage(), list);
+
         for (int i = 0; i < categoryReg.length; i++) {
             ScriptObjectMirror obj = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
             Collection<Object> values = obj.values();
             if (values.size() != 0) {
+                System.out.println("category => " + category[i]);
                 JSONArray arrList = (JSONArray) patObj.get(category[i]);
-                if(textList.size() == 0){
+                if (textList.size() == 0) {
                     list.add("Show me what you've tried, what's actually happening?");
                     break;
                 }
@@ -71,16 +75,16 @@ public class ClientController {
                         String errorPattern = obj2.get("patterns").toString();
                         JSONArray responses = (JSONArray) obj2.get("response");
                         String[] resp = new String[responses.size()];
-                        for(int l = 0; l < responses.size(); l++) resp[l] = (String)responses.get(l);
+                        for (int l = 0; l < responses.size(); l++) resp[l] = (String) responses.get(l);
                         ScriptObjectMirror matchResult = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", errorPattern, "\"" + data.getText() + "\"", resp);
                         Collection<Object> matchValues = matchResult.values();
 
                         if (matchValues.size() != 0) {
                             responseWrapper.setPatternsObj(errorPattern);
-                            for (Iterator<Object> iterator = matchValues.iterator(); iterator.hasNext();) {
+                            for (Iterator<Object> iterator = matchValues.iterator(); iterator.hasNext(); ) {
                                 Object value = iterator.next();
                                 if (value instanceof String) {
-                                    list.add((String)value);
+                                    list.add((String) value);
                                 }
                             }
                         }
@@ -124,7 +128,7 @@ public class ClientController {
     public JSONObject loadJSONFile() {
         try {
             JSONParser parser = new JSONParser();
-            InputStream input = LoadJsonTest.class.getResourceAsStream("/patterns/patterns.json");
+            InputStream input = getClass().getResourceAsStream("/patterns/patterns.json");
             Reader reader = new InputStreamReader(input);
             JSONObject obj = (JSONObject) parser.parse(reader);
             return obj;
@@ -132,6 +136,32 @@ public class ClientController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Judge whether there is key in the json file contained in the msg.
+     *
+     * @param msg
+     * @return
+     */
+    public List<String> addResourceResponse(String msg, List<String> li) {
+        try {
+            JSONParser parser = new JSONParser();
+            InputStream input = getClass().getResourceAsStream("/patterns/response.json");
+            Reader reader = new InputStreamReader(input);
+            JSONObject jsonObj = (JSONObject) parser.parse(reader);
+            jsonObj.keySet().forEach(key -> {
+                if (msg.toLowerCase().contains((String) key)) {
+                    JSONArray keyValue = (JSONArray) jsonObj.get(key);
+                    for (int i = 0; i < keyValue.size(); i++) {
+                        li.add((String) keyValue.get(i));
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return li;
     }
 
 }
