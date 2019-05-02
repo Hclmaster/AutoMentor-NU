@@ -151,8 +151,6 @@ public class ClientController {
                                            Invocable invocable,
                                            String text,
                                            List<String> list) throws Exception {
-        System.out.println("text str => " + text);
-        System.out.println("arrList => " + arrList);
         for (int i = 0; i < arrList.size(); i++) {
             JSONObject obj2 = (JSONObject) arrList.get(i);
             String errorPattern = obj2.get("patterns").toString();

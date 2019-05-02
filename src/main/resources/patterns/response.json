@@ -1,6 +1,7 @@
 {
   "iterated-overlay": [
-    "Have a look at the Appendix 1: A Refresher on Iterators"
+    "Have a look at the Exercise 1 Appendix 1: A Refresher on Iterators",
+    "Have a look at Exercise 3 hint for question 2 : iterated-overlay"
   ],
   "interpolate-colors": [
     "Take a look at local EECS 111 local racket documentation about interpolate-colors",
@@ -12,7 +13,8 @@
   ],
   "recursion": [
     "Take a look at <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/275158374790\">EECS 111 Videos - Recursion I</a>",
-    "Take a look at <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/275161096627\">EECS 111 Videos - Recursion II</a>"
+    "Take a look at <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/275161096627\">EECS 111 Videos - Recursion II</a>",
+    "Take a look at Exercise 3 - Introduction to Recursion."
   ],
   "move image": [
     "Try to use function overlay/xy and see what happens!",
@@ -37,6 +39,21 @@
     "Have a look at racket documentation of <a href=\"https://docs.racket-lang.org/guide/exns.html\">Exception</a>"
   ],
   "filter": [
-    "Try to search with keyword 'filter'"
+    "Try to search with keyword 'filter'",
+    "Have a careful look at the example in <a href=\"https://canvas.northwestern.edu/courses/86199/files/folder/lectures?preview=6364076\">Page 16 of slide Lecture 8 - Lists - Class Notes</a> and see how filter works",
+    "Did your return value always false?",
+    "Check your return value first."
+  ],
+  "multiply-list": [
+    "Try to take a look at Exercise 3 - hint of multiply-list part."
+  ],
+  "iterated-any": [
+    "Take a look at the Exercise 3 Hint for iterated-any",
+    "Better to go back to Exercise 1, and think about the process you used to abstract between the last two bullseye functions"
+  ],
+  "append": [
+    "Try to search document with the keyword 'Racket Append'",
+    "Have a look at the List documentation",
+    "Have a look at examples in <a href=\"https://canvas.northwestern.edu/courses/86199/files/folder/lectures?preview=6364076\">Slides 10 of Lecture 8 - Lists - Class Notes</a>"
   ]
 }
