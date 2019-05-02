@@ -1,7 +1,14 @@
 {
+  "iterated-overlay": [
+    "Have a look at the Appendix 1: A Refresher on Iterators"
+  ],
   "interpolate-colors": [
     "Take a look at local EECS 111 local racket documentation about interpolate-colors",
-    "Look at the example of how to use interpolate-colors in Exercise_1.pdf Question 4."
+    "Look at the Interclude part of how to use interpolate-colors in Exercise_1.pdf Question 4.",
+    "Take a look at the code - 'iterated_images.rkt' inside the Exercise 1."
+  ],
+  "swatch": [
+    "Take a careful look at the example provided in the Question 6: Paint Chips."
   ],
   "recursion": [
     "Take a look at <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/275158374790\">EECS 111 Videos - Recursion I</a>",
@@ -12,7 +19,11 @@
     "Take a look at <a href=\"https://docs.racket-lang.org/teachpack/2htdpimage.html?q=overlay.xy#%28def._%28%28lib._2htdp%2Fimage..rkt%29._overlay%2Fxy%29%29\">Racket Document - overlay x/y</a>"
   ],
   "alpha": [
-    "Take a careful look at Exercise <b>Interlude: Representing colors with RGB(A)</b>"
+    "Take a careful look at the Instruction in Exercise <b>Interlude: Representing colors with RGB(A)</b>"
+  ],
+  "RGBA": [
+    "Try to search with keyword 'RGBA' and understand what it is.",
+    "Take a look at the Instruction in Exercise <b>Interclude: Representing colors with RGB(A)</b>"
   ],
   "rounded": [
     "Try to search why it is rounded (not rounded).",
@@ -20,5 +31,12 @@
   ],
   "color-interpolate": [
 
+  ],
+  "division by 0": [
+    "Try to search with keyword 'division by 0'",
+    "Have a look at racket documentation of <a href=\"https://docs.racket-lang.org/guide/exns.html\">Exception</a>"
+  ],
+  "filter": [
+    "Try to search with keyword 'filter'"
   ]
 }

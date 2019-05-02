@@ -66,8 +66,10 @@
   "stuck": [
     {
       "id": 1,
-      "patterns": null,
-      "response": null
+      "patterns": {"reg": "difficulty .*? with .*? of ([\\w]+)", "pats": ["?x"]},
+      "response": [
+        "Try to look up the Racket document of ?x"
+      ]
     }
   ]
 }

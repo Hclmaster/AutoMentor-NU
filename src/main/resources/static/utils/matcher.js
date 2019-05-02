@@ -69,7 +69,10 @@ function regexMatch(pat, obj, blists) {
     if(regResults == null) return [];
 
     let pats = pat.pats || [];
-    return match(pats, regResults.slice(1, pats.length+1), blists);
+    var filtered = regResults.filter(function (el) {
+        return el != null;
+    });
+    return match(pats, filtered.slice(1, pats.length+1), blists);
 }
 
 function arrayMatch(pat, obj, blists) {

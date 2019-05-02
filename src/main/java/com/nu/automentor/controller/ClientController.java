@@ -65,32 +65,14 @@ public class ClientController {
                 JSONArray arrList = (JSONArray) patObj.get(category[i]);
                 if (textList.size() == 0) {
                     list.add("Show me what you've tried, what's actually happening?");
+                    list = addPatternResponse(arrList, responseWrapper, invocable, requestWrapper.getMessage(), list);
                     break;
                 }
                 for (int j = 0; j < textList.size(); j++) {
                     DataEntity data = textList.get(j);
                     System.out.println("dataText => " + data.getText());
-                    for (int k = 0; k < arrList.size(); k++) {
-                        JSONObject obj2 = (JSONObject) arrList.get(k);
-                        String errorPattern = obj2.get("patterns").toString();
-                        JSONArray responses = (JSONArray) obj2.get("response");
-                        String[] resp = new String[responses.size()];
-                        for (int l = 0; l < responses.size(); l++) resp[l] = (String) responses.get(l);
-                        ScriptObjectMirror matchResult = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", errorPattern, "\"" + data.getText() + "\"", resp);
-                        Collection<Object> matchValues = matchResult.values();
-
-                        if (matchValues.size() != 0) {
-                            responseWrapper.setPatternsObj(errorPattern);
-                            for (Iterator<Object> iterator = matchValues.iterator(); iterator.hasNext(); ) {
-                                Object value = iterator.next();
-                                if (value instanceof String) {
-                                    list.add((String) value);
-                                }
-                            }
-                        }
-                    }
+                    list = addPatternResponse(arrList, responseWrapper, invocable, data.getText(), list);
                 }
-                break;
             }
         }
 
@@ -162,6 +144,35 @@ public class ClientController {
             e.printStackTrace();
         }
         return li;
+    }
+
+    public List<String> addPatternResponse(JSONArray arrList,
+                                           ResponseWrapper responseWrapper,
+                                           Invocable invocable,
+                                           String text,
+                                           List<String> list) throws Exception {
+        System.out.println("text str => " + text);
+        System.out.println("arrList => " + arrList);
+        for (int i = 0; i < arrList.size(); i++) {
+            JSONObject obj2 = (JSONObject) arrList.get(i);
+            String errorPattern = obj2.get("patterns").toString();
+            JSONArray responses = (JSONArray) obj2.get("response");
+            String[] resp = new String[responses.size()];
+            for (int l = 0; l < responses.size(); l++) resp[l] = (String) responses.get(l);
+            ScriptObjectMirror matchResult = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", errorPattern, "\"" + text + "\"", resp);
+            Collection<Object> matchValues = matchResult.values();
+
+            if (matchValues.size() != 0) {
+                responseWrapper.setPatternsObj(errorPattern);
+                for (Iterator<Object> iterator = matchValues.iterator(); iterator.hasNext(); ) {
+                    Object value = iterator.next();
+                    if (value instanceof String) {
+                        list.add((String) value);
+                    }
+                }
+            }
+        }
+        return list;
     }
 
 }
