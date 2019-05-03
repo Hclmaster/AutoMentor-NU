@@ -1,6 +1,10 @@
 package piazza;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import piazza.models.ContentGetRequest;
+import piazza.models.ContentGetResponse;
+import piazza.models.UserLoginRequest;
+import piazza.models.UserLoginResponse;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -40,6 +44,12 @@ public class Piazza {
         System.out.println(r.getResult().getHistory().get(0).getContent());
     }
 
+    public boolean isAuthenticated() {
+        List<HttpCookie> cookies = cookieManager.getCookieStore().getCookies();
+
+        return !cookies.isEmpty() && cookies.stream().noneMatch(HttpCookie::hasExpired);
+    }
+
     public UserLoginResponse userLogin() throws IOException {
         BufferedReader reader =
                 new BufferedReader( new InputStreamReader(System.in));
@@ -60,9 +70,9 @@ public class Piazza {
 
         writeBody(connection, body);
 
-        storeCookies(connection);
-
         String data = getResponse(connection);
+
+        storeCookies(connection);
 
         return new ObjectMapper().readValue(data, UserLoginResponse.class);
     }

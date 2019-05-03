@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AutoMentor</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+</head>
+<body>
+<tr th:each="cid: ${response.samplePostIds}">
+    <td><a th:href="@{'/piazza?cid=' + ${cid}}" th:text="${cid}"></a></td>
+</tr>
+<div th:with="result=${response.post.result}">
+    <h1 th:text="${result.history[0].subject}"></h1>
+    <div th:utext="${result.history[0].content}"></div>
+    <tr th:each="tag: ${result.tags}">
+        <td th:text="${tag}"></td>
+    </tr>
+</div>
+</body>
+</html>
