@@ -1,4 +1,4 @@
-package piazza;
+package piazza.models;
 
 import com.fasterxml.jackson.annotation.*;
 
