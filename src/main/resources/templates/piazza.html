@@ -21,7 +21,8 @@
     <div class="card my-3">
         <div class="card-body" th:with="result=${response.post.result}">
             <h1 class="card-title" th:text="${result.history[0].subject}"></h1>
-            <h6 class="card-subtitle mb-2 text-muted" th:text="${result.history[0].created}"></h6>
+            <h6 class="card-subtitle mb-2 text-muted"
+                th:text="${#dates.format(result.history[0].created, 'dd-MMM-yyyy')}"></h6>
             <p class="card-text" th:utext="${result.history[0].content}"></p>
             <div>
                 <tr th:each="tag: ${result.tags}">

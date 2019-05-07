@@ -2,6 +2,7 @@ package piazza.models;
 
 import com.fasterxml.jackson.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class History {
     @JsonProperty("subject")
     private String subject;
     @JsonProperty("created")
-    private String created;
+    private Date created;
     @JsonProperty("content")
     private String content;
     @JsonIgnore
@@ -59,12 +60,12 @@ public class History {
     }
 
     @JsonProperty("created")
-    public String getCreated() {
+    public Date getCreated() {
         return created;
     }
 
     @JsonProperty("created")
-    public void setCreated(String created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
