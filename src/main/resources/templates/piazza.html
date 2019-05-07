@@ -3,19 +3,33 @@
 <head>
     <title>AutoMentor</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link crossorigin="anonymous" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}"
+          type="text/css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 <body>
-<tr th:each="cid: ${response.samplePostIds}">
-    <td><a th:href="@{'/piazza?cid=' + ${cid}}" th:text="${cid}"></a></td>
-</tr>
-<div th:with="result=${response.post.result}">
-    <h1 th:text="${result.history[0].subject}"></h1>
-    <div th:utext="${result.history[0].content}"></div>
-    <tr th:each="tag: ${result.tags}">
-        <td th:text="${tag}"></td>
-    </tr>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <div class="navbar-nav">
+            <tr th:each="cid: ${response.samplePostIds}">
+                <td><a class="nav-item nav-link" th:href="@{'/piazza?cid=' + ${cid}}" th:text="${cid}"></a></td>
+            </tr>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="card my-3">
+        <div class="card-body" th:with="result=${response.post.result}">
+            <h1 class="card-title" th:text="${result.history[0].subject}"></h1>
+            <h6 class="card-subtitle mb-2 text-muted" th:text="${result.history[0].created}"></h6>
+            <p class="card-text" th:utext="${result.history[0].content}"></p>
+            <div>
+                <tr th:each="tag: ${result.tags}">
+                    <td><span class="badge badge-info" th:text="${tag}"></span></td>
+                </tr>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
