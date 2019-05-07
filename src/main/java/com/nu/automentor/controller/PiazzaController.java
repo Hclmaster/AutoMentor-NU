@@ -18,24 +18,26 @@ public class PiazzaController {
 
     private final static Piazza piazza = new Piazza();
 
-    private final static List<String> samplePostIds = Arrays.asList("54",
+    private final static List<String> samplePostIds = Arrays.asList(
+            "27",
+            "54",
+            "61",
+            "70",
             "71",
             "76",
-            "61",
             "81",
             "94",
             "102",
             "114",
+            "139",
             "147",
             "188",
             "230",
-            "239",
-            "70",
-            "139",
-            "27");
+            "239"
+    );
 
     @GetMapping("/piazza")
-    public String piazza(@RequestParam(defaultValue = "432") String cid,
+    public String piazza(@RequestParam(defaultValue = "27") String cid,
                          @RequestParam(defaultValue = "jbzfbbon3nt32i") String nid,
                          Model model) throws IOException {
 
