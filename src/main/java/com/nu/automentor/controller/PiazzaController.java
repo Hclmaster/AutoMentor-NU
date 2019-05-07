@@ -42,7 +42,9 @@ public class PiazzaController {
                          Model model) throws IOException {
 
         if (!piazza.isAuthenticated()) {
-            piazza.userLogin("jeffreyholm2019@u.northwestern.edu", "automentor");
+            String email = System.getenv("PIAZZA_EMAIL");
+            String password = System.getenv("PIAZZA_PASSWORD");
+            piazza.userLogin(email, password);
         }
 
         ContentGetResponse contentGetResponse = piazza.contentGet(cid, nid);
