@@ -1,10 +1,12 @@
 package piazza;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import piazza.models.ContentGetRequest;
-import piazza.models.ContentGetResponse;
-import piazza.models.UserLoginRequest;
-import piazza.models.UserLoginResponse;
+import piazza.requests.contentGet.ContentGetRequest;
+import piazza.requests.userLogin.UserLoginRequest;
+import piazza.requests.userStatus.UserStatusRequest;
+import piazza.responses.contentGet.ContentGetResponse;
+import piazza.responses.userLogin.UserLoginResponse;
+import piazza.responses.userStatus.UserStatusResponse;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -64,7 +66,7 @@ public class Piazza {
     }
 
     public UserLoginResponse userLogin(String email, String password) throws IOException {
-        UserLoginRequest body = new UserLoginRequest("user.login", email, password);
+        UserLoginRequest body = new UserLoginRequest(email, password);
 
         HttpsURLConnection connection = requestBase();
 
@@ -75,6 +77,31 @@ public class Piazza {
         storeCookies(connection);
 
         return new ObjectMapper().readValue(data, UserLoginResponse.class);
+    }
+
+    public UserStatusResponse userStatus() throws IOException {
+        UserStatusRequest body = new UserStatusRequest();
+
+        return request(body, UserStatusResponse.class);
+    }
+
+    public ContentGetResponse contentGet(String cid, String nid) throws IOException {
+        ContentGetRequest body = new ContentGetRequest(cid, nid);
+
+        return request(body, ContentGetResponse.class);
+    }
+
+    private <T> T request(Object body, Class<T> tClass) throws IOException {
+        HttpsURLConnection connection = requestBase();
+
+        connection.setRequestProperty("Cookie", cookieHeader());
+        connection.setRequestProperty("CSRF-Token", sessionId());
+
+        writeBody(connection, body);
+
+        String data = getResponse(connection);
+
+        return new ObjectMapper().readValue(data, tClass);
     }
 
     private HttpsURLConnection requestBase() throws IOException {
@@ -106,15 +133,6 @@ public class Piazza {
                 .forEach(x -> cookieManager.getCookieStore().add(null, x));
     }
 
-    public ContentGetResponse contentGet(String cid, String nid) throws IOException {
-        ContentGetRequest body = new ContentGetRequest("content.get", cid, nid);
-
-        HttpsURLConnection connection = request(body);
-        String data = getResponse(connection);
-
-        return new ObjectMapper().readValue(data, ContentGetResponse.class);
-    }
-
     private String sessionId(){
 
         return cookieManager.getCookieStore()
@@ -134,17 +152,6 @@ public class Piazza {
                 .collect(Collectors.toList());
 
         return String.join("; ",  cookieStrings);
-    }
-
-    private HttpsURLConnection request(Object body) throws IOException {
-        HttpsURLConnection connection = requestBase();
-
-        connection.setRequestProperty("Cookie", cookieHeader());
-        connection.setRequestProperty("CSRF-Token", sessionId());
-
-        writeBody(connection, body);
-
-        return connection;
     }
 
     private String getResponse(HttpsURLConnection connection) throws IOException {

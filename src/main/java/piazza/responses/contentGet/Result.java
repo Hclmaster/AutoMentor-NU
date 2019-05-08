@@ -1,4 +1,4 @@
-package piazza.models;
+package piazza.responses.contentGet;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -45,15 +45,15 @@ public class Result {
     @JsonProperty("folders")
     private List<String> folders = null;
     @JsonProperty("nr")
-    private Integer nr;
+    private Long nr;
     @JsonProperty("data")
     private Data data;
     @JsonProperty("created")
     private String created;
     @JsonProperty("bucket_order")
-    private Integer bucketOrder;
+    private Long bucketOrder;
     @JsonProperty("no_answer_followup")
-    private Integer noAnswerFollowup;
+    private Long noAnswerFollowup;
     @JsonProperty("change_log")
     private List<ChangeLog> changeLog = null;
     @JsonProperty("bucket_name")
@@ -67,7 +67,7 @@ public class Result {
     @JsonProperty("tag_good")
     private List<Object> tagGood = null;
     @JsonProperty("unique_views")
-    private Integer uniqueViews;
+    private Long uniqueViews;
     @JsonProperty("children")
     private List<Object> children = null;
     @JsonProperty("tag_good_arr")
@@ -81,13 +81,13 @@ public class Result {
     @JsonProperty("upvote_ids")
     private List<Object> upvoteIds = null;
     @JsonProperty("request_instructor")
-    private Integer requestInstructor;
+    private Long requestInstructor;
     @JsonProperty("request_instructor_me")
     private Boolean requestInstructorMe;
     @JsonProperty("bookmarked")
-    private Integer bookmarked;
+    private Long bookmarked;
     @JsonProperty("num_favorites")
-    private Integer numFavorites;
+    private Long numFavorites;
     @JsonProperty("my_favorite")
     private Boolean myFavorite;
     @JsonProperty("is_bookmarked")
@@ -118,12 +118,12 @@ public class Result {
     }
 
     @JsonProperty("nr")
-    public Integer getNr() {
+    public Long getNr() {
         return nr;
     }
 
     @JsonProperty("nr")
-    public void setNr(Integer nr) {
+    public void setNr(Long nr) {
         this.nr = nr;
     }
 
@@ -148,22 +148,22 @@ public class Result {
     }
 
     @JsonProperty("bucket_order")
-    public Integer getBucketOrder() {
+    public Long getBucketOrder() {
         return bucketOrder;
     }
 
     @JsonProperty("bucket_order")
-    public void setBucketOrder(Integer bucketOrder) {
+    public void setBucketOrder(Long bucketOrder) {
         this.bucketOrder = bucketOrder;
     }
 
     @JsonProperty("no_answer_followup")
-    public Integer getNoAnswerFollowup() {
+    public Long getNoAnswerFollowup() {
         return noAnswerFollowup;
     }
 
     @JsonProperty("no_answer_followup")
-    public void setNoAnswerFollowup(Integer noAnswerFollowup) {
+    public void setNoAnswerFollowup(Long noAnswerFollowup) {
         this.noAnswerFollowup = noAnswerFollowup;
     }
 
@@ -228,12 +228,12 @@ public class Result {
     }
 
     @JsonProperty("unique_views")
-    public Integer getUniqueViews() {
+    public Long getUniqueViews() {
         return uniqueViews;
     }
 
     @JsonProperty("unique_views")
-    public void setUniqueViews(Integer uniqueViews) {
+    public void setUniqueViews(Long uniqueViews) {
         this.uniqueViews = uniqueViews;
     }
 
@@ -298,12 +298,12 @@ public class Result {
     }
 
     @JsonProperty("request_instructor")
-    public Integer getRequestInstructor() {
+    public Long getRequestInstructor() {
         return requestInstructor;
     }
 
     @JsonProperty("request_instructor")
-    public void setRequestInstructor(Integer requestInstructor) {
+    public void setRequestInstructor(Long requestInstructor) {
         this.requestInstructor = requestInstructor;
     }
 
@@ -318,22 +318,22 @@ public class Result {
     }
 
     @JsonProperty("bookmarked")
-    public Integer getBookmarked() {
+    public Long getBookmarked() {
         return bookmarked;
     }
 
     @JsonProperty("bookmarked")
-    public void setBookmarked(Integer bookmarked) {
+    public void setBookmarked(Long bookmarked) {
         this.bookmarked = bookmarked;
     }
 
     @JsonProperty("num_favorites")
-    public Integer getNumFavorites() {
+    public Long getNumFavorites() {
         return numFavorites;
     }
 
     @JsonProperty("num_favorites")
-    public void setNumFavorites(Integer numFavorites) {
+    public void setNumFavorites(Long numFavorites) {
         this.numFavorites = numFavorites;
     }
 

@@ -1,9 +1,8 @@
-package piazza.models;
+package piazza.responses.userStatus;
 
-import com.fasterxml.jackson.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -11,7 +10,7 @@ import java.util.Map;
         "error",
         "aid"
 })
-public class ContentGetResponse {
+public class UserStatusResponse {
 
     @JsonProperty("result")
     private Result result;
@@ -19,8 +18,6 @@ public class ContentGetResponse {
     private String error;
     @JsonProperty("aid")
     private String aid;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("result")
     public Result getResult() {
@@ -52,15 +49,4 @@ public class ContentGetResponse {
         this.aid = aid;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }
-

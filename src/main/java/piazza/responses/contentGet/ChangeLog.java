@@ -1,4 +1,4 @@
-package piazza.models;
+package piazza.responses.contentGet;
 
 import com.fasterxml.jackson.annotation.*;
 

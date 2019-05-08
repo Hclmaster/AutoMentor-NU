@@ -1,4 +1,4 @@
-package piazza.models;
+package piazza.requests.userLogin;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

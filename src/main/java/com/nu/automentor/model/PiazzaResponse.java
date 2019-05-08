@@ -1,6 +1,6 @@
 package com.nu.automentor.model;
 
-import piazza.models.ContentGetResponse;
+import piazza.responses.contentGet.ContentGetResponse;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package piazza.models;
+package piazza.responses.contentGet;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.Map;
         "error",
         "aid"
 })
-public class UserLoginResponse {
+public class ContentGetResponse {
 
     @JsonProperty("result")
-    private String result;
+    private Result result;
     @JsonProperty("error")
     private String error;
     @JsonProperty("aid")
@@ -23,12 +23,12 @@ public class UserLoginResponse {
     private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("result")
-    public String getResult() {
+    public Result getResult() {
         return result;
     }
 
     @JsonProperty("result")
-    public void setResult(String result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
@@ -63,3 +63,4 @@ public class UserLoginResponse {
     }
 
 }
+

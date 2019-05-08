@@ -1,16 +1,15 @@
-package piazza.models;
+package piazza.requests.contentGet;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ContentGetRequest {
 
     @JsonProperty("method")
-    private final String method;
+    private final String method = "content.get";
     @JsonProperty("params")
     private final ContentGetParams params;
 
-    public ContentGetRequest(String method, String cid, String nid) {
-        this.method = method;
+    public ContentGetRequest(String cid, String nid) {
         this.params = new ContentGetParams(cid, nid);
     }
 

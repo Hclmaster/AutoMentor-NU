@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import piazza.Piazza;
-import piazza.models.ContentGetResponse;
+import piazza.responses.contentGet.ContentGetResponse;
 
 import java.io.IOException;
 import java.util.Arrays;

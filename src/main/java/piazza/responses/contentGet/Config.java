@@ -1,4 +1,4 @@
-package piazza.models;
+package piazza.responses.contentGet;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -13,29 +13,29 @@ import java.util.Map;
 public class Config {
 
     @JsonProperty("is_announcement")
-    private Integer isAnnouncement;
+    private Long isAnnouncement;
     @JsonProperty("bypass_email")
-    private Integer bypassEmail;
+    private Long bypassEmail;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("is_announcement")
-    public Integer getIsAnnouncement() {
+    public Long getIsAnnouncement() {
         return isAnnouncement;
     }
 
     @JsonProperty("is_announcement")
-    public void setIsAnnouncement(Integer isAnnouncement) {
+    public void setIsAnnouncement(Long isAnnouncement) {
         this.isAnnouncement = isAnnouncement;
     }
 
     @JsonProperty("bypass_email")
-    public Integer getBypassEmail() {
+    public Long getBypassEmail() {
         return bypassEmail;
     }
 
     @JsonProperty("bypass_email")
-    public void setBypassEmail(Integer bypassEmail) {
+    public void setBypassEmail(Long bypassEmail) {
         this.bypassEmail = bypassEmail;
     }
 
