@@ -9,7 +9,7 @@ public class ResponseWrapper {
     private List<DataEntity> textBlocks;
     private List<String> response;
     private String message;
-    private String patternsObj;
+    private List<String> patternsObj;
     private String category;
 
     public StudentEntity getStudent() {
@@ -44,11 +44,11 @@ public class ResponseWrapper {
         this.message = message;
     }
 
-    public String getPatternsObj() {
+    public List<String> getPatternsObj() {
         return patternsObj;
     }
 
-    public void setPatternsObj(String patternsObj) {
+    public void setPatternsObj(List<String> patternsObj) {
         this.patternsObj = patternsObj;
     }
 

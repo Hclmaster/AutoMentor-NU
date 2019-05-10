@@ -1,13 +1,8 @@
 package com.nu.automentor.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.nu.automentor.model.DataEntity;
 import com.nu.automentor.model.RequestWrapper;
 import com.nu.automentor.model.ResponseWrapper;
-import com.nu.automentor.myTest.LoadJsonTest;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.json.simple.JSONArray;
@@ -20,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -49,38 +43,52 @@ public class ClientController {
 
         List<DataEntity> textList = requestWrapper.getTextBlocks();
         List<String> list = new ArrayList<>();
+        List<String> patterns = new ArrayList<>();
 
         // load patterns from JSON file
         JSONObject patObj = loadJSONFile();
         Invocable invocable = (Invocable) engine;
 
         // Add all possible response resources first
-        list = addResourceResponse(requestWrapper.getMessage(), list);
+        List<List<String>> ans = addResourceResponse(requestWrapper.getMessage(), list, patterns);
+        list = ans.get(0);
+        patterns = ans.get(1);
 
         for (int i = 0; i < categoryReg.length; i++) {
-            ScriptObjectMirror obj = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
+            ScriptObjectMirror obj = (ScriptObjectMirror) invocable.invokeFunction("stringMatch",
+                                                                                    categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
             Collection<Object> values = obj.values();
             if (values.size() != 0) {
                 System.out.println("category => " + category[i]);
                 JSONArray arrList = (JSONArray) patObj.get(category[i]);
                 if (textList.size() == 0) {
                     list.add("Show me what you've tried, what's actually happening?");
-                    list = addPatternResponse(arrList, responseWrapper, invocable, requestWrapper.getMessage(), list);
+                    patterns.add("None Patterns");
+                    ans = addPatternResponse(arrList, invocable, requestWrapper.getMessage(), list, patterns);
+                    list = ans.get(0);
+                    patterns = ans.get(1);
                     break;
                 }
                 for (int j = 0; j < textList.size(); j++) {
                     DataEntity data = textList.get(j);
                     System.out.println("dataText => " + data.getText());
-                    list = addPatternResponse(arrList, responseWrapper, invocable, data.getText(), list);
+                    ans = addPatternResponse(arrList, invocable, data.getText(), list, patterns);
+                    list = ans.get(0);
+                    patterns = ans.get(1);
                 }
             }
         }
 
         if (list.size() == 0) {
             list.add("Please give me your request message!");
+            patterns.add("None Patterns");
         }
 
+        System.out.println("list => "  + list);
+        System.out.println("patterns => " + patterns);
+
         responseWrapper.setResponse(list);
+        responseWrapper.setPatternsObj(patterns);
         return responseWrapper;
     }
 
@@ -126,7 +134,8 @@ public class ClientController {
      * @param msg
      * @return
      */
-    public List<String> addResourceResponse(String msg, List<String> li) {
+    public List<List<String>> addResourceResponse(String msg, List<String> li, List<String> patterns) {
+        List<List<String>> ans  = new ArrayList<>();
         try {
             JSONParser parser = new JSONParser();
             InputStream input = getClass().getResourceAsStream("/patterns/response.json");
@@ -137,40 +146,48 @@ public class ClientController {
                     JSONArray keyValue = (JSONArray) jsonObj.get(key);
                     for (int i = 0; i < keyValue.size(); i++) {
                         li.add((String) keyValue.get(i));
+                        patterns.add("None Patterns.");
                     }
                 }
             });
+            ans.add(li);
+            ans.add(patterns);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return li;
+        return ans;
     }
 
-    public List<String> addPatternResponse(JSONArray arrList,
-                                           ResponseWrapper responseWrapper,
+    public List<List<String>> addPatternResponse(JSONArray arrList,
                                            Invocable invocable,
                                            String text,
-                                           List<String> list) throws Exception {
+                                           List<String> list,
+                                           List<String> patterns) throws Exception {
+        List<List<String>> ans  = new ArrayList<>();
+
         for (int i = 0; i < arrList.size(); i++) {
             JSONObject obj2 = (JSONObject) arrList.get(i);
             String errorPattern = obj2.get("patterns").toString();
             JSONArray responses = (JSONArray) obj2.get("response");
             String[] resp = new String[responses.size()];
             for (int l = 0; l < responses.size(); l++) resp[l] = (String) responses.get(l);
-            ScriptObjectMirror matchResult = (ScriptObjectMirror) invocable.invokeFunction("stringMatch", errorPattern, "\"" + text + "\"", resp);
+            ScriptObjectMirror matchResult = (ScriptObjectMirror) invocable.invokeFunction("stringMatch",
+                                                                                            errorPattern, "\"" + text + "\"", resp);
             Collection<Object> matchValues = matchResult.values();
-
             if (matchValues.size() != 0) {
-                responseWrapper.setPatternsObj(errorPattern);
                 for (Iterator<Object> iterator = matchValues.iterator(); iterator.hasNext(); ) {
                     Object value = iterator.next();
                     if (value instanceof String) {
                         list.add((String) value);
+                        patterns.add(errorPattern);
                     }
                 }
             }
         }
-        return list;
+
+        ans.add(list);
+        ans.add(patterns);
+        return ans;
     }
 
 }
