@@ -22,7 +22,7 @@ function match(pat, obj, blists) {
     if (blists.length == 0) {
         return blists;
     } else if (isVar(pat)) {
-        return matchItem(pat, obj, blists);
+        return bindVar(pat, obj, blists);
     } else if (typeof pat == "string") {
         return matchSubString(pat, obj, blists);
     } else if (isPrimitive(pat)) {
@@ -121,25 +121,29 @@ function matchSome(pat, obj, blists) {
     }, []);
 }
 
-function matchItem(x, val, blists) {
+function bindVar(x, val, blists) {
     return blists.reduce(function (accumulator, blist) {
         return accumulator.concat(matchVar(x, val, blist));
     }, []);
 }
 
-function matchVar(x, val, blist) {
-    if (x in blist) {
-        if (match(blist[x], val).length) return blist;
-        else return [];
+function matchVar(varx, val, blist) {
+    if (varx in blist) {
+        return isVarInBinding(varx, val, blist);
     }
     var newblist = {};
     for (var attrname in blist) {
         newblist[attrname] = blist[attrname];
     }
-    newblist[x] = val;
+    newblist[varx] = val;
     return newblist;
 }
 
+function isVarInBinding(varx, val, blist) {
+    if (match(blist[varx], val).length) return blist;
+    else return [];
+}
+
 function isVar(x) {
-    return (typeof x) == "string" && x.startsWith('?');
+    return (typeof x) === 'string' && x.startsWith('?');
 }

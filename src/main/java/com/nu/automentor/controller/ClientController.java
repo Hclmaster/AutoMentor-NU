@@ -56,7 +56,7 @@ public class ClientController {
 
         for (int i = 0; i < categoryReg.length; i++) {
             ScriptObjectMirror obj = (ScriptObjectMirror) invocable.invokeFunction("stringMatch",
-                                                                                    categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
+                    categoryReg[i], "\"" + requestWrapper.getMessage() + "\"", null);
             Collection<Object> values = obj.values();
             if (values.size() != 0) {
                 System.out.println("category => " + category[i]);
@@ -159,10 +159,10 @@ public class ClientController {
     }
 
     public List<List<String>> addPatternResponse(JSONArray arrList,
-                                           Invocable invocable,
-                                           String text,
-                                           List<String> list,
-                                           List<String> patterns) throws Exception {
+                                                 Invocable invocable,
+                                                 String text,
+                                                 List<String> list,
+                                                 List<String> patterns) throws Exception {
         List<List<String>> ans  = new ArrayList<>();
 
         for (int i = 0; i < arrList.size(); i++) {
@@ -172,7 +172,7 @@ public class ClientController {
             String[] resp = new String[responses.size()];
             for (int l = 0; l < responses.size(); l++) resp[l] = (String) responses.get(l);
             ScriptObjectMirror matchResult = (ScriptObjectMirror) invocable.invokeFunction("stringMatch",
-                                                                                            errorPattern, "\"" + text + "\"", resp);
+                    errorPattern, "\"" + text + "\"", resp);
             Collection<Object> matchValues = matchResult.values();
             if (matchValues.size() != 0) {
                 for (Iterator<Object> iterator = matchValues.iterator(); iterator.hasNext(); ) {
