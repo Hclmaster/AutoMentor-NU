@@ -1,0 +1,163 @@
+{
+  "14282": {
+    "pattern": {
+      "mentorResponses": {
+        "and": [
+          {
+            "some": {
+              "request": {
+                "sourceTexts": {
+                  "some": {
+                    "source": "\/[.]java\/i"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "not-some": {
+              "request": {
+                "sourceTexts": {
+                  "some": {
+                    "source": "\/Compiler output\/i"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "13806": {
+    "pattern": {}
+  },
+  "13791": {
+    "pattern": {
+      "stepConcepts": {
+        "some": "entities"
+      },
+      "mentorResponses": {
+        "some": {
+          "request": {
+            "sourceTexts": {
+              "some": {
+                "source": "\/Compiler output\/i",
+                "lines": {
+                  "some": {
+                    "text": "\/Unknown entity\/"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "13792": {
+    "pattern": {
+      "stepConcepts": {
+        "and": [
+          {
+            "some": "spring security"
+          },
+          {
+            "some": "json"
+          }
+        ]
+      },
+      "mentorResponses": {
+        "some": {
+          "request": {
+            "sourceTexts": {
+              "some": {
+                "source": "\/Server\/i",
+                "lines": {
+                  "some": {
+                    "text": "\/Unexpected token\/"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "13799": {
+    "pattern": {
+      "mentorResponses": {
+        "some": {
+          "request": {
+            "sourceTexts": {
+              "some": {
+                "source": "\/Compiler output\/i",
+                "lines": {
+                  "some": {
+                    "text": "\/NoSuchMethodError\/"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "13804": {
+    "pattern": {
+      "stepConcepts": {
+        "some": "java"
+      },
+      "mentorResponses": {
+        "some": {
+          "request": {
+            "sourceTexts": {
+              "some": {
+                "source": "\/Compiler output\/i",
+                "lines": {
+                  "some": {
+                    "text": "\/Collection[.]add.*not applicable\/"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "15000": {
+    "pattern": {
+      "stepConcepts": {
+        "some": "java"
+      },
+      "mentorResponses": {
+        "some": {
+          "request": {
+            "sourceTexts": {
+              "some": {
+                "source": "\/Compiler output\/i",
+                "lines": {
+                  "and": [
+                    {
+                      "some": {
+                        "text": "\/mappedBy\/"
+                      }
+                    },
+                    {
+                      "some": {
+                        "text": "\/unknown target\/"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

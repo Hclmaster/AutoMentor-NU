@@ -1,0 +1,17 @@
+{
+  "1": {
+    "response": [
+      "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">This Guide</a>",
+      "Try to search with keywords \"How function call works in Racket\"",
+      "Have a look at the <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/274374383779\">Course Video</a>"
+    ]
+  },
+  "2": {
+    "response": [
+      "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",
+      "Check that you don't misspell the ?x function",
+      "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
+      "Take a look at ?x documentation."
+    ]
+  }
+}

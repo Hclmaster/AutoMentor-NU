@@ -6,6 +6,7 @@ public class RequestWrapper {
     private StudentEntity student;
     private List<DataEntity> textBlocks;
     private String message;
+    private String source;
 
     public StudentEntity getStudent() {
         return student;
@@ -29,5 +30,13 @@ public class RequestWrapper {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }

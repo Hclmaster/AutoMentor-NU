@@ -1,20 +1,17 @@
-function stringMatch(pat, obj, responses) {
-    var result = match(JSON.parse(pat), JSON.parse(obj));
-    //print('result => ', result.length);
-    if (responses == null && result.length != 0) return [{}];
-    else if(result.length == 0) return [];
-    var newReponses = [];
-
-    for(var i=0; i<responses.length; i++){
-        var response = responses[i];
-        for(var j=0; j<result.length; j++){
-            Object.keys(result[j]).forEach(function (key) {
-                response = response.replace(new RegExp("\\"+key, "g"), result[j][key]);
-            })
+function patternMatcher(pats, obj, str) {
+    var newResponses = [];
+    for(var pat in pats) {
+        var result = match(JSON.parse(pats[pat].pattern.request), JSON.parse(str));
+        if(result.length){
+            var responses = obj[pat].response;
+            var accumulator = [];
+            for(var id in responses) {
+                accumulator.push(responses[id]);
+            }
+            newResponses = newResponses.concat(accumulator);
         }
-        newReponses[i] = response;
     }
-    return newReponses;
+    return newResponses;
 }
 
 function match(pat, obj, blists) {

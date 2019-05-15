@@ -1,0 +1,22 @@
+{
+  "1":{
+    "pattern":{
+      "request":{
+        "inputMessage": {"reg":  "error|n't defined"},
+        "sourceCode": {"reg": "\\([^\\s]+ \\("},
+        "compilerOutput": {"reg":  "expected a function .* but"},
+        "source":  "exercise2"
+      }
+    }
+  },
+  "2":{
+    "pattern":{
+      "request":{
+        "inputMessage": {"reg":  "error|n't defined"},
+        "sourceCode": {"or": [{"reg": "\\([^\\s]+ \\("}, null]},
+        "compilerOutput": {"reg": "([^\\s]+)( is)? not defined|put ([^\\s]+) .*n't defined", "pats": ["?x"]},
+        "source": "exercise2"
+      }
+    }
+  }
+}
