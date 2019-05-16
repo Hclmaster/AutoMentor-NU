@@ -6,6 +6,12 @@ function patternMatcher(pats, obj, str) {
             var responses = obj[pat].response;
             var accumulator = [];
             for(var id in responses) {
+                for(var j=0; j<result.length; j++){
+                    Object.keys(result[j]).forEach(function (key) {
+                        responses[id] = responses[id].replace(
+                            new RegExp("\\"+key, "g"), result[j][key]);
+                    })
+                }
                 accumulator.push(responses[id]);
             }
             newResponses = newResponses.concat(accumulator);

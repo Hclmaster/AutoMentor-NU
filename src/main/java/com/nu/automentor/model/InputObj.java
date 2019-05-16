@@ -3,7 +3,7 @@ package com.nu.automentor.model;
 public class InputObj {
     private String inputMessage;
     private String sourceCode;
-    private String compilerOutput;
+    private String computerOutput;
     private String source;
 
     public String getInputMessage() {
@@ -22,12 +22,12 @@ public class InputObj {
         this.sourceCode = sourceCode;
     }
 
-    public String getCompilerOutput() {
-        return compilerOutput;
+    public String getComputerOutput() {
+        return computerOutput;
     }
 
-    public void setCompilerOutput(String compilerOutput) {
-        this.compilerOutput = compilerOutput;
+    public void setComputerOutput(String computerOutput) {
+        this.computerOutput = computerOutput;
     }
 
     public String getSource() {

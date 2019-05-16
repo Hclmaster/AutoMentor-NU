@@ -61,7 +61,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise2"
   },
   {
     "textBlocks":[
@@ -83,7 +84,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise1"
   },
   {
     "textBlocks":[
@@ -105,7 +107,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise2"
   },
   {
     "textBlocks":[
@@ -122,7 +125,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise2"
   },
   {
     "textBlocks":[
@@ -144,7 +148,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise2"
   },
   {
     "textBlocks":[
@@ -161,7 +166,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise2"
   },
   {
     "textBlocks":[
@@ -178,7 +184,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise3"
   },
   {
     "textBlocks":[
@@ -195,7 +202,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise4"
   },
   {
     "textBlocks": [
@@ -217,7 +225,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise4"
   },
   {
     "textBlocks":[
@@ -234,7 +243,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Error"
+    "category": "Error",
+    "source": "exercise4"
   },
   {
     "textBlocks":[
@@ -261,7 +271,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Confused"
+    "category": "Confused",
+    "source": "exercise2"
   },
   {
     "textBlocks":[
@@ -278,7 +289,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Confused"
+    "category": "Confused",
+    "source": "exercise3"
   },
   {
     "textBlocks":[
@@ -295,7 +307,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Confused"
+    "category": "Confused",
+    "source": "exam"
   },
   {
     "textBlocks":[],
@@ -306,7 +319,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise1"
   },
   {
     "textBlocks":[],
@@ -317,7 +331,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise1"
   },
   {
     "textBlocks":[],
@@ -328,7 +343,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise2"
   },
   {
     "textBlocks":[],
@@ -339,7 +355,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise2"
   },
   {
     "textBlocks":[],
@@ -350,7 +367,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise2"
   },
   {
     "textBlocks":[],
@@ -361,7 +379,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise2"
   },
   {
     "textBlocks":[],
@@ -372,7 +391,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise2"
   },
   {
     "textBlocks":[],
@@ -383,7 +403,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise2"
   },
   {
     "textBlocks":[],
@@ -394,7 +415,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise2"
   },
   {
     "textBlocks":[
@@ -416,7 +438,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Output doesn't match expected"
+    "category": "Output doesn't match expected",
+    "source": "exercise3"
   },
   {
     "textBlocks": [],
@@ -427,7 +450,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Output doesn't match expected"
+    "category": "Output doesn't match expected",
+    "source": "exercise3"
   },
   {
     "textBlocks": [
@@ -449,7 +473,8 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Stuck"
+    "category": "Stuck",
+    "source": "exercise3"
   },
   {
     "textBlocks": [
@@ -466,6 +491,7 @@
       "id": "clj8621"
     },
     "responses": [],
-    "category": "Confused"
+    "category": "Confused",
+    "source": "exercise4"
   }
 ]

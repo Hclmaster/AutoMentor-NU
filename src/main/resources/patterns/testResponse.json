@@ -10,8 +10,15 @@
     "response": [
       "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",
       "Check that you don't misspell the ?x function",
+      "Check that you already defined the ?x function",
+      "If <b>?x</b> is a variable, why don't put quote before it?",
       "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
       "Take a look at ?x documentation."
+    ]
+  },
+  "3": {
+    "response": [
+
     ]
   }
 }

@@ -1,6 +1,7 @@
 package com.nu.automentor.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nu.automentor.model.DataEntity;
 import com.nu.automentor.model.InputObj;
 import com.nu.automentor.model.RequestWrapper;
 import com.nu.automentor.model.ResponseWrapper;
@@ -72,16 +73,18 @@ public class ClientController {
             InputObj inputObj = new InputObj();
             inputObj.setInputMessage(requestWrapper.getMessage());
             inputObj.setSource(requestWrapper.getSource());
-            inputObj.setCompilerOutput(
+            inputObj.setComputerOutput(
                     requestWrapper.getTextBlocks().stream()
-                            .filter(x -> "compilerOutput".equals(x.getLabel()))
+                            .filter(x -> "computerOutput".equals(x.getType()))
+                            .map(DataEntity::getText)
                             .findAny()
-                            .orElse(null).getText());
+                            .orElse(null));
             inputObj.setSourceCode(
                     requestWrapper.getTextBlocks().stream()
                             .filter(x -> "sourceCode".equals(x.getType()))
+                            .map(DataEntity::getText)
                             .findAny()
-                            .orElse(null).getText());
+                            .orElse(null));
 
             objAsStr = objectMapper.writeValueAsString(inputObj);
         } catch (Exception e) {
@@ -118,6 +121,7 @@ public class ClientController {
      */
     public List<String> getMatchResponses(List<JSONObject> jsonObj,
                                           String objAsStr) {
+        System.out.println("objAsStr => " + objAsStr);
         List<String> responses = new ArrayList<>();
         try {
             Invocable invocable = (Invocable) loadNashornEngine();
