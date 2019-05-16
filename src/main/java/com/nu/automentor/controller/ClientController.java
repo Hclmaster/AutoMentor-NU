@@ -72,7 +72,6 @@ public class ClientController {
             ObjectMapper objectMapper = new ObjectMapper();
             InputObj inputObj = new InputObj();
             inputObj.setInputMessage(requestWrapper.getMessage());
-            inputObj.setSource(requestWrapper.getSource());
             inputObj.setComputerOutput(
                     requestWrapper.getTextBlocks().stream()
                             .filter(x -> "computerOutput".equals(x.getType()))
@@ -131,9 +130,8 @@ public class ClientController {
 
             Collection<Object> values = obj.values();
             if (values.size() != 0) {
-                Iterator<Object> iterator = values.iterator();
-                while (iterator.hasNext()) {
-                    responses.add((String) iterator.next());
+                for (Object value : values) {
+                    responses.add((String) value);
                 }
             }
         } catch (Exception e) {

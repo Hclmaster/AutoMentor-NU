@@ -1,24 +1,32 @@
 {
   "1": {
     "response": [
+      "Show me what actually code input is",
       "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">This Guide</a>",
       "Try to search with keywords \"How function call works in Racket\"",
-      "Have a look at the <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/274374383779\">Course Video</a>"
+      "Have a look at the <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/274374383779\">Course Video</a>",
+      "Check that whether you defined the function <b>?x</b> or variable <b>?x</b> in your code."
     ]
   },
   "2": {
     "response": [
-      "There is a non-existent ?x referenced somewhere. ?x needs to be declared, or you need make sure ?x is available in your current script or scope.",
-      "Check that you don't misspell the ?x function",
-      "Check that you already defined the ?x function",
-      "If <b>?x</b> is a variable, why don't put quote before it?",
+      "There is a non-existent <b>?y</b> referenced somewhere. <b>?y</b> needs to be declared, or you need make sure <b>?y</b> is available in your current script or scope.",
+      "Check that you don't misspell the <b>?x</b> function",
+      "Check that you already defined the <b>?x</b> function",
+      "If <b>?y</b> is a variable, why put parentheses before it?",
+      "Try to remove parentheses between variables inside the <b>?x</b> function and put quote before it",
       "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
-      "Take a look at ?x documentation."
+      "Take a look at <b>?x</b> documentation."
     ]
   },
   "3": {
     "response": [
-
+      "There is a non-existent <b>?x</b> referenced somewhere. <b>?x</b> needs to be declared, or you need make sure <b>?x</b> is available in your current script or scope.",
+      "Check that you don't misspell the <b>?x</b> function",
+      "Check that you already defined the <b>?x</b> function",
+      "If <b>?y</b> is a variable, why don't put quote before it?",
+      "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
+      "Take a look at <b>?x</b> documentation on how to define variables."
     ]
   }
 }

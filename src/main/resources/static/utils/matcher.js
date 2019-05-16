@@ -6,18 +6,29 @@ function patternMatcher(pats, obj, str) {
             var responses = obj[pat].response;
             var accumulator = [];
             for(var id in responses) {
+                var tmpResponse = responses[id];
                 for(var j=0; j<result.length; j++){
                     Object.keys(result[j]).forEach(function (key) {
-                        responses[id] = responses[id].replace(
-                            new RegExp("\\"+key, "g"), result[j][key]);
+                        if(result[j][key] !== 'variable') {
+                            tmpResponse = tmpResponse.replace(
+                                new RegExp("\\" + key, "g"), result[j][key]);
+                        }
                     })
                 }
-                accumulator.push(responses[id]);
+                if(!containsVar(tmpResponse)) {
+                    accumulator.push(tmpResponse);
+                }
             }
             newResponses = newResponses.concat(accumulator);
         }
     }
     return newResponses;
+}
+
+function containsVar(response) {
+    var reg = new RegExp("\\?[\\w]", "g");
+    if(reg.exec(response) === null) return false;
+    return true;
 }
 
 function match(pat, obj, blists) {
