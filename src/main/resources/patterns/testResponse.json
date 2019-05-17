@@ -61,5 +61,28 @@
     "response": [
       "Show me the actually code you tried and corresponding output"
     ]
+  },
+  "10": {
+    "response": [
+      "There is a non-existent <b>?z</b> referenced somewhere. <b>?z</b> needs to be declared, or you need make sure <b>?z</b> is available in your current script or scope.",
+      "Check that you don't misspell the <b>?z</b> function",
+      "Check that you already defined the <b>?z</b> function",
+      "If <b>?y</b> is a variable, why don't put quote before it?",
+      "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
+      "Take a look at <b>?z</b> documentation on how to define variables.",
+      "Try to search with keywords <b>&quot;how to ?x in Racket&quot;</b>"
+    ]
+  },
+  "11": {
+    "response": [
+      "There is a non-existent <b>?z</b> referenced somewhere. <b>?z</b> needs to be declared, or you need make sure <b>?z</b> is available in your current script or scope.",
+      "Check that you don't misspell the <b>?z</b> function",
+      "Check that you already defined the <b>?z</b> function",
+      "If <b>?y</b> is a variable, why put parentheses before it?",
+      "Try to remove parentheses between variables inside the <b>?z</b> function and put quote before it",
+      "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
+      "Take a look at <b>?z</b> documentation.",
+      "Try to search with keywords <b>&quot;how to ?x in Racket&quot;</b>"
+    ]
   }
 }

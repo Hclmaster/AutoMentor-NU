@@ -5,9 +5,9 @@
         "inputMessage": {"reg":  "error|n't defined"},
         "sourceCode": null,
         "computerOutput": {"or": [{"reg":  "expected a function .* but"},
-          {"reg": "([^\\s]+)( is)? (?:not defined|undefined)", "pats": ["?x"]},
-          {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?x"]},
-          {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?x"]}]}
+                                  {"reg": "([^\\s]+)( is)? not defined", "pats": ["?x"]},
+                                  {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?x"]},
+                                  {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?x"]}]}
       }
     }
   },
@@ -18,9 +18,9 @@
         "inputMessage": {"reg":  "error|n't defined"},
         "sourceCode": {"reg": "\\(([^\\s]+) \\(.*", "pats": ["?x"]},
         "computerOutput": {"or": [{"reg":  "expected a function .* but"},
-          {"reg": "([^\\s]+)( is)? (?:not defined|undefined)", "pats": ["?y"]},
-          {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
-          {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
+                                  {"reg": "([^\\s]+)( is)? not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
       }
     }
   },
@@ -30,9 +30,9 @@
         "inputMessage": {"reg":  "error|n't defined"},
         "sourceCode": {"reg": "\\(([^\\s]+) .*", "pats": ["?x"]},
         "computerOutput": {"or": [{"reg":  "expected a function .* but"},
-          {"reg": "([^\\s]+)( is)? (?:not defined|undefined)", "pats": ["?y"]},
-          {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
-          {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
+                                  {"reg": "([^\\s]+)( is)? not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
       }
     }
   },
@@ -91,13 +91,13 @@
       "request": {
         "inputMessage": {"reg": "[H|h]ow (?:to|can|do).*|stuck|[S|s]tuck"},
         "stuckInput": {"or": [{"reg": "[H|h]ow (?:to|can)+ ([^\\?]+)", "pats": ["?x"]},
-          {"reg": "Stuck [in|at]+ (?:the)+ ([^\\s]+)", "pats": ["?x"]},
-          null]},
+                              {"reg": "Stuck [in|at]+ (?:the)+ ([^\\s]+)", "pats": ["?x"]},
+                              null]},
         "sourceCode": {"reg": "\\(([^\\s]+) .*", "pats": ["?z"]},
         "computerOutput": {"or": [{"reg":  "expected a function .* but"},
-          {"reg": "([^\\s]+)( is)? (?:not defined|undefined)", "pats": ["?y"]},
-          {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
-          {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
+                                  {"reg": "([^\\s]+)( is)? not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
       }
     }
   },
@@ -106,13 +106,13 @@
       "request": {
         "inputMessage": {"reg": "[H|h]ow (?:to|can|do).*|stuck|[S|s]tuck"},
         "stuckInput": {"or": [{"reg": "[H|h]ow (?:to|can)+ ([^\\?]+)", "pats": ["?x"]},
-          {"reg": "Stuck [in|at]+ (?:the)+ ([^\\s]+)", "pats": ["?x"]},
-          null]},
+                              {"reg": "Stuck [in|at]+ (?:the)+ ([^\\s]+)", "pats": ["?x"]},
+                              null]},
         "sourceCode": {"reg": "\\(([^\\s]+) \\(.*", "pats": ["?z"]},
         "computerOutput": {"or": [{"reg":  "expected a function .* but"},
-          {"reg": "([^\\s]+)( is)? (?:not defined|undefined)", "pats": ["?y"]},
-          {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
-          {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
+                                  {"reg": "([^\\s]+)( is)? not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]},
+                                  {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
       }
     }
   }
