@@ -251,17 +251,12 @@
       {
         "label": "Function",
         "text": "What is function interpolate-colors?",
-        "type": "Confusion-Input"
-      },
-      {
-        "label": "FunctionUsage",
-        "text": "How can I use it?",
-        "type": "Confusion-Input"
+        "type": "ConfusionInput"
       },
       {
         "label": "Parameters",
         "text": "What does weight refers to?",
-        "type": "Confusion-Input"
+        "type": "ConfusionInput"
       }
     ],
     "message": "What is function interpolate-colors and how can I use it? What does weight refers to? c1: color? c2: color? weight: number?",
@@ -279,7 +274,7 @@
       {
         "label": "Function",
         "text": "What function to use to get a boolean answer at the end?",
-        "type": "Confusion-Input"
+        "type": "ConfusionInput"
       }
     ],
     "message": "Any tips on what function to use to get a boolean answer at the end?",
@@ -297,7 +292,7 @@
       {
         "label": "Concept",
         "text": "What the difference between ordinary, tail and iterative recursion?",
-        "type": "Confusion-Input"
+        "type": "ConfusionInput"
       }
     ],
     "message": "Still kind of confused on the difference between ordinary, tail and iterative recursion?",

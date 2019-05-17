@@ -28,5 +28,27 @@
       "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
       "Take a look at <b>?x</b> documentation on how to define variables."
     ]
+  },
+  "4": {
+    "response": [
+      "Try to search with keywords \"racket function <b>?x</b>\" and try some examples",
+      "Take a look at racket documentation of <b>?x</b>."
+    ]
+  },
+  "5": {
+    "response": [
+      "Show me what you tried.",
+      "Try to search with keywords racket <b>?x</b> and try some examples."
+    ]
+  },
+  "6": {
+    "response": [
+      "Try to search with the difference between <b>?x</b> and <b>?y</b>"
+    ]
+  },
+  "7": {
+    "response": [
+      "Which part did you get confused? Please type in your question!"
+    ]
   }
 }

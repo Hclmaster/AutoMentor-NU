@@ -34,5 +34,37 @@
                                   {"reg": "([^\\s]+): expects.*[but|given]", "pats": ["?y"]}]}
       }
     }
+  },
+  "4": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])"},
+        "confusionInputs": {"some": {"reg":  "[W|w]hat [(is|does)] ?.* function ([^\\s]+)", "pats": ["?x"]}}
+      }
+    }
+  },
+  "5": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])|[D|d]o not know"},
+        "confusionInputs": {"some": {"reg": "[W|w]hat.*to use.*to ([^?]+)", "pats": ["?x"]}}
+      }
+    }
+  },
+  "6": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])|[D|d]o not know"},
+        "confusionInputs": {"some": {"reg": "the difference between (.*) and ([^\\?]+)", "pats": ["?x", "?y"]}}
+      }
+    }
+  },
+  "7": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])|[D|d]o not know"},
+        "confusionInputs": []
+      }
+    }
   }
 }

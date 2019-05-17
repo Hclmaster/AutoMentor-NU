@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ClientController {
@@ -76,14 +77,22 @@ public class ClientController {
                     requestWrapper.getTextBlocks().stream()
                             .filter(x -> "computerOutput".equals(x.getType()))
                             .map(DataEntity::getText)
-                            .findAny()
-                            .orElse(null));
+                            .findAny().orElse(null));
             inputObj.setSourceCode(
                     requestWrapper.getTextBlocks().stream()
                             .filter(x -> "sourceCode".equals(x.getType()))
                             .map(DataEntity::getText)
-                            .findAny()
-                            .orElse(null));
+                            .findAny().orElse(null));
+            inputObj.setConfusionInputs(
+                    requestWrapper.getTextBlocks().stream()
+                            .filter(x -> "ConfusionInput".equals(x.getType()))
+                            .map(DataEntity::getText)
+                            .collect(Collectors.toList()));
+            inputObj.setExpectedOutput(
+                    requestWrapper.getTextBlocks().stream()
+                            .filter(x -> "expectedOutput".equals(x.getType()))
+                            .map(DataEntity::getText)
+                            .findAny().orElse(null));
 
             objAsStr = objectMapper.writeValueAsString(inputObj);
         } catch (Exception e) {
@@ -121,6 +130,7 @@ public class ClientController {
     public List<String> getMatchResponses(List<JSONObject> jsonObj,
                                           String objAsStr) {
         System.out.println("objAsStr => " + objAsStr);
+        System.out.println("jsonObj => " + jsonObj);
         List<String> responses = new ArrayList<>();
         try {
             Invocable invocable = (Invocable) loadNashornEngine();

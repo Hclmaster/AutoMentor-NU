@@ -32,8 +32,8 @@ function containsVar(response) {
 }
 
 function match(pat, obj, blists) {
-    if (blists == undefined) blists = [{}];
-    if (blists.length == 0) {
+    if (blists === undefined) blists = [{}];
+    if (blists.length === 0) {
         return blists;
     } else if (isVar(pat)) {
         return bindVar(pat, obj, blists);
@@ -65,7 +65,7 @@ function matchSubString(pat, obj, blists) {
 
 function isPrimitive(x) {
     let type = (typeof x);
-    return x == null || type == "undefined" ||
+    return x === null || type == "undefined" ||
         type == "number" || type == "string" ||
         type == "boolean";
 }
@@ -80,11 +80,11 @@ function regexMatch(pat, obj, blists) {
     let regExp = new RegExp(pat.reg, "g");
     let regResults = regExp.exec(obj);
 
-    if(regResults == null) return [];
+    if(regResults === null) return [];
 
     let pats = pat.pats || [];
     var filtered = regResults.filter(function (el) {
-        return el != null;
+        return el !== null;
     });
     return match(pats, filtered.slice(1, pats.length+1), blists);
 }

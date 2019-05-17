@@ -1,25 +1,27 @@
 package com.nu.automentor.myTest;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
-import net.sf.json.JSONObject;
-
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import static com.nu.automentor.myTest.MatcherTest.loadNashornEngine;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class JavaTest {
     public static void main(String[] args) throws Exception{
-
+        JSONObject obj = new JSONObject();
+        JSONArray array = new JSONArray();
+        obj.put("label", "Function");
+        obj.put("text", "What is function interpolate-colors?");
+        obj.put("type", "ConfusionInput");
+        array.add(obj);
+        obj.clear();
+        obj.put("label", "Parameters");
+        obj.put("text", "What does weight refers to?");
+        obj.put("type", "ConfusionInput");
+        obj.clear();
+        obj.put("label", "Parameters");
+        obj.put("text", "test does weight refers to?");
+        obj.put("type", "test");
+        array.add(obj);
+        JSONObject ans = new JSONObject();
+        ans.put("textBlocks", array);
+        System.out.println("ans => " + ans);
     }
 }
