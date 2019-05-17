@@ -93,7 +93,11 @@ public class ClientController {
                             .filter(x -> "expectedOutput".equals(x.getType()))
                             .map(DataEntity::getText)
                             .findAny().orElse(null));
-
+            inputObj.setStuckInput(
+                    requestWrapper.getTextBlocks().stream()
+                    .filter(x -> "StuckInput".equals(x.getType()))
+                    .map(DataEntity::getText)
+                    .findAny().orElse(null));
             objAsStr = objectMapper.writeValueAsString(inputObj);
         } catch (Exception e) {
             e.printStackTrace();

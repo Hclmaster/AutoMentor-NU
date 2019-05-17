@@ -8,6 +8,7 @@ public class InputObj {
     private String computerOutput;
     private String expectedOutput;
     private String source;
+    private String stuckInput;
     private List<String> confusionInputs;
 
     public String getInputMessage() {
@@ -56,5 +57,13 @@ public class InputObj {
 
     public void setConfusionInputs(List<String> confusionInputs) {
         this.confusionInputs = confusionInputs;
+    }
+
+    public String getStuckInput() {
+        return stuckInput;
+    }
+
+    public void setStuckInput(String stuckInput) {
+        this.stuckInput = stuckInput;
     }
 }

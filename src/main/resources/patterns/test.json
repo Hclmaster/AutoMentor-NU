@@ -66,5 +66,23 @@
         "confusionInputs": []
       }
     }
+  },
+  "8": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "[H|h]ow (?:to|can|do).*|stuck|[S|s]tuck"},
+        "stuckInput": {"reg": "[H|h]ow (?:to|can)+ ([^\\?]+)", "pats": ["?x"]},
+        "sourceCode": null
+      }
+    }
+  },
+  "9": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "[H|h]ow (?:to|can|do).*|stuck|[S|s]tuck"},
+        "stuckInput": {"reg": "Stuck [in|at]+ (?:the)+ ([^\\s]+)", "pats": ["?x"]},
+        "sourceCode": null
+      }
+    }
   }
 }

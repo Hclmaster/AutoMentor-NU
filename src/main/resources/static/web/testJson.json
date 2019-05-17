@@ -306,7 +306,13 @@
     "source": "exam"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "How to move the stars from left to center?",
+        "type": "StuckInput"
+      }
+    ],
     "message": "How to move Image in Scheme?",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=27\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -318,7 +324,13 @@
     "source": "exercise1"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "How to align images to the correct position?",
+        "type": "StuckInput"
+      }
+    ],
     "message": "How to align images to the correct position?",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=52\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -330,7 +342,13 @@
     "source": "exercise1"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "How to add the alpha component when using the interpolate-colors?",
+        "type": "StuckInput"
+      }
+    ],
     "message": "How to add the alpha component when using the interpolate-colors?",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=78\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -342,7 +360,13 @@
     "source": "exercise2"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
+        "type": "StuckInput"
+      }
+    ],
     "message": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=79\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -354,7 +378,13 @@
     "source": "exercise2"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "Stuck in the swatch part.",
+        "type": "StuckInput"
+      }
+    ],
     "message": "Stuck in the swatch part. Notice that each fraction should be n*[1/(num-squares-1)] but when tried to use the quotient function, it's always rounded so does not work.",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=95\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -366,7 +396,13 @@
     "source": "exercise2"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "How to use interpolate-colors to get the rows slowly transitioning to black.",
+        "type": "StuckInput"
+      }
+    ],
     "message": "How to use interpolate-colors to get the rows slowly transitioning to black. Where to put that in the code. Do you nest iterated-beside inside iterated-above?",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=98\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -378,7 +414,13 @@
     "source": "exercise2"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "How to interpolate the specific number of squares one inputs when calling swatch?",
+        "type": "StuckInput"
+      }
+    ],
     "message": "How can we interpolate the specific number of squares one inputs when calling swatch? If I put num-squares for the number of iterations, it isn't defined. I tried putting iterated-beside after lambda, but that didn't work either.",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=99\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -390,7 +432,13 @@
     "source": "exercise2"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "How to up correctly use/order of swatch, iterated-above?",
+        "type": "StuckInput"
+      }
+    ],
     "message": "Having difficulty coming up with the correct use/order of swatch, iterated-above, etc. Any tips on how to start it off would be much appreciated.",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=100\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -402,7 +450,13 @@
     "source": "exercise2"
   },
   {
-    "textBlocks":[],
+    "textBlocks":[
+      {
+        "label": "StuckQuestion",
+        "text": "How to give iterated-beside a function?",
+        "type": "StuckInput"
+      }
+    ],
     "message": "How do we give iterated-beside a function that satisfies it when the only function we need the iterator for is inside the rectangle function?",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=103\" target=\"_blank\">Piazza Link</a>",
     "student":{
@@ -461,7 +515,7 @@
         "type": "computerOutput"
       }
     ],
-    "message": "Filter seems can’t to get it to work with strings.",
+    "message": "Stuck on Question 4, filter seems can’t to get it to work with strings.",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=148\" target=\"_blank\">Piazza Link</a>",
     "student":{
       "name": "Cathy",

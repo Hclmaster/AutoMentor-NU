@@ -50,5 +50,16 @@
     "response": [
       "Which part did you get confused? Please type in your question!"
     ]
+  },
+  "8": {
+    "response": [
+      "Try to search with keywords <b>&quot;how to ?x in Racket&quot;</b>",
+      "Show me the actually code you tried and corresponding output"
+    ]
+  },
+  "9": {
+    "response": [
+      "Show me the actually code you tried and corresponding output"
+    ]
   }
 }
