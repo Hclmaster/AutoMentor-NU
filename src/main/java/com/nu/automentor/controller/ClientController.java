@@ -19,10 +19,7 @@ import javax.script.ScriptEngine;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -38,7 +35,9 @@ public class ClientController {
         responseWrapper.setStudent(requestWrapper.getStudent());
         responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
         responseWrapper.setMessage(requestWrapper.getMessage());
-        responseWrapper.setResponse(getMatchResponses(jsonObj, objAsStr));
+        List<List<String>> patAndResp = getMatchResponses(jsonObj, objAsStr);
+        responseWrapper.setPatternsObj(patAndResp.get(0));
+        responseWrapper.setResponse(patAndResp.get(1));
 
         return responseWrapper;
     }
@@ -131,11 +130,11 @@ public class ClientController {
      * @param objAsStr
      * @return
      */
-    public List<String> getMatchResponses(List<JSONObject> jsonObj,
+    public List<List<String>> getMatchResponses(List<JSONObject> jsonObj,
                                           String objAsStr) {
-        System.out.println("objAsStr => " + objAsStr);
-        System.out.println("jsonObj => " + jsonObj);
+        List<List<String>> patResp = new ArrayList<>();
         List<String> responses = new ArrayList<>();
+        List<String> pats = new ArrayList<>();
         try {
             Invocable invocable = (Invocable) loadNashornEngine();
             ScriptObjectMirror obj = (ScriptObjectMirror)
@@ -145,13 +144,17 @@ public class ClientController {
             Collection<Object> values = obj.values();
             if (values.size() != 0) {
                 for (Object value : values) {
-                    responses.add((String) value);
+                    String[] ans = value.toString().split("\\{", 2);
+                    responses.add(ans[0]);
+                    pats.add(ans[1]);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return responses;
+        patResp.add(pats);
+        patResp.add(responses);
+        return patResp;
     }
 
 }

@@ -16,12 +16,13 @@ function patternMatcher(pats, obj, str) {
                     })
                 }
                 if(!containsVar(tmpResponse)) {
-                    accumulator.push(tmpResponse);
+                    accumulator.push(new Array(tmpResponse, pats[pat].pattern.request).toString());
                 }
             }
             newResponses = newResponses.concat(accumulator);
         }
     }
+    print('newResponses => ', newResponses);
     return newResponses;
 }
 
