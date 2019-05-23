@@ -9,10 +9,7 @@ import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -25,6 +22,7 @@ import java.util.stream.Collectors;
 @RestController
 public class ClientController {
 
+    @CrossOrigin
     @RequestMapping(value = "/api/form", method = RequestMethod.POST)
     public ResponseWrapper getResponses
             (@RequestBody RequestWrapper requestWrapper) {
