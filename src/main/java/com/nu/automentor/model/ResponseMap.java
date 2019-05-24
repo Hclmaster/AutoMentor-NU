@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ResponseMap{
+public class ResponseMap {
 
     private Map<String, Map<String, List<String>>> responseMap = new HashMap<>();
 
@@ -13,11 +13,11 @@ public class ResponseMap{
         loadJSON();
     }
 
-    public List<String> getResponses(String exercise, String topic){
+    public List<String> getResponses(String exercise, String topic) {
         return responseMap.get(exercise).get(topic);
     }
 
-    private void loadJSON(){}
+    private void loadJSON() {
+    }
 
 }
-

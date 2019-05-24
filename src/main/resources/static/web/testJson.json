@@ -22,7 +22,7 @@
     "patterns": null,
     "category": "Error",
     "source": "exercise2",
-    "diagnosis": "too much parentheses"
+    "diagnosis": "The student is putting too much parentheses in their code."
   },
   {
     "textBlocks":[
@@ -41,7 +41,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise2",
-    "diagnosis": "Don't know how to call function in Racket, and need to know the basic debug skills."
+    "diagnosis": "Don't know how to call function overlay in Racket, and need to know the basic debug skills."
   },
   {
     "textBlocks":[
@@ -65,7 +65,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise2",
-    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know the basic debug skills."
+    "diagnosis": "Don't know how to call function interpolate-colors correctly in Racket, and need to know the basic debug skills."
   },
   {
     "textBlocks":[
@@ -89,7 +89,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise1",
-    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
+    "diagnosis": "Don't know how to call function overlay/xy in Racket, and need to know how to use function by referring Racket document."
   },
   {
     "textBlocks":[
@@ -113,7 +113,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise2",
-    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
+    "diagnosis": "Don't know how to call function make-color in Racket, and need to know how to define function arguments by referring Racket document."
   },
   {
     "textBlocks":[
@@ -132,7 +132,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise2",
-    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
+    "diagnosis": "Student doesn't know how to call function Iterated-overlay in Racket, and need to know how to deal with situation with not defined error."
   },
   {
     "textBlocks":[
@@ -156,7 +156,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise2",
-    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
+    "diagnosis": "Student has difficulty calling function make-color, and it's due to they are not familiar with how to pass correct arguments to the function make-color"
   },
   {
     "textBlocks":[
@@ -175,7 +175,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise2",
-    "diagnosis": "Don't know how to call function in Racket, should take a look how to define arguments by referring the Racket documentation."
+    "diagnosis": "Student doesn't know how to call function swatch in Racket, should take a look how to define arguments by referring the Racket documentation."
   },
   {
     "textBlocks":[
@@ -194,7 +194,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise3",
-    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
+    "diagnosis": "Don't know how to pass arguments to function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
   },
   {
     "textBlocks":[
@@ -213,7 +213,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise4",
-    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
+    "diagnosis": "Don't know how to pass correct type of arguments to function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
   },
   {
     "textBlocks": [
@@ -237,7 +237,7 @@
     "responses": [],
     "category": "Error",
     "source": "exercise4",
-    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
+    "diagnosis": "Don't know how to correctly call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
   },
   {
     "textBlocks":[
