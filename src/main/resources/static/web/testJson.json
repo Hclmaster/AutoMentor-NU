@@ -317,9 +317,11 @@
     },
     "responses": [],
     "category": "Confused",
+    "diagnosis": null,
     "source": "exam"
   },
   {
+    "diagnosis": null,
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -338,6 +340,7 @@
     "source": "exercise1"
   },
   {
+    "diagnosis": "The student is not using overlay/xy",
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -356,6 +359,7 @@
     "source": "exercise1"
   },
   {
+    "diagnosis": null,
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -374,6 +378,7 @@
     "source": "exercise2"
   },
   {
+    "diagnosis": "The student is iterating too many times.",
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -392,6 +397,7 @@
     "source": "exercise2"
   },
   {
+    "diagnosis": "Student is using quotient instead of / for division",
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -410,6 +416,7 @@
     "source": "exercise2"
   },
   {
+    "diagnosis": "The student is not considering the reuse of the swatch function.",
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -428,6 +435,7 @@
     "source": "exercise2"
   },
   {
+    "diagnosis": "The student is trying to use a variable out of its scope.",
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -446,6 +454,7 @@
     "source": "exercise2"
   },
   {
+    "diagnosis": "The student is having a hard time figuring out how to reuse code.",
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -464,6 +473,7 @@
     "source": "exercise2"
   },
   {
+    "diagnosis": "The student is unsure how to compose higher order functions.",
     "textBlocks":[
       {
         "label": "StuckQuestion",
@@ -482,6 +492,7 @@
     "source": "exercise2"
   },
   {
+    "diagnosis": "The student is using a filter predicate that never returns true.",
     "textBlocks":[
       {
         "label": "compilerOutput",
@@ -505,6 +516,7 @@
     "source": "exercise3"
   },
   {
+    "diagnosis": "The student is trying to create a list from singleton elements with append instead of list.",
     "textBlocks": [],
     "message": "I cannot combine the name and the number by append.",
     "url": "<a href=\"https://piazza.com/class/jbzfbbon3nt32i?cid=142\" target=\"_blank\">Piazza Link</a>",
@@ -517,6 +529,7 @@
     "source": "exercise3"
   },
   {
+    "diagnosis": "The student is using an undefined predicate.",
     "textBlocks": [
       {
         "label": "inputCode",
@@ -540,6 +553,7 @@
     "source": "exercise3"
   },
   {
+    "diagnosis": "The student needs to include whitespace between the 1 and the open paren.",
     "textBlocks": [
       {
         "label": "inputCode",
