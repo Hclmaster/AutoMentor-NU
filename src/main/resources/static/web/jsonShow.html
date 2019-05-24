@@ -52,6 +52,7 @@
                 <th>#</th>
                 <th>Response</th>
                 <th>Details</th>
+                <th>Diagnosis</th>
             </tr>
             </thead>
             <tbody>
@@ -60,6 +61,8 @@
                 <td><span v-html="response"></span></td>
                 <!--<td><a v-bind:href="'showDetails.html?id='+key">Show Patterns!</a></td>-->
                 <td>{{value.patterns[index]}}</td>
+                <!-- TODO: Need to merge cells together -->
+                <td>{{value.diagnosis}}</td>
             </tr>
             </tbody>
         </table>
@@ -70,7 +73,7 @@
 
 <script>
     const userAction = async (key) => {
-        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+        const response = await fetch('http://localhost:8080/api/form', {
             method: 'POST',
             body: JSON.stringify(app.table_info[key]), // string or object
             headers:{
@@ -83,8 +86,9 @@
         app.table_info[key]["responses"] = myJson['response'];
         //console.log("info => ", app.table_info[key]["responses"]);
 
-        console.log("patterns string ====> ", myJson['patternsObj']);
+        //console.log("patterns string ====> ", myJson['patternsObj']);
         app.table_info[key]["patterns"] = myJson['patternsObj'];
+        console.log("table_info ===> ", app.table_info[key]["diagnosis"])
     }
 </script>
 

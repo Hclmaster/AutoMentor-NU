@@ -21,7 +21,8 @@
     "responses": [],
     "patterns": null,
     "category": "Error",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "too much parentheses"
   },
   {
     "textBlocks":[
@@ -39,7 +40,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "Don't know how to call function in Racket, and need to know the basic debug skills."
   },
   {
     "textBlocks":[
@@ -62,7 +64,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know the basic debug skills."
   },
   {
     "textBlocks":[
@@ -85,7 +88,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise1"
+    "source": "exercise1",
+    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
   },
   {
     "textBlocks":[
@@ -108,7 +112,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
   },
   {
     "textBlocks":[
@@ -126,7 +131,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
   },
   {
     "textBlocks":[
@@ -149,7 +155,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "Don't know how to call function and define variables in Racket, and need to know how to use function by referring Racket document."
   },
   {
     "textBlocks":[
@@ -167,7 +174,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "Don't know how to call function in Racket, should take a look how to define arguments by referring the Racket documentation."
   },
   {
     "textBlocks":[
@@ -185,7 +193,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise3"
+    "source": "exercise3",
+    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
   },
   {
     "textBlocks":[
@@ -203,7 +212,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise4"
+    "source": "exercise4",
+    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
   },
   {
     "textBlocks": [
@@ -226,7 +236,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise4"
+    "source": "exercise4",
+    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
   },
   {
     "textBlocks":[
@@ -244,7 +255,8 @@
     },
     "responses": [],
     "category": "Error",
-    "source": "exercise4"
+    "source": "exercise4",
+    "diagnosis": "Don't know how to call function in Racket, should take a look how to write correct arguments for different function by referring the Racket documentation."
   },
   {
     "textBlocks":[
@@ -267,7 +279,8 @@
     },
     "responses": [],
     "category": "Confused",
-    "source": "exercise2"
+    "source": "exercise2",
+    "diagnosis": "Should know how to call function in Racket by referring to the official documents."
   },
   {
     "textBlocks":[
@@ -285,7 +298,8 @@
     },
     "responses": [],
     "category": "Confused",
-    "source": "exercise3"
+    "source": "exercise3",
+    "diagnosis": "Don't have basic knowledge of the logic judgement in programming."
   },
   {
     "textBlocks":[
