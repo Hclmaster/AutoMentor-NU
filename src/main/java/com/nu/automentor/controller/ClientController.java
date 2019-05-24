@@ -143,8 +143,8 @@ public class ClientController {
             if (values.size() != 0) {
                 for (Object value : values) {
                     String[] ans = value.toString().split("\\{", 2);
-                    responses.add(ans[0]);
-                    pats.add(ans[1]);
+                    responses.add(ans[0].substring(0, ans[0].length()-1));
+                    pats.add("{" + ans[1]);
                 }
             }
         } catch (Exception e) {
