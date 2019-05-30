@@ -103,7 +103,8 @@
   },
   "17": {
     "response": [
-      "You put your branch-val in the if condition where will not have any branches."
+      "Try to remove parenthesis between <b>?y</b> in function <b>?x</b>.",
+      "It seems that you passed the wrong arguments to function <b>?x</b>."
     ]
   }
 }

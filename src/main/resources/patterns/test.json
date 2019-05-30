@@ -158,7 +158,8 @@
     "pattern": {
       "request": {
         "inputMessage": {"reg": "error|n't defined"},
-        "computerOutput": {"reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but)", "pats": ["?x"]}
+        "sourceCode": {"reg": "\\(([^\\s]+)"},
+        "computerOutput": {"reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but) \\(([^\\\\)]+)", "pats": ["?x", "?y"]}
       }
     }
   }
