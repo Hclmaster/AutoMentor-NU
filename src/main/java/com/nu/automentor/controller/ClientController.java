@@ -31,10 +31,11 @@ public class ClientController {
         responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
         responseWrapper.setMessage(requestWrapper.getMessage());
         List<List<String>> patAndResp = getMatchResponses(jsonObj, objAsStr);
-        System.out.println("patAndResp length => " + patAndResp.size());
         responseWrapper.setResponse(patAndResp.get(1));
         JSONParser parser = new JSONParser();
-        responseWrapper.setPatternsObj((JSONObject) parser.parse(patAndResp.get(0).get(0)));
+        if(patAndResp.get(0).size() > 0) {
+            responseWrapper.setPatternsObj((JSONObject) parser.parse(patAndResp.get(0).get(0)));
+        }else responseWrapper.setPatternsObj(null);
         return responseWrapper;
     }
 
@@ -43,7 +44,7 @@ public class ClientController {
      *
      * @return
      */
-    public ScriptEngine loadNashornEngine() {
+    private ScriptEngine loadNashornEngine() {
         try {
             ScriptEngine engine = new NashornScriptEngineFactory().getScriptEngine("--language=es6");
             InputStream is = getClass().getResourceAsStream("/static/utils/matcher.js");
@@ -62,7 +63,7 @@ public class ClientController {
      * @param requestWrapper
      * @return
      */
-    public String mapInputMsgToJSONStr(RequestWrapper requestWrapper) {
+    private String mapInputMsgToJSONStr(RequestWrapper requestWrapper) {
         String objAsStr = null;
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -105,7 +106,7 @@ public class ClientController {
      *
      * @return <patterns, responses>
      */
-    public List<JSONObject> loadJSONFiles() {
+    private List<JSONObject> loadJSONFiles() {
         List<JSONObject> jsons = new ArrayList<>();
         try {
             JSONParser parser = new JSONParser();
@@ -126,13 +127,14 @@ public class ClientController {
      * @param objAsStr
      * @return
      */
-    public List<List<String>> getMatchResponses(List<JSONObject> jsonObj,
-                                          String objAsStr) {
+    private List<List<String>> getMatchResponses(List<JSONObject> jsonObj,
+                                                 String objAsStr) {
         List<List<String>> patResp = new ArrayList<>();
         List<String> responses = new ArrayList<>();
         List<String> pats = new ArrayList<>();
         try {
             Invocable invocable = (Invocable) loadNashornEngine();
+            assert invocable != null;
             ScriptObjectMirror obj = (ScriptObjectMirror)
                     invocable.invokeFunction("patternMatcher", jsonObj.get(0),
                             jsonObj.get(1), objAsStr);

@@ -7,7 +7,7 @@ function patternMatcher(pats, obj, str) {
             var accumulator = [];
             for(var id in responses) {
                 var tmpResponse = responses[id];
-                for(var j=0; j<result.length; j++){
+                for(var j=0; j<result.length; j++) {
                     Object.keys(result[j]).forEach(function (key) {
                         if(result[j][key] !== 'variable') {
                             tmpResponse = tmpResponse.replace(
