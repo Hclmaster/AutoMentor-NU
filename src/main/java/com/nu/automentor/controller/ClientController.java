@@ -1,10 +1,7 @@
 package com.nu.automentor.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nu.automentor.model.DataEntity;
-import com.nu.automentor.model.InputObj;
-import com.nu.automentor.model.RequestWrapper;
-import com.nu.automentor.model.ResponseWrapper;
+import com.nu.automentor.model.*;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.json.simple.JSONObject;
@@ -25,7 +22,7 @@ public class ClientController {
     @CrossOrigin
     @RequestMapping(value = "/api/form", method = RequestMethod.POST)
     public ResponseWrapper getResponses
-            (@RequestBody RequestWrapper requestWrapper) {
+            (@RequestBody RequestWrapper requestWrapper) throws Exception {
         String objAsStr = mapInputMsgToJSONStr(requestWrapper);
         List<JSONObject> jsonObj = loadJSONFiles();
 
@@ -34,9 +31,10 @@ public class ClientController {
         responseWrapper.setTextBlocks(requestWrapper.getTextBlocks());
         responseWrapper.setMessage(requestWrapper.getMessage());
         List<List<String>> patAndResp = getMatchResponses(jsonObj, objAsStr);
-        responseWrapper.setPatternsObj(patAndResp.get(0));
+        System.out.println("patAndResp length => " + patAndResp.size());
         responseWrapper.setResponse(patAndResp.get(1));
-
+        JSONParser parser = new JSONParser();
+        responseWrapper.setPatternsObj((JSONObject) parser.parse(patAndResp.get(0).get(0)));
         return responseWrapper;
     }
 
@@ -150,7 +148,9 @@ public class ClientController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        patResp.add(pats);
+        // Remove duplicated patterns
+        List<String> patsWithoutDuplicates = pats.stream().distinct().collect(Collectors.toList());
+        patResp.add(patsWithoutDuplicates);
         patResp.add(responses);
         return patResp;
     }

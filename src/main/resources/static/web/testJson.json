@@ -119,7 +119,7 @@
     "textBlocks":[
       {
         "label":"compilerOutput",
-        "text": "Iterated-overlay not defined.",
+        "text": "function Iterated-overlay not defined.",
         "type": "computerOutput"
       }
     ],

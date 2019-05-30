@@ -2,53 +2,51 @@
   "1": {
     "response": [
       "Show me what actually code input is",
-      "Take a look at the chapter 2 of <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">This Guide</a>",
-      "Try to search with keywords \"How function call works in Racket\"",
-      "Have a look at the <a href=\"https://northwestern.app.box.com/s/sap41daa83qojrs4fxy9ri0nus9u2atv/file/274374383779\">Course Video</a>",
-      "Check that whether you defined the function <b>?x</b> or variable <b>?x</b> in your code."
+      "Check that you write the correct arguments inside function",
+      "Check that you spell the arguments correctly",
+      "Try to remove parenthesis between your arguments if they are only the variable."
     ]
   },
   "2": {
     "response": [
-      "There is a non-existent <b>?y</b> referenced somewhere. <b>?y</b> needs to be declared, or you need make sure <b>?y</b> is available in your current script or scope.",
-      "Check that you don't misspell the <b>?x</b> function",
-      "Check that you already defined the <b>?x</b> function",
-      "If <b>?y</b> is a variable, why put parentheses before it?",
-      "Try to remove parentheses between variables inside the <b>?x</b> function and put quote before it",
-      "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
-      "Take a look at <b>?x</b> documentation."
+      "Did you define the function <b>?x</b> in your code?",
+      "Check that there is no typo of the <b>?x</b> function"
     ]
   },
   "3": {
     "response": [
-      "There is a non-existent <b>?x</b> referenced somewhere. <b>?x</b> needs to be declared, or you need make sure <b>?x</b> is available in your current script or scope.",
       "Check that you don't misspell the <b>?x</b> function",
-      "Check that you already defined the <b>?x</b> function",
+      "If <b>?y</b> is a variable, why put parenthesis around it?",
       "If <b>?y</b> is a variable, why don't put quote before it?",
-      "Take a look at <a href=\"https://stackoverflow.com/questions/35319268/scheme-drracket-not-defined-error\">this discussion</a>",
       "Take a look at <b>?x</b> documentation on how to define variables."
     ]
   },
   "4": {
     "response": [
-      "Try to search with keywords \"racket function <b>?x</b>\" and try some examples",
-      "Take a look at racket documentation of <b>?x</b>."
+      "Your have to first define your variable <b>?y</b> in your code before call it inside function <b>?x</b>.",
+      "Did you define the variable <b>?y</b> elsewhere in your code?",
+      "Search with keyword 'How to call function <b>?x</b>' and try some examples!"
     ]
   },
   "5": {
     "response": [
-      "Show me what you tried.",
-      "Try to search with keywords racket <b>?x</b> and try some examples."
+      "It seems that you passed a function more input arguments than it expects to receive",
+      "Check to see if you forget to put parenthesis around arguments",
+      "Try to search with keyword 'How to call function <b>?x</b>' and try some examples!"
     ]
   },
   "6": {
     "response": [
-      "Try to search with the difference between <b>?x</b> and <b>?y</b>"
+      "Check the syntax of how to call function <b>?x</b>",
+      "Make sure you surround the arguments of function <b>?x</b> with parenthesis",
+      "Try search with 'How to call function <b>?x</b> and try some examples!",
+      "Take a look at <a href=\"https://stackoverflow.com/questions/33816917/racket-function-call-error\">this discussion with similar error message.</a>"
     ]
   },
   "7": {
     "response": [
-      "Which part did you get confused? Please type in your question!"
+      "Show me what you have already tried, what's your actual code?",
+      "It seems that you passed the wrong type of arguments to the function <b>?x</b>."
     ]
   },
   "8": {
