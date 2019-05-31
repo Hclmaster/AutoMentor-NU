@@ -33,12 +33,12 @@ public class ClientController {
         List<List<String>> patAndResp = getMatchResponses(jsonObj, objAsStr);
         responseWrapper.setResponse(patAndResp.get(1));
         JSONParser parser = new JSONParser();
-        if(patAndResp.get(0).size() > 0) {
+        if (patAndResp.get(0).size() > 0) {
             String patStr = patAndResp.get(0).get(0);
             JSONObject patObj = (JSONObject) parser.parse(patStr);
             responseWrapper.setPatternsObj(patObj);
             responseWrapper.setDiagnosis((String) patObj.get("diagnosis"));
-        }else responseWrapper.setPatternsObj(null);
+        } else responseWrapper.setPatternsObj(null);
         return responseWrapper;
     }
 
@@ -94,9 +94,9 @@ public class ClientController {
                             .findAny().orElse(null));
             inputObj.setStuckInput(
                     requestWrapper.getTextBlocks().stream()
-                    .filter(x -> "StuckInput".equals(x.getType()))
-                    .map(DataEntity::getText)
-                    .findAny().orElse(null));
+                            .filter(x -> "StuckInput".equals(x.getType()))
+                            .map(DataEntity::getText)
+                            .findAny().orElse(null));
             objAsStr = objectMapper.writeValueAsString(inputObj);
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,7 +132,6 @@ public class ClientController {
      */
     private List<List<String>> getMatchResponses(List<JSONObject> jsonObj,
                                                  String objAsStr) {
-        System.out.println("objAsStr => " + objAsStr);
         List<List<String>> patResp = new ArrayList<>();
         List<String> responses = new ArrayList<>();
         List<String> pats = new ArrayList<>();
@@ -147,7 +146,7 @@ public class ClientController {
             if (values.size() != 0) {
                 for (Object value : values) {
                     String[] ans = value.toString().split("\\{", 2);
-                    responses.add(ans[0].substring(0, ans[0].length()-1));
+                    responses.add(ans[0].substring(0, ans[0].length() - 1));
                     pats.add("{" + ans[1]);
                 }
             }

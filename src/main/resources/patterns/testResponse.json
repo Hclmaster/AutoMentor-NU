@@ -4,7 +4,8 @@
       "Show me what actually code input is",
       "Check that you write the correct arguments inside function",
       "Check that you spell the arguments correctly",
-      "Try to remove parenthesis between your arguments if they are only the variable."
+      "Try to remove parenthesis between your arguments if they are only the variable.",
+      "Try to take a look at the Explanation of Functions vs Expressions, and see if it helps you better understand how to call functions."
     ]
   },
   "2": {
@@ -18,7 +19,8 @@
       "Check that you don't misspell the <b>?x</b> function",
       "If <b>?y</b> is a variable, why put parenthesis around it?",
       "If <b>?y</b> is a variable, why don't put quote before it?",
-      "Take a look at <b>?x</b> documentation on how to define variables."
+      "Take a look at <b>?x</b> documentation on how to define variables.",
+      "Try to take a look at the Explanation of Functions vs Expressions, and see if it helps you better understand how to call functions."
     ]
   },
   "4": {
@@ -32,7 +34,8 @@
     "response": [
       "It seems that you passed a function more input arguments than it expects to receive",
       "Check to see if you forget to put parenthesis around arguments",
-      "Try to search with keyword 'How to call function <b>?x</b>' and try some examples!"
+      "Try to search with keyword 'How to call function <b>?x</b>' and try some examples!",
+      "Try to take a look at the Explanation of Functions vs Expressions, and see if it helps you better understand how to call functions."
     ]
   },
   "6": {
@@ -40,7 +43,8 @@
       "Check the syntax of how to call function <b>?x</b>",
       "Make sure you surround the arguments of function <b>?x</b> with parenthesis",
       "Try search with 'How to call function <b>?x</b> and try some examples!",
-      "Take a look at <a href=\"https://stackoverflow.com/questions/33816917/racket-function-call-error\">this discussion with similar error message.</a>"
+      "Take a look at <a href=\"https://stackoverflow.com/questions/33816917/racket-function-call-error\">this discussion with similar error message.</a>",
+      "Try to take a look at the Explanation of Functions vs Expressions, and see if it helps you better understand how to call functions."
     ]
   },
   "7": {

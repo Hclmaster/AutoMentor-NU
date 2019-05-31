@@ -1,0 +1,25 @@
+{
+  "exercise1": {
+    "iterated-overlay": [
+      "Also take a look at the function explanation in Appendix 1."
+    ],
+    "iterated-beside": [
+      "Take a look at the instruction inside exercise 1 again."
+    ],
+    "iterated-below": [
+      "Take a look at the instruction inside exercise 1 again."
+    ],
+    "color": [
+      "Take a look at instruction of color function inside Question 3 on page 3."
+    ],
+    "alpha": [
+      "Have a look at the instrunction of what is alpha value inside instruction 1 on page 4."
+    ],
+    "interpolate-colors": [
+      "Why not try to look at the explanation of interpolate-colors in 'Interclude' Part inside instruction 1 on page 5."
+    ],
+    "swatch": [
+      "Try to look at the instruction again of swatch inside instruction 1 of Question 6 on page 6."
+    ]
+  }
+}
