@@ -21,7 +21,7 @@
     "responses": [],
     "patterns": null,
     "category": "Error",
-    "source": "exercise2",
+    "source": "exercise1",
     "diagnosis": "The student is putting too much parentheses in their code."
   },
   {
