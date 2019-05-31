@@ -18,12 +18,15 @@ public class ResponseMap {
 
     private Map<String, Map<String, List<String>>> responseMap = new HashMap<>();
 
-    private ResponseMap() {
+    public ResponseMap() {
         loadExResourceJSON();
     }
 
     public List<String> getResponses(String exercise, String topic) {
-        return responseMap.get(exercise).get(topic);
+        if(responseMap.get(exercise) != null) {
+            return responseMap.get(exercise).get(topic);
+        }
+        return null;
     }
 
     private void loadExResourceJSON() {
@@ -36,16 +39,18 @@ public class ResponseMap {
                 Map<String, List<String>> funcHashMap = new HashMap<>();
                 value.keySet().forEach(funcName -> {
                     JSONArray array = (JSONArray) value.get(funcName);
-                    funcHashMap.put((String)funcName, (List<String>)array.stream().collect(Collectors.toList()));
+                    funcHashMap.put((String) funcName, (List<String>) array.stream().collect(Collectors.toList()));
                 });
-                responseMap.put((String)key, funcHashMap);
+                responseMap.put((String) key, funcHashMap);
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ResponseMap map = new ResponseMap();
+        List<String> responses= map.getResponses("exercise2", "iterated-overlay");
+        System.out.println("responses => " + responses);
     }
 }

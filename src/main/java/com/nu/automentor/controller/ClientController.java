@@ -32,12 +32,16 @@ public class ClientController {
         responseWrapper.setMessage(requestWrapper.getMessage());
         List<List<String>> patAndResp = getMatchResponses(jsonObj, objAsStr);
         responseWrapper.setResponse(patAndResp.get(1));
-        JSONParser parser = new JSONParser();
+
         if (patAndResp.get(0).size() > 0) {
-            String patStr = patAndResp.get(0).get(0);
+            List<String> pats = patAndResp.get(0);
+            String patStr = pats.stream().distinct().collect(Collectors.toList()).get(0);
+            JSONParser parser = new JSONParser();
             JSONObject patObj = (JSONObject) parser.parse(patStr);
-            responseWrapper.setPatternsObj(patObj);
+            responseWrapper.setPatternsObj(pats);
             responseWrapper.setDiagnosis((String) patObj.get("diagnosis"));
+            JSONObject topicsObj = (JSONObject) patObj.get("function");
+            getExResources(pats, patAndResp.get(1), requestWrapper.getSource(), topicsObj);
         } else responseWrapper.setPatternsObj(null);
         return responseWrapper;
     }
@@ -153,11 +157,28 @@ public class ClientController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Remove duplicated patterns
-        List<String> patsWithoutDuplicates = pats.stream().distinct().collect(Collectors.toList());
-        patResp.add(patsWithoutDuplicates);
+        patResp.add(pats);
         patResp.add(responses);
         return patResp;
+    }
+
+    /**
+     * Add more resources from Exercise Database.
+     * @param pats
+     * @param responses
+     * @param exercise
+     * @param topics
+     */
+    private void getExResources(List<String> pats, List<String> responses,
+                                String exercise, JSONObject topics) {
+        ResponseMap responseMap = new ResponseMap();
+        topics.keySet().forEach(topic -> {
+            List<String> mapResponses = responseMap.getResponses(exercise, (String) topics.get(topic));
+            if (mapResponses != null) {
+                responses.addAll(mapResponses);
+                pats.add("Added from Exercise Resource Database.");
+            }
+        });
     }
 
 }

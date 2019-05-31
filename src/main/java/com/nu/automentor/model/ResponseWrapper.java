@@ -9,7 +9,7 @@ public class ResponseWrapper {
     private List<DataEntity> textBlocks;
     private List<String> response;
     private String message;
-    private JSONObject patternsObj;
+    private List<String> patternsObj;
     private String category;
     private String diagnosis;
 
@@ -45,11 +45,11 @@ public class ResponseWrapper {
         this.message = message;
     }
 
-    public JSONObject getPatternsObj() {
+    public List<String> getPatternsObj() {
         return patternsObj;
     }
 
-    public void setPatternsObj(JSONObject patternsObj) {
+    public void setPatternsObj(List<String> patternsObj) {
         this.patternsObj = patternsObj;
     }
 

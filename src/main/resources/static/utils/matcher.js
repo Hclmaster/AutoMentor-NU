@@ -5,6 +5,7 @@ function patternMatcher(pats, obj, str) {
         if(result.length){
             var responses = obj[pat].response;
             var accumulator = [];
+            pats[pat].function = [];
             for(var id in responses) {
                 var tmpResponse = responses[id];
                 for(var j=0; j<result.length; j++) {
@@ -14,6 +15,9 @@ function patternMatcher(pats, obj, str) {
                                 new RegExp("\\" + key, "g"), result[j][key]);
                             pats[pat].diagnosis = pats[pat].diagnosis.replace(
                                 new RegExp("\\" + key, "g"), result[j][key]);
+                        }
+                        if(pats[pat].function.indexOf(result[j][key]) === -1){
+                            pats[pat].function.push(result[j][key]);
                         }
                     })
                 }
