@@ -34,7 +34,10 @@ public class ClientController {
         responseWrapper.setResponse(patAndResp.get(1));
         JSONParser parser = new JSONParser();
         if(patAndResp.get(0).size() > 0) {
-            responseWrapper.setPatternsObj((JSONObject) parser.parse(patAndResp.get(0).get(0)));
+            String patStr = patAndResp.get(0).get(0);
+            JSONObject patObj = (JSONObject) parser.parse(patStr);
+            responseWrapper.setPatternsObj(patObj);
+            responseWrapper.setDiagnosis((String) patObj.get("diagnosis"));
         }else responseWrapper.setPatternsObj(null);
         return responseWrapper;
     }

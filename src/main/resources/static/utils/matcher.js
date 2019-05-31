@@ -12,11 +12,13 @@ function patternMatcher(pats, obj, str) {
                         if(result[j][key] !== 'variable') {
                             tmpResponse = tmpResponse.replace(
                                 new RegExp("\\" + key, "g"), result[j][key]);
+                            pats[pat].diagnosis = pats[pat].diagnosis.replace(
+                                new RegExp("\\" + key, "g"), result[j][key]);
                         }
                     })
                 }
                 if(!containsVar(tmpResponse)) {
-                    accumulator.push(new Array(tmpResponse, pats[pat].pattern.request).toString());
+                    accumulator.push([tmpResponse, pats[pat]].toString());
                 }
             }
             newResponses = newResponses.concat(accumulator);

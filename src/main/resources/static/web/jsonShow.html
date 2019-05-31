@@ -83,12 +83,10 @@
         const myJson = await response.json(); //extract JSON from the http response
         // do something with myJson
         console.log("myJson ====> ", myJson);
-        app.table_info[key]["responses"] = myJson['response'];
-        //console.log("info => ", app.table_info[key]["responses"]);
 
-        //console.log("patterns string ====> ", myJson['patternsObj']);
+        app.table_info[key]["responses"] = myJson['response'];
         app.table_info[key]["patterns"] = myJson['patternsObj'];
-        console.log("table_info ===> ", app.table_info[key]["diagnosis"])
+        app.table_info[key]["diagnosis"] = myJson['diagnosis']
     }
 </script>
 

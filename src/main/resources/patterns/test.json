@@ -6,7 +6,8 @@
         "sourceCode": null,
         "computerOutput": {"reg":  "expected a function .* but"}
       }
-    }
+    },
+    "diagnosis": "Students have problems calling function and passing correct parameters."
   },
 
   "2": {
@@ -16,7 +17,8 @@
         "sourceCode": null,
         "computerOutput": {"reg": "function ([^\\s]+)( is)? (?:not defined|undefined)", "pats": ["?x"]}
       }
-    }
+    },
+    "diagnosis": "Students should have basic skills to check whether they already defined the function before they call them."
   },
 
   "3": {
@@ -26,7 +28,8 @@
         "sourceCode": {"reg": "\\(([^\\s]+) \\(([^\\s]+)\\)", "pats": ["?x", "?y"]},
         "computerOutput": {"reg": "expected a function .* but"}
       }
-    }
+    },
+    "diagnosis": "Students have trouble understanding how to correctly pass arguments to function, and they should understand that when they put parenthesis around variable, this means function call."
   },
 
   "4": {
@@ -36,7 +39,8 @@
         "sourceCode": {"reg": "\\(([^\\s]+) [^\\(]+", "pats": ["?x"]},
         "computerOutput": {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]}
       }
-    }
+    },
+    "diagnosis": "Students don't understand they should define function before call it, or they have typo of calling function in their code."
   },
 
   "5": {
@@ -46,7 +50,8 @@
         "sourceCode": {"reg": "\\(([^\\s]+) [^\\(]+", "pats": ["?x"]},
         "computerOutput": {"reg": "expects only \\d+ arguments, but found \\d+"}
       }
-    }
+    },
+    "diagnosis": "Students aren't passing the correct number of arguments to function."
   },
 
   "6": {
@@ -56,7 +61,8 @@
         "sourceCode": {"reg": "\\(([^\\s]+) [^\\(]+", "pats": ["?x"]},
         "computerOutput": {"reg": "expected a function .* but"}
       }
-    }
+    },
+    "diagnosis": "Students don't understand when to put parenthesis correctly."
   },
 
   "7": {
@@ -66,7 +72,8 @@
         "sourceCode": null,
         "computerOutput": {"reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but)", "pats": ["?x"]}
       }
-    }
+    },
+    "diagnosis": "Student is passing wrong type of arguments to the function."
   },
 
   "8": {
@@ -75,7 +82,8 @@
         "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])"},
         "confusionInputs": {"some": {"reg":  "[W|w]hat [(is|does)] ?.* function ([^\\s]+)", "pats": ["?x"]}}
       }
-    }
+    },
+    "diagnosis": "Student is passing wrong type of arguments to the function."
   },
 
   "9": {
@@ -84,7 +92,8 @@
         "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])|[D|d]o not know"},
         "confusionInputs": {"some": {"reg": "[W|w]hat.*to use.*to ([^?]+)", "pats": ["?x"]}}
       }
-    }
+    },
+    "diagnosis": "Student doesn't know this concept - ?x."
   },
 
   "10": {
@@ -93,7 +102,8 @@
         "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])|[D|d]o not know"},
         "confusionInputs": {"some": {"reg": "the difference between (.*) and ([^\\?]+)", "pats": ["?x", "?y"]}}
       }
-    }
+    },
+    "diagnosis": "Student has trouble distinguish difference between concept ?x and ?y."
   },
 
   "11": {
@@ -102,7 +112,8 @@
         "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])|[D|d]o not know"},
         "confusionInputs": null
       }
-    }
+    },
+    "diagnosis": "Can't diagnosis, students didn't give their confusion inputs."
   },
 
   "12": {
@@ -112,7 +123,8 @@
         "stuckInput": {"reg": "[H|h]ow (?:to|can)+ ([^\\?]+)", "pats": ["?x"]},
         "sourceCode": null
       }
-    }
+    },
+    "diagnosis": "Student got stuck on the usage of ?x."
   },
 
   "13": {
@@ -122,7 +134,8 @@
         "stuckInput": {"reg": "Stuck [in|at]+ (?:the)+ ([^\\s]+)", "pats": ["?x"]},
         "sourceCode": null
       }
-    }
+    },
+    "diagnosis": "Student got stuck of ?x."
   },
 
   "14": {
@@ -132,7 +145,8 @@
         "sourceCode": {"reg": "\\(([^\\s]+) [^\\(]+", "pats": ["?x"]},
         "computerOutput": {"reg": "variable ([^\\s]+).*undefined", "pats": ["?y"]}
       }
-    }
+    },
+    "diagnosis": "Students don't know how to check and define variables in their code."
   },
 
   "15": {
@@ -142,7 +156,8 @@
         "computerOutput": {"reg": "\\(\\)"},
         "expectedOutput": {"reg": "\\(.*\\)"}
       }
-    }
+    },
+    "diagnosis": "Students have problem with their code, it seems the output doesn't match against expected."
   },
 
   "16": {
@@ -151,7 +166,8 @@
         "inputMessage": {"reg": "cannot.*by ([^\\s\\.]+)", "pats": ["?x"]},
         "sourceCode": null
       }
-    }
+    },
+    "diagnosis": "Student stuck at doing ?x."
   },
 
   "17": {
@@ -161,6 +177,7 @@
         "sourceCode": {"reg": "\\(([^\\s]+)"},
         "computerOutput": {"reg": "([^\\s]+): expects \\D+[\\d]*\\D+(?:given|but) \\(([^\\\\)]+)", "pats": ["?x", "?y"]}
       }
-    }
+    },
+    "diagnosis": "Student is passing wrong type of arguments to the function."
   }
 }

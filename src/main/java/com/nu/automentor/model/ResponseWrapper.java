@@ -11,6 +11,7 @@ public class ResponseWrapper {
     private String message;
     private JSONObject patternsObj;
     private String category;
+    private String diagnosis;
 
     public StudentEntity getStudent() {
         return student;
@@ -58,5 +59,13 @@ public class ResponseWrapper {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
     }
 }
