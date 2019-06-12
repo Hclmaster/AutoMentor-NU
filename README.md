@@ -52,8 +52,7 @@ Currently we just covered small parts of the whole CS 111 questions on Piazza, w
 2. Not enough course material related responses
 The responses we wrote are predefined, and it's stored inside the json file, but for some questions we didn't find useful course-related materials. 
 
-3. Not enough patterns inside Knowledge Base to cover all questions
-We use regular expression pattern to help us decide what corresponding responses we should give back to students. Right now, it only covers "Error", "Stuck", "Confused" questions. 
+3. Not enough patterns inside Knowledge Base to cover all questions. We use regular expression pattern to help us decide what corresponding responses we should give back to students. Right now, it only covers "Error", "Stuck", "Confused" questions. 
 
 In order to add more patterns, go to `~/AutoMentor-NU/src/main/resources/patterns/test.json`.
 
