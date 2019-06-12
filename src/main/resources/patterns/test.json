@@ -37,7 +37,7 @@
       "request": {
         "inputMessage": {"reg":  "error|n't defined"},
         "sourceCode": {"reg": "\\(([^\\s]+) [^\\(]+", "pats": ["?x"]},
-        "computerOutput": {"reg": "([^\\s\\:]+)[:\\s].*is not defined", "pats": ["?y"]}
+        "computerOutput": {"reg": "([^\\s\\:]+)[:\\s].*variable.* not defined", "pats": ["?y"]}
       }
     },
     "diagnosis": "Students don't understand they should define function before call it, or they have typo of calling function in their code."
@@ -179,5 +179,38 @@
       }
     },
     "diagnosis": "Student is passing wrong type of arguments to the function."
+  },
+
+  "18": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "error|n't defined"},
+        "sourceCode": {"reg": "\\(([^\\s]+)"},
+        "computerOutput": {"reg": "function ([^\\s]+).*not defined", "pats": ["?x"]}
+      }
+    },
+    "diagnosis": "Student doesn't how to check undefined error of function call. And let them to take a look at ?x documentation."
+  },
+
+  "19": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "error|n't defined"},
+        "sourceCode": {"reg": "\\(\\(.*\\)\\)"},
+        "computerOutput": {"reg": "([^\\s]+):.*expected.*(?:given|but)"}
+      }
+    },
+    "diagnosis": "Student doesn't understand what does parentheses mean in Racket. They should be able to distinguish it with function call."
+  },
+
+  "20": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "error|n't defined"},
+        "sourceCode": {"reg": "\\(.*[^\\)]$"},
+        "computerOutput": {"reg": "([^\\s]+): expected.*\\) to close \\("}
+      }
+    },
+    "diagnosis": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call."
   }
 }

@@ -110,5 +110,23 @@
       "Try to remove parenthesis between <b>?y</b> in function <b>?x</b>.",
       "It seems that you passed the wrong arguments to function <b>?x</b>."
     ]
+  },
+  "18": {
+    "response": [
+      "Check that you don't misspell the function <b>?x</b>",
+      "Check that you've already defined the function <b>?x</b> before calling it."
+    ]
+  },
+  "19": {
+    "response": [
+      "You should understand parentheses mean function call in Racket, you <b>shouldn't</b> add another parentheses outside inner funcation call, if return value of inner function call is value rather than a function.",
+      "Try to remove outside parentheses and seem what will happens!"
+    ]
+  },
+  "20": {
+    "response": [
+      "You should add a close bracket to the function.",
+      "Take a look at how to define function call in Racket."
+    ]
   }
 }

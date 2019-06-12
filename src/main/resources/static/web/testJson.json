@@ -570,5 +570,74 @@
     "responses": [],
     "category": "Confused",
     "source": "exercise4"
+  },
+  {
+    "textBlocks": [
+      {
+        "label": "inputCode",
+        "text": "(overhay (rectangle 30 60 “solid” “orange”) (ellipse 60 30 “solid” “purple”))",
+        "type": "sourceCode"
+      },
+      {
+        "label": "compilerOutput",
+        "text": "function overhay is not defined.",
+        "type": "computerOutput"
+      }
+    ],
+    "message": "Getting error defining function overlay, not defined.",
+    "url": null,
+    "student": {
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": [],
+    "category": "Error",
+    "source": null
+  },
+  {
+    "textBlocks": [
+      {
+        "label": "inputCode",
+        "text": "((+ 1 2))",
+        "type": "sourceCode"
+      },
+      {
+        "label": "compilerOutput",
+        "text": "application: not a procedure; expected a procedure that can be applied to arguments given: 3",
+        "type": "computerOutput"
+      }
+    ],
+    "message": "Getting error when I want to calculate sum of numbers.",
+    "url": null,
+    "student": {
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": [],
+    "category": "Error",
+    "source": null
+  },
+  {
+    "textBlocks": [
+      {
+        "label": "inputCode",
+        "text": "(define (ancestors-names-2 pers",
+        "type": "sourceCode"
+      },
+      {
+        "label": "compilerOutput",
+        "text": "read-syntax: expected a ) to close (",
+        "type": "computerOutput"
+      }
+    ],
+    "message": "Getting error when defining my own functions.",
+    "url": null,
+    "student": {
+      "name": "Cathy",
+      "id": "clj8621"
+    },
+    "responses": [],
+    "category": "Error",
+    "source": null
   }
 ]
