@@ -73,7 +73,7 @@
 
 <script>
     const userAction = async (id) => {
-        const response = await fetch('https://secure-oasis-87770.herokuapp.com/web/jsonShow.html/api/form', {
+        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
             method: 'POST',
             body: JSON.stringify(app.table_info[id]), // string or object
             headers:{
