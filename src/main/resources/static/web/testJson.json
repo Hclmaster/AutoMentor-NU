@@ -263,12 +263,12 @@
       {
         "label": "Function",
         "text": "What is function interpolate-colors?",
-        "type": "ConfusionInput"
+        "type": "confusionInputs"
       },
       {
         "label": "Parameters",
         "text": "What does weight refers to?",
-        "type": "ConfusionInput"
+        "type": "confusionInputs"
       }
     ],
     "message": "What is function interpolate-colors and how can I use it? What does weight refers to? c1: color? c2: color? weight: number?",
@@ -287,7 +287,7 @@
       {
         "label": "Function",
         "text": "What function to use to get a boolean answer at the end?",
-        "type": "ConfusionInput"
+        "type": "confusionInputs"
       }
     ],
     "message": "Any tips on what function to use to get a boolean answer at the end?",
@@ -306,7 +306,7 @@
       {
         "label": "Concept",
         "text": "What the difference between ordinary, tail and iterative recursion?",
-        "type": "ConfusionInput"
+        "type": "confusionInputs"
       }
     ],
     "message": "Still kind of confused on the difference between ordinary, tail and iterative recursion?",
@@ -326,7 +326,7 @@
       {
         "label": "StuckQuestion",
         "text": "How to move the stars from left to center?",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "How to move Image in Scheme?",
@@ -345,7 +345,7 @@
       {
         "label": "StuckQuestion",
         "text": "How to align images to the correct position?",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "How to align images to the correct position?",
@@ -364,7 +364,7 @@
       {
         "label": "StuckQuestion",
         "text": "How to add the alpha component when using the interpolate-colors?",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "How to add the alpha component when using the interpolate-colors?",
@@ -383,7 +383,7 @@
       {
         "label": "StuckQuestion",
         "text": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "Have trouble figuring out how to get the color-interpolate to stop 1/m short of black, and keep running into division by 0 regardless of how try to rearrange the problem.",
@@ -402,7 +402,7 @@
       {
         "label": "StuckQuestion",
         "text": "Stuck in the swatch part.",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "Stuck in the swatch part. Notice that each fraction should be n*[1/(num-squares-1)] but when tried to use the quotient function, it's always rounded so does not work.",
@@ -421,7 +421,7 @@
       {
         "label": "StuckQuestion",
         "text": "How to use interpolate-colors to get the rows slowly transitioning to black.",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "How to use interpolate-colors to get the rows slowly transitioning to black. Where to put that in the code. Do you nest iterated-beside inside iterated-above?",
@@ -440,7 +440,7 @@
       {
         "label": "StuckQuestion",
         "text": "How to interpolate the specific number of squares one inputs when calling swatch?",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "How can we interpolate the specific number of squares one inputs when calling swatch? If I put num-squares for the number of iterations, it isn't defined. I tried putting iterated-beside after lambda, but that didn't work either.",
@@ -459,7 +459,7 @@
       {
         "label": "StuckQuestion",
         "text": "How to up correctly use/order of swatch, iterated-above?",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "Having difficulty coming up with the correct use/order of swatch, iterated-above, etc. Any tips on how to start it off would be much appreciated.",
@@ -478,7 +478,7 @@
       {
         "label": "StuckQuestion",
         "text": "How to give iterated-beside a function?",
-        "type": "StuckInput"
+        "type": "stuckInput"
       }
     ],
     "message": "How do we give iterated-beside a function that satisfies it when the only function we need the iterator for is inside the rectangle function?",

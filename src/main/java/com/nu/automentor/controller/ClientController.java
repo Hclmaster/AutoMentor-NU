@@ -88,7 +88,7 @@ public class ClientController {
                             .findAny().orElse(null));
             inputObj.setConfusionInputs(
                     requestWrapper.getTextBlocks().stream()
-                            .filter(x -> "ConfusionInput".equals(x.getType()))
+                            .filter(x -> "confusionInputs".equals(x.getType()))
                             .map(DataEntity::getText)
                             .collect(Collectors.toList()));
             inputObj.setExpectedOutput(
@@ -98,7 +98,7 @@ public class ClientController {
                             .findAny().orElse(null));
             inputObj.setStuckInput(
                     requestWrapper.getTextBlocks().stream()
-                            .filter(x -> "StuckInput".equals(x.getType()))
+                            .filter(x -> "stuckInput".equals(x.getType()))
                             .map(DataEntity::getText)
                             .findAny().orElse(null));
             objAsStr = objectMapper.writeValueAsString(inputObj);

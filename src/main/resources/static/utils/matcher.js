@@ -85,7 +85,6 @@ function regexMatch(pat, obj, blists) {
     if(typeof obj != 'string') return [];
 
     let regExp = new RegExp(pat.reg, "g");
-    print('regExp => ', regExp)
     let regResults = regExp.exec(obj);
 
     if(regResults === null) return [];

@@ -34,9 +34,9 @@
             </thead>
             <tbody>
             <tr v-for="item in value.textBlocks">
-                <td>{{item.label}}</td>
-                <td>{{item.text}}</td>
-                <td>{{item.type}}</td>
+                <td><span v-html="item.label"></span></td>
+                <td><span v-html="item.text"></span></td>
+                <td><span v-html="item.type"></span></td>
             </tr>
             <tr>
                 <td>Resource URL</td>
@@ -72,10 +72,10 @@
 
 
 <script>
-    const userAction = async (key) => {
-        const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
+    const userAction = async (id) => {
+        const response = await fetch('https://secure-oasis-87770.herokuapp.com/web/jsonShow.html/api/form', {
             method: 'POST',
-            body: JSON.stringify(app.table_info[key]), // string or object
+            body: JSON.stringify(app.table_info[id]), // string or object
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -84,9 +84,29 @@
         // do something with myJson
         console.log("myJson ====> ", myJson);
 
-        app.table_info[key]["responses"] = myJson['response'];
-        app.table_info[key]["patterns"] = myJson['patternsObj'];
-        app.table_info[key]["diagnosis"] = myJson['diagnosis'];
+        app.table_info[id]["responses"] = myJson['response'];
+        app.table_info[id]["patterns"] = myJson['patternsObj'];
+        app.table_info[id]["diagnosis"] = myJson['diagnosis'];
+
+        let patterns = JSON.parse(myJson["patternsObj"][0]);
+        patterns = patterns['pattern']['request'];
+        Object.keys(app.table_info[id]['textBlocks']).forEach(key => {
+            let type = app.table_info[id]['textBlocks'][key]['type'];
+            if(patterns.hasOwnProperty(type)){
+                let regExp = patterns[type]['reg'];
+                if(patterns[type].hasOwnProperty('some')){
+                    console.log("is it here???");
+                    regExp = patterns[type]['some']['reg'];
+                }
+                let match = app.table_info[id]['textBlocks'][key]['text'];
+                app.table_info[id]['textBlocks'][key]['text'] = match.replace(
+                    new RegExp(regExp, "gi"), match => {
+                        return '<span class="highlightText">' + match + '</span>';
+                    }
+                )
+            }
+            //console.log("app result ===> ", app.table_info[id]['textBlocks']);
+        })
     }
 </script>
 
@@ -98,5 +118,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+<style>
+    .highlightText {
+        background: yellow;
+    }
+</style>
 </body>
 </html>
