@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Programming Mentor</title>
 </head>
@@ -18,7 +19,8 @@
         <div>
             <h4 style="margin-left: 5px">
                 No. {{key+1}} --- Category: {{value.category}}
-                <button class="btn btn-primary" style="margin-left: 10px" v-on:click="greet(key)">Send to Server</button>
+                <button class="btn btn-primary" style="margin-left: 10px" v-on:click="greet(key)">Send to Server
+                </button>
             </h4>
         </div>
         <div style="margin-left: 5px">
@@ -75,38 +77,35 @@
     const userAction = async (id) => {
         const response = await fetch('https://secure-oasis-87770.herokuapp.com/api/form', {
             method: 'POST',
-            body: JSON.stringify(app.table_info[id]), // string or object
-            headers:{
+            body: JSON.stringify(app.persist_info[id]), // string or object
+            headers: {
                 'Content-Type': 'application/json'
             }
         });
         const myJson = await response.json(); //extract JSON from the http response
-        // do something with myJson
-        console.log("myJson ====> ", myJson);
+        app.table_info[id]['responses'] = myJson['response'];
+        app.table_info[id]['patterns'] = myJson['patternsObj'];
+        app.table_info[id]['diagnosis'] = myJson['diagnosis'];
 
-        app.table_info[id]["responses"] = myJson['response'];
-        app.table_info[id]["patterns"] = myJson['patternsObj'];
-        app.table_info[id]["diagnosis"] = myJson['diagnosis'];
-
-        let patterns = JSON.parse(myJson["patternsObj"][0]);
-        patterns = patterns['pattern']['request'];
-        Object.keys(app.table_info[id]['textBlocks']).forEach(key => {
-            let type = app.table_info[id]['textBlocks'][key]['type'];
-            if(patterns.hasOwnProperty(type)){
-                let regExp = patterns[type]['reg'];
-                if(patterns[type].hasOwnProperty('some')){
-                    console.log("is it here???");
-                    regExp = patterns[type]['some']['reg'];
-                }
-                let match = app.table_info[id]['textBlocks'][key]['text'];
-                app.table_info[id]['textBlocks'][key]['text'] = match.replace(
-                    new RegExp(regExp, "gi"), match => {
-                        return '<span class="highlightText">' + match + '</span>';
+        let patterns = null;
+        if (myJson['patternsObj']) {
+            patterns = JSON.parse(myJson['patternsObj'][0])['pattern']['request'];
+            let textBlocks = app.persist_info[id]['textBlocks'];
+            Object.keys(textBlocks).forEach(key => {
+                let type = textBlocks[key]['type'];
+                if (patterns.hasOwnProperty(type)) {
+                    let regExp = patterns[type]['reg'];
+                    if (patterns[type].hasOwnProperty('some')) {
+                        regExp = patterns[type]['some']['reg'];
                     }
-                )
-            }
-            //console.log("app result ===> ", app.table_info[id]['textBlocks']);
-        })
+                    app.table_info[id]['textBlocks'][key]['text'] = textBlocks[key]['text'].replace(
+                        new RegExp(regExp, "gi"), match => {
+                            return '<span class="highlightText">' + match + '</span>';
+                        }
+                    )
+                }
+            })
+        }
     }
 </script>
 
@@ -114,9 +113,15 @@
 <script src="index.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 <style>
     .highlightText {

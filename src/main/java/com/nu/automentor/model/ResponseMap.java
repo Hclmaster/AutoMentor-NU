@@ -47,10 +47,4 @@ public class ResponseMap {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        ResponseMap map = new ResponseMap();
-        List<String> responses= map.getResponses("exercise2", "iterated-overlay");
-        System.out.println("responses => " + responses);
-    }
 }

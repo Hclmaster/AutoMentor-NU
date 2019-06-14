@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RestController
 public class ClientController {
@@ -24,6 +25,7 @@ public class ClientController {
     public ResponseWrapper getResponses
             (@RequestBody RequestWrapper requestWrapper) throws Exception {
         String objAsStr = mapInputMsgToJSONStr(requestWrapper);
+        System.out.println("objAsStr => " + objAsStr);
         List<JSONObject> jsonObj = loadJSONFiles();
 
         ResponseWrapper responseWrapper = new ResponseWrapper();
@@ -136,7 +138,6 @@ public class ClientController {
      */
     private List<List<String>> getMatchResponses(List<JSONObject> jsonObj,
                                                  String objAsStr) {
-        System.out.println("objAsStr => " + objAsStr);
         List<List<String>> patResp = new ArrayList<>();
         List<String> responses = new ArrayList<>();
         List<String> pats = new ArrayList<>();
@@ -177,7 +178,7 @@ public class ClientController {
             List<String> mapResponses = responseMap.getResponses(exercise, (String) topics.get(topic));
             if (mapResponses != null) {
                 responses.addAll(mapResponses);
-                pats.add("Added from Exercise Resource Database.");
+                IntStream.range(0, mapResponses.size()).forEach($ -> pats.add("Added from Exercise Resource Database."));
             }
         });
     }

@@ -62,8 +62,7 @@
   "9": {
     "response": [
       "Show me what you tried.",
-      "Try to search with keywords racket <b>?x</b> and try some examples.",
-      "TODO: Direct them to some examples they can try by themselves."
+      "Try to search with keywords racket <b>?x</b> and try some examples."
     ]
   },
   "10": {
@@ -79,8 +78,7 @@
   "12": {
     "response": [
       "Try to search with keywords <b>&quot;how to ?x in Racket&quot;</b>",
-      "Show me the actually code you tried and corresponding output",
-      "TODO: Direct them to the animation????"
+      "Show me the actually code you tried and corresponding output"
     ]
   },
   "13": {
@@ -127,6 +125,12 @@
     "response": [
       "You should add a close bracket to the function.",
       "Take a look at how to define function call in Racket."
+    ]
+  },
+  "21": {
+    "response": [
+      "Why did you add one when it's branch not leaf?",
+      "Try to take a look at the instruction again."
     ]
   }
 }

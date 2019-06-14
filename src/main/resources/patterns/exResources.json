@@ -20,6 +20,10 @@
     ],
     "swatch": [
       "Try to look at the instruction again of swatch inside instruction 1 of Question 6 on page 6."
+    ],
+    "move the stars from left to center": [
+      "Try simple things first: Use whitespace!",
+      "Take a look at the <a href=\"https://docs.racket-lang.org/teachpack/2htdpimage.html?q=overlay.xy#%28def._%28%28lib._2htdp%2Fimage..rkt%29._overlay%2Fxy%29%29\">overlay/xy documentation</a> thoroughly."
     ]
   },
 
@@ -44,6 +48,12 @@
     ],
     "swatch": [
       "Try to look at the instruction again of swatch inside instruction 1 of Question 6 on page 6."
+    ]
+  },
+
+  "exercise3": {
+    "get a boolean answer at the end": [
+      "Try the example at page 38 in this <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">Guide</a> by yourself first."
     ]
   }
 }

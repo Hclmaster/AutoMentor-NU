@@ -80,7 +80,7 @@
     "pattern": {
       "request": {
         "inputMessage": {"reg": "(confused|how .*? use|[W|w]hat(.*)?[is|to])"},
-        "confusionInputs": {"some": {"reg":  "[W|w]hat [(is|does)] ?.* function ([^\\s]+)", "pats": ["?x"]}}
+        "confusionInputs": {"some": {"reg":  "[W|w]hat [(is|does)] ?.* function ([^\\s?]+)", "pats": ["?x"]}}
       }
     },
     "diagnosis": "Student is passing wrong type of arguments to the function."
@@ -212,5 +212,15 @@
       }
     },
     "diagnosis": "Student doesn't know to read basic error message, and maybe they don't know how to define a function call."
+  },
+
+  "21": {
+    "pattern": {
+      "request": {
+        "inputMessage": {"reg": "difficulty|[D|d]o not know (?:where|how)"},
+        "sourceCode": {"reg": "\\(\\+ 1\\(count-tree \\((?:branch-left|branch-right) tree"}
+      }
+    },
+    "diagnosis": "For this exercise, student should understand difference between leaf and branch."
   }
 }
