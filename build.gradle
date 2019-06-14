@@ -35,7 +35,6 @@ dependencies {
     // https://mvnrepository.com/artifact/org.python/jython-standalone
     compile group: 'org.python', name: 'jython-standalone', version: '2.5.2'
     // https://mvnrepository.com/artifact/org.json/json
-    compile group: 'org.json', name: 'json', version: '20180813',
-    "jquery": ">=3.4.0"
+    compile group: 'org.json', name: 'json', version: '20180813'
 }
 
