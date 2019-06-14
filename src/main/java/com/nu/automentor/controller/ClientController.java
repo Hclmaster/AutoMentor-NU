@@ -25,7 +25,6 @@ public class ClientController {
     public ResponseWrapper getResponses
             (@RequestBody RequestWrapper requestWrapper) throws Exception {
         String objAsStr = mapInputMsgToJSONStr(requestWrapper);
-        System.out.println("objAsStr => " + objAsStr);
         List<JSONObject> jsonObj = loadJSONFiles();
 
         ResponseWrapper responseWrapper = new ResponseWrapper();
