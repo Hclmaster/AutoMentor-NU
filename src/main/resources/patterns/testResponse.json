@@ -117,7 +117,7 @@
   },
   "19": {
     "response": [
-      "You should understand parentheses mean function call in Racket, you <b>shouldn't</b> add another parentheses outside inner funcation call, if return value of inner function call is value rather than a function.",
+      "You should understand what does parentheses mean function call in Racket, you <b>shouldn't</b> add another parentheses outside inner funcation call, if return value of inner function call is value rather than a function.",
       "Try to remove outside parentheses and seem what will happens!"
     ]
   },

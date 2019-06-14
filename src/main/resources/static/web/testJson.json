@@ -162,7 +162,7 @@
     "textBlocks":[
       {
         "label": "compilerOutput",
-        "text": "iterated-beside: expects procedure, given #<image>",
+        "text": "iterated-beside: expects procedure, given #< image >",
         "type": "computerOutput"
       }
     ],

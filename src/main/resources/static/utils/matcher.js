@@ -28,7 +28,6 @@ function patternMatcher(pats, obj, str) {
             newResponses = newResponses.concat(accumulator);
         }
     }
-    print('newResponses => ', newResponses);
     return newResponses;
 }
 

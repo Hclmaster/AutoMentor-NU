@@ -4,7 +4,8 @@
       "Also take a look at the function explanation in Appendix 1."
     ],
     "iterated-beside": [
-      "Take a look at the instruction inside exercise 1 again."
+      "Take a look at the instruction inside exercise 1 again.",
+      "Take a look at how to call iterated-beside in Lecture 5 - Iterators and iteration.pdf at page 41 - 44."
     ],
     "iterated-below": [
       "Take a look at the instruction inside exercise 1 again."
@@ -19,25 +20,37 @@
       "Why not try to look at the explanation of interpolate-colors in 'Interclude' Part inside instruction 1 on page 5."
     ],
     "swatch": [
-      "Try to look at the instruction again of swatch inside instruction 1 of Question 6 on page 6."
+      "Try to look at the instruction again of swatch inside instruction 1 of Question 6 on page 6.",
+      "Take a look at Lecture 5 - Iterators and iteration.pdf at page 30 of how to use quotient function."
     ],
     "move the stars from left to center": [
       "Try simple things first: Use whitespace!",
-      "Take a look at the <a href=\"https://docs.racket-lang.org/teachpack/2htdpimage.html?q=overlay.xy#%28def._%28%28lib._2htdp%2Fimage..rkt%29._overlay%2Fxy%29%29\">overlay/xy documentation</a> thoroughly."
+      "Take a look at the <a href=\"https://docs.racket-lang.org/teachpack/2htdpimage.html?q=overlay.xy#%28def._%28%28lib._2htdp%2Fimage..rkt%29._overlay%2Fxy%29%29\">overlay/xy documentation</a> thoroughly.",
+      "Take a look at the slide Lecture 3 - Graphics language.pdf, page 7 on how to move images."
+    ],
+    "beside": [
+      "Take a look at the slide Lecture 3 - Graphics language.pdf, page 8 on how to use <b>beside</b> function.",
+      "Try to run the example at slide Lecture 3 - Graphics language.pdf, page 17 and see what happens!"
+    ],
+    "colors": [
+      "Take a look at the slide Lecture 3 - Graphics language.pdf, page 11 - 13 on how to correctly calling color function."
     ]
   },
 
   "exercise2": {
-    "iterated-overlay": [
-      "Also take a look at the function explanation in Appendix 1."
+    "Iterated-overlay": [
+      "Also take a look at the function explanation in Appendix 1.",
+      "Take a look at Lecture 5 - Iterators and iteration.pdf at page 18 of the usage of iterated-overlay.",
+      "Try run the example inside Lecture 5 - Iterators and iteration.pdf at page 26 - 27 and what happens."
     ],
     "iterated-beside": [
-      "Take a look at the instruction inside exercise 1 again."
+      "Take a look at the instruction inside exercise 1 again.",
+      "Take a look at Lecture 5 - Iterators and iteration.pdf at page 18 of the usage of iterated-beside."
     ],
     "iterated-below": [
       "Take a look at the instruction inside exercise 1 again."
     ],
-    "color": [
+    "make-color": [
       "Take a look at instruction of color function inside Question 3 on page 3."
     ],
     "alpha": [
@@ -53,7 +66,14 @@
 
   "exercise3": {
     "get a boolean answer at the end": [
-      "Try the example at page 38 in this <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">Guide</a> by yourself first."
+      "Try the example at page 38 in this <a href=\"https://plt.eecs.northwestern.edu/snapshots/current/pdf-doc/guide.pdf\">Guide</a> by yourself first.",
+      "Take a look at how to return boolean value in Lecture 6 - Conditional expressions at page 6 - 7, and try some examples at page 8 and 9."
+    ],
+    "string=?": [
+      "Take a look and try the example provided in Lecture 8 - Lists at page 15."
     ]
+  },
+
+  "exercise4": {
   }
 }
